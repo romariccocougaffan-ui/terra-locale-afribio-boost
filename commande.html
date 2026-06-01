@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commande - AFRIBIO BOOST | Terra Locale · Bénin</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<base target="_blank">
+</head>
+<body style="background: #FCFCFA;">
+        <!-- ===== BARRE LATÉRALE CORRIGÉE ===== -->
+    <aside class="sidebar">
+
+        <!-- Logo corrigé -->
+        <div class="sidebar-logo">
+            <div class="logo-icon">AB</div>
+            <div class="logo-text">
+                AFRIBIO BOOST
+                <span>Terra Locale · Bénin</span>
+            </div>
+        </div>
+
+        <!-- Menu corrigé -->
+        <nav class="sidebar-menu">
+
+            <!-- Tableau de bord -->
+            <a href="index.html" class="menu-item">
+                <i class="fas fa-home menu-icon"></i>
+                <span class="menu-label">Tableau de bord</span>
+            </a>
+
+            <!-- Production Végétale -->
+            <a href="production.html" class="menu-item">
+                <i class="fas fa-seedling menu-icon"></i>
+                <span class="menu-label">Production végétale</span>
+            </a>
+
+            <!-- Suivi personnalisé -->
+            <a href="suivi.html" class="menu-item">
+                <i class="fas fa-chart-line menu-icon"></i>
+                <span class="menu-label">Suivi personnalisé</span>
+            </a>
+
+            <!-- Boutique -->
+            <a href="boutique.html" class="menu-item active">
+                <i class="fas fa-shopping-cart menu-icon"></i>
+                <span class="menu-label">Boutique</span>
+            </a>
+
+            <!-- Formation -->
+            <a href="formation.html" class="menu-item">
+                <i class="fas fa-graduation-cap menu-icon"></i>
+                <span class="menu-label">Formation</span>
+            </a>
+
+            <!-- Communauté -->
+            <a href="communaute.html" class="menu-item">
+                <i class="fas fa-users menu-icon"></i>
+                <span class="menu-label">Communauté</span>
+                <span class="menu-badge">12</span>
+            </a>
+
+            <!-- Notifications -->
+            <a href="notifications.html" class="menu-item">
+                <i class="fas fa-bell menu-icon"></i>
+                <span class="menu-label">Notifications</span>
+                <span class="menu-badge">3</span>
+            </a>
+
+            <!-- Impact écologique -->
+            <a href="impact.html" class="menu-item">
+                <i class="fas fa-leaf menu-icon"></i>
+                <span class="menu-label">Impact écologique</span>
+            </a>
+
+        </nav>
+
+        <!-- Profil corrigé en bas -->
+        <div class="sidebar-profile">
+            <div class="profile-avatar">KO</div>
+            <div class="profile-info">
+                <div class="profile-name">Kossi Agbo</div>
+                <div class="profile-role">Agriculteur - Bohicon</div>
+            </div>
+            <i class="fas fa-chevron-right profile-chevron"></i>
+        </div>
+
+    </aside>
+
+    <main class="main-content" style="background: #FCFCFA; min-height: 100vh;">
+        <header>
+            <h1><i class="fas fa-clipboard-check"></i> Finaliser ma commande</h1>
+        </header>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px;">
+            <!-- Récapitulatif -->
+            <section>
+                <h2>🛍️ Récapitulatif</h2>
+                <div id="recap-commande" style="margin-bottom: 20px;">
+                    <!-- Rempli par JS -->
+                </div>
+                <div id="recap-totals" style="border-top: 2px solid var(--border); padding-top: 20px;">
+                    <!-- Rempli par JS -->
+                </div>
+            </section>
+
+            <!-- Formulaire livraison -->
+            <section>
+                <h2>📦 Livraison & Paiement</h2>
+                <form id="commande-form" onsubmit="handleCommande(event)">
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label>Nom complet <span class="required">*</span></label>
+                        <input type="text" id="cmd-nom" required>
+                    </div>
+                    
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label>Téléphone <span class="required">*</span></label>
+                        <input type="tel" id="cmd-tel" required>
+                    </div>
+                    
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label>Adresse de livraison <span class="required">*</span></label>
+                        <textarea id="cmd-adresse" rows="3" placeholder="Village, quartier, point de repère..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label>Mode de livraison <span class="required">*</span></label>
+                        <select id="cmd-livraison" required onchange="updateFrais()">
+                            <option value="retrait">Retrait point relais (Gratuit)</option>
+                            <option value="domicile">Livraison à domicile (+1 500 FCFA)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label>Mode de paiement <span class="required">*</span></label>
+                        <select id="cmd-paiement" required>
+                            <option value="mtn">MTN Mobile Money</option>
+                            <option value="moov">Moov Money</option>
+                            <option value="celtiis">Celtiis Cash</option>
+                            <option value="especes">Espèces à la livraison</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label>Culture concernée</label>
+                        <select id="cmd-culture">
+                            <option value="">Sélectionner (optionnel)</option>
+                            <option value="mais">Maïs</option>
+                            <option value="tomate">Tomate</option>
+                            <option value="riz">Riz</option>
+                            <option value="piment">Piment</option>
+                            <option value="mangue">Mangue</option>
+                            <option value="autre">Autre</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn-commander">
+                        <i class="fas fa-check-circle"></i> Confirmer la commande
+                    </button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script src="js/commande.js"></script>
+    <script>
+        // Charger le récapitulatif
+        function loadRecap() {
+            const cart = JSON.parse(localStorage.getItem('afrbio_cart') || '[]');
+            const container = document.getElementById('recap-commande');
+            const totals = document.getElementById('recap-totals');
+            
+            if (cart.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-light);">Panier vide. <a href="boutique.html">Retourner à la boutique</a></p>';
+                return;
+            }
+            
+            let html = '';
+            let total = 0;
+            
+            cart.forEach(item => {
+                const subtotal = item.prix * item.qty;
+                total += subtotal;
+                html += `
+                    <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border);">
+                        <div>
+                            <strong>${item.nom}</strong>
+                            <p style="font-size: 0.85rem; color: var(--text-light);">${item.qty} × ${item.prix.toLocaleString('fr-FR')} FCFA</p>
+                        </div>
+                        <strong>${subtotal.toLocaleString('fr-FR')} FCFA</strong>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+            
+            const fraisLivraison = document.getElementById('cmd-livraison')?.value === 'domicile' ? 1500 : 0;
+            const totalFinal = total + fraisLivraison;
+            
+            totals.innerHTML = `
+                <div style="display: flex; justify-content: space-between; padding: 10px 0;">
+                    <span>Sous-total</span>
+                    <strong>${total.toLocaleString('fr-FR')} FCFA</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 10px 0;">
+                    <span>Livraison</span>
+                    <strong>${fraisLivraison > 0 ? fraisLivraison.toLocaleString('fr-FR') + ' FCFA' : 'Gratuit'}</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 15px 0; border-top: 2px solid var(--primary); margin-top: 10px; font-size: 1.2rem; color: var(--primary);">
+                    <strong>TOTAL</strong>
+                    <strong>${totalFinal.toLocaleString('fr-FR')} FCFA</strong>
+                </div>
+            `;
+        }
+        
+        function updateFrais() {
+            loadRecap();
+        }
+        
+        function handleCommande(e) {
+            e.preventDefault();
+            
+            // Simuler traitement commande
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Traitement...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                // Marquer comme commandé pour déverrouiller l'accès
+                localStorage.setItem('afrbio_has_ordered', 'true');
+                
+                // Vider le panier
+                localStorage.removeItem('afrbio_cart');
+                
+                showToast('🎉 Commande validée ! Accès aux données déverrouillé.', 'success');
+                
+                setTimeout(() => {
+                    window.location.href = 'production.html';
+                }, 2000);
+            }, 2000);
+        }
+        
+        // Charger au démarrage
+        document.addEventListener('DOMContentLoaded', loadRecap);
+    </script>
+</body>
+</html>

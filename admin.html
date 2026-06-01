@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin — Commandes AFRIBIO BOOST</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --vert-principal: #2D5A27;
+            --vert-clair: #4A7C43;
+            --vert-pale: #E8F5E4;
+            --terre: #C17817;
+            --terre-clair: #D4A574;
+            --terre-pale: #FDF3E7;
+            --noir: #1A1A1A;
+            --gris: #5C5C5C;
+            --gris-leger: #9A9A9A;
+            --gris-fond: #F3F4F6;
+            --blanc: #FFFFFF;
+            --rouge: #E53935;
+            --rouge-pale: #FFEBEE;
+            --bleu: #1565C0;
+            --bleu-pale: #E3F2FD;
+            --orange: #F59E0B;
+            --orange-pale: #FEF3C7;
+            --vert-ok: #10B981;
+            --vert-ok-pale: #D1FAE5;
+            --radius: 14px;
+            --radius-sm: 8px;
+            --shadow: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-hover: 0 4px 12px rgba(0,0,0,0.12);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--gris-fond);
+            color: var(--noir);
+            line-height: 1.5;
+        }
+
+        /* ===== LOGIN ===== */
+        .login-overlay {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, var(--vert-principal), var(--vert-clair));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.4s, visibility 0.4s;
+        }
+        .login-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .login-box {
+            background: var(--blanc);
+            padding: 48px 40px;
+            border-radius: var(--radius);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .login-box .logo-icon {
+            width: 56px; height: 56px;
+            background: var(--vert-principal);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.6rem;
+            margin: 0 auto 20px;
+        }
+        .login-box h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+            color: var(--noir);
+        }
+        .login-box p {
+            color: var(--gris);
+            font-size: 0.9rem;
+            margin-bottom: 28px;
+        }
+        .login-box input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #E5E7EB;
+            border-radius: var(--radius-sm);
+            font-size: 1rem;
+            font-family: inherit;
+            margin-bottom: 16px;
+            transition: border-color 0.2s;
+        }
+        .login-box input:focus {
+            outline: none;
+            border-color: var(--vert-principal);
+        }
+        .login-box button {
+            width: 100%;
+            padding: 14px;
+            background: var(--vert-principal);
+            color: white;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .login-box button:hover { background: var(--vert-clair); }
+        .login-error {
+            color: var(--rouge);
+            font-size: 0.85rem;
+            margin-top: 12px;
+            display: none;
+        }
+        .login-error.visible { display: block; }
+
+        /* ===== HEADER ADMIN ===== */
+        .admin-header {
+            background: var(--blanc);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .admin-header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+        .admin-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--vert-principal);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .admin-logo-icon {
+            width: 36px; height: 36px;
+            background: var(--vert-principal);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+        }
+        .admin-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .admin-btn {
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+        .btn-refresh {
+            background: var(--vert-pale);
+            color: var(--vert-principal);
+        }
+        .btn-refresh:hover { background: #D4EDDA; }
+        .btn-export {
+            background: var(--bleu-pale);
+            color: var(--bleu);
+        }
+        .btn-export:hover { background: #BBDEFB; }
+        .btn-logout {
+            background: var(--rouge-pale);
+            color: var(--rouge);
+        }
+        .btn-logout:hover { background: #FFCDD2; }
+        .live-indicator {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            color: var(--gris-leger);
+        }
+        .live-dot {
+            width: 8px; height: 8px;
+            background: var(--vert-ok);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        .live-dot.offline {
+            background: var(--rouge);
+            animation: none;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        .supabase-status {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 100px;
+            font-weight: 600;
+        }
+        .status-ok { background: var(--vert-ok-pale); color: #047857; }
+        .status-ko { background: var(--rouge-pale); color: var(--rouge); }
+
+        /* ===== TOAST NOTIFICATION ===== */
+        .toast-container {
+            position: fixed;
+            top: 80px;
+            right: 24px;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .toast {
+            background: var(--blanc);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 300px;
+            max-width: 400px;
+            animation: toastIn 0.4s ease, toastOut 0.4s ease 4.6s forwards;
+            border-left: 4px solid var(--vert-principal);
+        }
+        .toast-icon {
+            width: 36px; height: 36px;
+            background: var(--vert-pale);
+            color: var(--vert-principal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .toast-content h4 {
+            font-size: 0.9rem;
+            margin-bottom: 2px;
+        }
+        .toast-content p {
+            font-size: 0.8rem;
+            color: var(--gris);
+        }
+        @keyframes toastIn {
+            from { opacity: 0; transform: translateX(100px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes toastOut {
+            from { opacity: 1; transform: translateX(0); }
+            to { opacity: 0; transform: translateX(100px); }
+        }
+
+        /* ===== STATS CARDS ===== */
+        .stats-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .stat-card {
+            background: var(--blanc);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow);
+            transition: box-shadow 0.2s;
+        }
+        .stat-card:hover { box-shadow: var(--shadow-hover); }
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--gris-leger);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--noir);
+            margin-bottom: 4px;
+        }
+        .stat-change {
+            font-size: 0.8rem;
+            color: var(--gris);
+        }
+        .stat-card.green { border-left: 4px solid var(--vert-ok); }
+        .stat-card.orange { border-left: 4px solid var(--orange); }
+        .stat-card.blue { border-left: 4px solid var(--bleu); }
+        .stat-card.red { border-left: 4px solid var(--rouge); }
+
+        /* ===== FILTRES ===== */
+        .filters-bar {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px 20px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .filter-group {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 8px 16px;
+            border: 1.5px solid #E5E7EB;
+            background: var(--blanc);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+            color: var(--gris);
+        }
+        .filter-btn:hover { border-color: var(--vert-clair); color: var(--vert-principal); }
+        .filter-btn.active {
+            background: var(--vert-principal);
+            color: white;
+            border-color: var(--vert-principal);
+        }
+        .search-box {
+            padding: 8px 14px;
+            border: 1.5px solid #E5E7EB;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            font-family: inherit;
+            width: 220px;
+            transition: border-color 0.2s;
+        }
+        .search-box:focus { outline: none; border-color: var(--vert-principal); }
+
+        /* ===== TABLE ===== */
+        .table-container {
+            max-width: 1400px;
+            margin: 0 auto 40px;
+            padding: 0 24px;
+        }
+        .table-card {
+            background: var(--blanc);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        .table-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid #F3F4F6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .table-header h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        .table-header .count {
+            font-size: 0.85rem;
+            color: var(--gris-leger);
+            font-weight: 500;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        thead th {
+            text-align: left;
+            padding: 14px 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--gris-leger);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: #FAFAFA;
+            border-bottom: 1px solid #F3F4F6;
+            white-space: nowrap;
+        }
+        tbody td {
+            padding: 16px 20px;
+            border-bottom: 1px solid #F3F4F6;
+            vertical-align: middle;
+        }
+        tbody tr:hover { background: #FAFAFA; }
+        tbody tr:last-child td { border-bottom: none; }
+
+        /* Badges statut */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            border-radius: 100px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .badge-nouvelle { background: var(--bleu-pale); color: var(--bleu); }
+        .badge-confirmee { background: var(--vert-pale); color: var(--vert-principal); }
+        .badge-payee { background: var(--vert-ok-pale); color: #047857; }
+        .badge-en_preparation { background: var(--orange-pale); color: #B45309; }
+        .badge-expediee { background: #E0E7FF; color: #4338CA; }
+        .badge-livree { background: #DBEAFE; color: #1E40AF; }
+        .badge-annulee { background: var(--rouge-pale); color: var(--rouge); }
+
+        .badge-type {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .type-afribio { background: var(--vert-pale); color: var(--vert-principal); }
+        .type-frais { background: var(--terre-pale); color: var(--terre); }
+
+        .client-name {
+            font-weight: 600;
+            color: var(--noir);
+        }
+        .client-phone {
+            font-size: 0.82rem;
+            color: var(--gris-leger);
+            margin-top: 2px;
+        }
+        .montant {
+            font-weight: 700;
+            color: var(--terre);
+            font-size: 0.95rem;
+        }
+        .date-cell {
+            font-size: 0.82rem;
+            color: var(--gris);
+        }
+
+        /* Actions */
+        .action-btns {
+            display: flex;
+            gap: 6px;
+        }
+        .action-btn {
+            padding: 6px 10px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .btn-next {
+            background: var(--vert-principal);
+            color: white;
+        }
+        .btn-next:hover { background: var(--vert-clair); }
+        .btn-cancel {
+            background: var(--rouge-pale);
+            color: var(--rouge);
+        }
+        .btn-cancel:hover { background: #FFCDD2; }
+        .btn-view {
+            background: var(--gris-fond);
+            color: var(--gris);
+        }
+        .btn-view:hover { background: #E5E7EB; }
+
+        /* ===== MODAL ===== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal-box {
+            background: var(--blanc);
+            border-radius: var(--radius);
+            width: 100%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            animation: modalIn 0.3s ease;
+        }
+        @keyframes modalIn {
+            from { opacity: 0; transform: translateY(20px) scale(0.96); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .modal-header {
+            padding: 24px 28px;
+            border-bottom: 1px solid #F3F4F6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .modal-header h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: var(--gris-leger);
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .modal-close:hover { background: var(--gris-fond); }
+        .modal-body {
+            padding: 24px 28px;
+        }
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #F3F4F6;
+        }
+        .detail-row:last-child { border-bottom: none; }
+        .detail-label {
+            font-size: 0.85rem;
+            color: var(--gris-leger);
+            font-weight: 500;
+        }
+        .detail-value {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--noir);
+            text-align: right;
+            max-width: 60%;
+            word-break: break-word;
+        }
+        .modal-footer {
+            padding: 20px 28px;
+            border-top: 1px solid #F3F4F6;
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+        .modal-btn {
+            padding: 10px 20px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+        .modal-btn-primary {
+            background: var(--vert-principal);
+            color: white;
+        }
+        .modal-btn-secondary {
+            background: var(--gris-fond);
+            color: var(--gris);
+        }
+
+        /* ===== EMPTY STATE ===== */
+        .empty-state {
+            text-align: center;
+            padding: 60px 24px;
+            color: var(--gris-leger);
+        }
+        .empty-state-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+        .empty-state h3 {
+            font-size: 1.1rem;
+            color: var(--gris);
+            margin-bottom: 8px;
+        }
+
+        /* ===== LOADING ===== */
+        .loading-row {
+            text-align: center;
+            padding: 40px;
+        }
+        .spinner {
+            width: 32px; height: 32px;
+            border: 3px solid #E5E7EB;
+            border-top-color: var(--vert-principal);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 12px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1100px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .stats-grid { grid-template-columns: 1fr; padding: 16px; }
+            .table-container { padding: 0 16px; }
+            .filters-bar { padding: 0 16px 16px; }
+            .admin-header-inner { padding: 0 16px; }
+            .search-box { width: 100%; }
+            table { font-size: 0.8rem; }
+            thead th, tbody td { padding: 10px 12px; }
+            .action-btns { flex-wrap: wrap; }
+            .hide-mobile { display: none; }
+            .admin-actions { gap: 8px; }
+            .admin-btn { padding: 6px 10px; font-size: 0.75rem; }
+            .live-indicator { display: none; }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+
+    <!-- LOGIN -->
+    <div class="login-overlay" id="loginOverlay">
+        <div class="login-box">
+            <div class="logo-icon">&#127807;</div>
+            <h1>AFRIBIO BOOST</h1>
+            <p>Acces reserve - Gestion des commandes</p>
+            <input type="password" id="adminPassword" placeholder="Mot de passe admin" onkeydown="if(event.key==='Enter')doLogin()">
+            <button onclick="doLogin()">Se connecter</button>
+            <div class="login-error" id="loginError">Mot de passe incorrect</div>
+        </div>
+    </div>
+
+    <!-- TOAST CONTAINER -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- HEADER -->
+    <header class="admin-header" id="adminHeader" style="display:none;">
+        <div class="admin-header-inner">
+            <div class="admin-logo">
+                <div class="admin-logo-icon">&#127807;</div>
+                Admin - Commandes
+            </div>
+            <div class="admin-actions">
+                <span class="supabase-status status-ko" id="supabaseStatus">Connexion...</span>
+                <div class="live-indicator">
+                    <div class="live-dot" id="liveDot"></div>
+                    <span>Temps reel</span>
+                </div>
+                <button class="admin-btn btn-export" onclick="exportCSV()">&#128229; Export CSV</button>
+                <button class="admin-btn btn-refresh" onclick="loadOrders()">&#128260; Actualiser</button>
+                <button class="admin-btn btn-logout" onclick="doLogout()">Deconnexion</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- STATS -->
+    <div class="stats-grid" id="statsGrid" style="display:none;">
+        <div class="stat-card green">
+            <div class="stat-label">Commandes totales</div>
+            <div class="stat-value" id="statTotal">-</div>
+            <div class="stat-change">Tous statuts confondus</div>
+        </div>
+        <div class="stat-card orange">
+            <div class="stat-label">En attente</div>
+            <div class="stat-value" id="statPending">-</div>
+            <div class="stat-change">Nouvelles + Confirmees</div>
+        </div>
+        <div class="stat-card blue">
+            <div class="stat-label">Revenus (FCFA)</div>
+            <div class="stat-value" id="statRevenue">-</div>
+            <div class="stat-change">Commandes payees & livrees</div>
+        </div>
+        <div class="stat-card red">
+            <div class="stat-label">Aujourd'hui</div>
+            <div class="stat-value" id="statToday">-</div>
+            <div class="stat-change">Nouvelles commandes 24h</div>
+        </div>
+    </div>
+
+    <!-- FILTRES -->
+    <div class="filters-bar" id="filtersBar" style="display:none;">
+        <div class="filter-group">
+            <button class="filter-btn active" onclick="setFilter('all')" data-filter="all">Toutes</button>
+            <button class="filter-btn" onclick="setFilter('nouvelle')" data-filter="nouvelle">Nouvelles</button>
+            <button class="filter-btn" onclick="setFilter('confirmee')" data-filter="confirmee">Confirmees</button>
+            <button class="filter-btn" onclick="setFilter('payee')" data-filter="payee">Payees</button>
+            <button class="filter-btn" onclick="setFilter('en_preparation')" data-filter="en_preparation">Preparation</button>
+            <button class="filter-btn" onclick="setFilter('expediee')" data-filter="expediee">Expediees</button>
+            <button class="filter-btn" onclick="setFilter('livree')" data-filter="livree">Livrees</button>
+            <button class="filter-btn" onclick="setFilter('annulee')" data-filter="annulee">Annulees</button>
+        </div>
+        <input type="text" class="search-box" id="searchBox" placeholder="Rechercher nom / telephone..." oninput="applyFilters()">
+    </div>
+
+    <!-- TABLE -->
+    <div class="table-container" id="tableContainer" style="display:none;">
+        <div class="table-card">
+            <div class="table-header">
+                <h2>&#128203; Liste des commandes</h2>
+                <span class="count" id="tableCount">Chargement...</span>
+            </div>
+            <div id="tableContent">
+                <div class="loading-row">
+                    <div class="spinner"></div>
+                    <p>Chargement des commandes...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DETAIL -->
+    <div class="modal-overlay" id="detailModal" onclick="if(event.target===this)closeModal()">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>&#128196; Detail de la commande</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+            <div class="modal-footer" id="modalFooter"></div>
+        </div>
+    </div>
+
+    <!-- SUPABASE SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // ============================================
+        // CONFIG SUPABASE
+        // ============================================
+        var SUPABASE_URL = 'https://ncqozqhhhletyjfujzjc.supabase.co';
+        var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5jcW96cWhoaGxldHlqZnVqempjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwMDAzMjgsImV4cCI6MjA5NTU3NjMyOH0.qz78q5peBL46lyjfcZgksvJnR9LwiTQrqw1TYQ13HsE';
+
+        // Hash SHA-256 du mot de passe "afribio2026"
+        var ADMIN_HASH = 'f677c54bb4974f6d35bafb8dc8e2b2dd1e2faa96d58f43dd0f25d765036a87e8';
+
+        var supabaseClient;
+        var allOrders = [];
+        var currentFilter = 'all';
+        var realtimeChannel = null;
+        var audioCtx = null;
+
+        // ============================================
+        // AUTH
+        // ============================================
+        async function sha256(str) {
+            var buf = new TextEncoder().encode(str);
+            var hash = await crypto.subtle.digest('SHA-256', buf);
+            return Array.from(new Uint8Array(hash)).map(function(b) {
+                return b.toString(16).padStart(2, '0');
+            }).join('');
+        }
+
+        async function doLogin() {
+            var pwd = document.getElementById('adminPassword').value;
+            var hash = await sha256(pwd);
+            if(hash === ADMIN_HASH) {
+                document.getElementById('loginOverlay').classList.add('hidden');
+                document.getElementById('adminHeader').style.display = '';
+                document.getElementById('statsGrid').style.display = '';
+                document.getElementById('filtersBar').style.display = '';
+                document.getElementById('tableContainer').style.display = '';
+                initSupabase();
+            } else {
+                document.getElementById('loginError').classList.add('visible');
+                setTimeout(function() {
+                    document.getElementById('loginError').classList.remove('visible');
+                }, 3000);
+            }
+        }
+
+        function doLogout() {
+            location.reload();
+        }
+
+        // ============================================
+        // NOTIFICATION SONORE
+        // ============================================
+        function playNotificationSound() {
+            try {
+                if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                var osc = audioCtx.createOscillator();
+                var gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.frequency.setValueAtTime(880, audioCtx.currentTime);
+                osc.frequency.setValueAtTime(1100, audioCtx.currentTime + 0.1);
+                gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+                osc.start(audioCtx.currentTime);
+                osc.stop(audioCtx.currentTime + 0.3);
+            } catch(e) {
+                console.log('Audio non disponible');
+            }
+        }
+
+        function showToast(title, message) {
+            var container = document.getElementById('toastContainer');
+            var toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.innerHTML = '<div class="toast-icon">&#128276;</div>' +
+                '<div class="toast-content"><h4>' + title + '</h4><p>' + message + '</p></div>';
+            container.appendChild(toast);
+            setTimeout(function() { toast.remove(); }, 5000);
+        }
+
+        // ============================================
+        // SUPABASE
+        // ============================================
+        function setSupabaseStatus(connected, message) {
+            var el = document.getElementById('supabaseStatus');
+            var dot = document.getElementById('liveDot');
+            if(connected) {
+                el.textContent = message || 'Connecte';
+                el.className = 'supabase-status status-ok';
+                dot.classList.remove('offline');
+            } else {
+                el.textContent = message || 'Deconnecte';
+                el.className = 'supabase-status status-ko';
+                dot.classList.add('offline');
+            }
+        }
+
+        function initSupabase() {
+            try {
+                supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+                setSupabaseStatus(true, 'Supabase OK');
+                loadOrders();
+                setupRealtime();
+            } catch(e) {
+                console.error('Erreur Supabase:', e);
+                setSupabaseStatus(false, 'Erreur connexion');
+                document.getElementById('tableContent').innerHTML =
+                    '<div class="empty-state">' +
+                    '<div class="empty-state-icon">&#9888;</div>' +
+                    '<h3>Erreur de connexion Supabase</h3>' +
+                    '<p>Verifiez que vous avez execute le SQL dans Supabase et que la table "commandes" existe.</p>' +
+                    '</div>';
+            }
+        }
+
+        async function loadOrders() {
+            if(!supabaseClient) return;
+            document.getElementById('tableContent').innerHTML =
+                '<div class="loading-row">' +
+                '<div class="spinner"></div>' +
+                '<p>Chargement des commandes...</p>' +
+                '</div>';
+
+            try {
+                var result = await supabaseClient
+                    .from('commandes')
+                    .select('*')
+                    .order('date_creation', { ascending: false });
+
+                if(result.error) throw result.error;
+                allOrders = result.data || [];
+                applyFilters();
+                updateStats();
+                setSupabaseStatus(true, 'Connecte');
+            } catch(err) {
+                console.error(err);
+                setSupabaseStatus(false, 'Erreur DB');
+                document.getElementById('tableContent').innerHTML =
+                    '<div class="empty-state">' +
+                    '<div class="empty-state-icon">&#9888;</div>' +
+                    '<h3>Erreur de chargement</h3>' +
+                    '<p>' + (err.message || 'La table "commandes" n\'existe peut-etre pas encore. Executez le SQL setup dans Supabase.') + '</p>' +
+                    '</div>';
+            }
+        }
+
+        function setupRealtime() {
+            if(!supabaseClient) return;
+            realtimeChannel = supabaseClient
+                .channel('commandes-changes')
+                .on('postgres_changes', {
+                    event: '*',
+                    schema: 'public',
+                    table: 'commandes'
+                }, function(payload) {
+                    console.log('Realtime update:', payload);
+                    if(payload.eventType === 'INSERT') {
+                        playNotificationSound();
+                        var order = payload.new;
+                        showToast(
+                            '&#128722; Nouvelle commande !',
+                            order.prenom + ' ' + order.nom + ' - ' + (order.type === 'afribio_boost' ? 'Afribio Boost' : 'Produits frais')
+                        );
+                    }
+                    loadOrders();
+                })
+                .subscribe();
+        }
+
+        // ============================================
+        // EXPORT CSV
+        // ============================================
+        function exportCSV() {
+            if(allOrders.length === 0) {
+                alert('Aucune commande a exporter.');
+                return;
+            }
+            var headers = ['ID','Date','Type','Statut','Prenom','Nom','Telephone','Email','Ville','Adresse','Format','Produits','Quantite','Montant','Mode_Paiement','Details','Commentaire'];
+            var rows = allOrders.map(function(o) {
+                return [
+                    o.id,
+                    o.date_creation || '',
+                    o.type || '',
+                    o.statut || '',
+                    o.prenom || '',
+                    o.nom || '',
+                    o.telephone || '',
+                    o.email || '',
+                    o.ville || '',
+                    (o.adresse || '').replace(/\n/g, ' '),
+                    o.format || '',
+                    (o.produits || []).join(';'),
+                    o.quantite || '',
+                    o.montant_total || '',
+                    o.mode_paiement || '',
+                    (o.details || '').replace(/\n/g, ' '),
+                    (o.commentaire || '').replace(/\n/g, ' ')
+                ];
+            });
+            var csvLines = [headers.join(',')];
+            rows.forEach(function(r) {
+                var line = r.map(function(c) {
+                    var s = String(c).replace(/"/g, '""');
+                    return '"' + s + '"';
+                }).join(',');
+                csvLines.push(line);
+            });
+            var csv = csvLines.join('\n');
+            var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            var link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'commandes-afribio-' + new Date().toISOString().split('T')[0] + '.csv';
+            link.click();
+        }
+
+        // ============================================
+        // STATS
+        // ============================================
+        function updateStats() {
+            var total = allOrders.length;
+            var pending = allOrders.filter(function(o) {
+                return ['nouvelle','confirmee'].indexOf(o.statut) !== -1;
+            }).length;
+            var revenue = allOrders
+                .filter(function(o) {
+                    return ['payee','livree'].indexOf(o.statut) !== -1 && o.montant_total;
+                })
+                .reduce(function(sum, o) {
+                    return sum + (o.montant_total || 0);
+                }, 0);
+            var today = new Date().toISOString().split('T')[0];
+            var todayCount = allOrders.filter(function(o) {
+                return o.date_creation && o.date_creation.startsWith(today);
+            }).length;
+
+            document.getElementById('statTotal').textContent = total;
+            document.getElementById('statPending').textContent = pending;
+            document.getElementById('statRevenue').textContent = revenue.toLocaleString();
+            document.getElementById('statToday').textContent = todayCount;
+        }
+
+        // ============================================
+        // FILTRES & AFFICHAGE
+        // ============================================
+        function setFilter(status) {
+            currentFilter = status;
+            document.querySelectorAll('.filter-btn').forEach(function(btn) {
+                btn.classList.toggle('active', btn.dataset.filter === status);
+            });
+            applyFilters();
+        }
+
+        function applyFilters() {
+            var search = document.getElementById('searchBox').value.toLowerCase().trim();
+            var filtered = allOrders;
+
+            if(currentFilter !== 'all') {
+                filtered = filtered.filter(function(o) {
+                    return o.statut === currentFilter;
+                });
+            }
+
+            if(search) {
+                filtered = filtered.filter(function(o) {
+                    return (o.prenom || '').toLowerCase().includes(search) ||
+                           (o.nom || '').toLowerCase().includes(search) ||
+                           (o.telephone || '').toLowerCase().includes(search) ||
+                           (o.ville || '').toLowerCase().includes(search);
+                });
+            }
+
+            renderTable(filtered);
+        }
+
+        // ============================================
+        // RENDER TABLE
+        // ============================================
+        function renderTable(orders) {
+            document.getElementById('tableCount').textContent = orders.length + ' commande' + (orders.length > 1 ? 's' : '');
+
+            if(orders.length === 0) {
+                document.getElementById('tableContent').innerHTML =
+                    '<div class="empty-state">' +
+                    '<div class="empty-state-icon">&#128236;</div>' +
+                    '<h3>Aucune commande</h3>' +
+                    '<p>Aucune commande ne correspond a vos criteres.</p>' +
+                    '</div>';
+                return;
+            }
+
+            var statusLabels = {
+                'nouvelle': 'Nouvelle',
+                'confirmee': 'Confirmee',
+                'payee': 'Payee',
+                'en_preparation': 'Preparation',
+                'expediee': 'Expediee',
+                'livree': 'Livree',
+                'annulee': 'Annulee'
+            };
+
+            var nextStatus = {
+                'nouvelle': 'confirmee',
+                'confirmee': 'payee',
+                'payee': 'en_preparation',
+                'en_preparation': 'expediee',
+                'expediee': 'livree'
+            };
+
+            var nextLabels = {
+                'nouvelle': 'Confirmer',
+                'confirmee': 'Payee',
+                'payee': 'Preparer',
+                'en_preparation': 'Expedier',
+                'expediee': 'Livree'
+            };
+
+            var html = '<table>' +
+                '<thead>' +
+                '<tr>' +
+                '<th>Reference</th>' +
+                '<th>Client</th>' +
+                '<th>Type</th>' +
+                '<th class="hide-mobile">Produit</th>' +
+                '<th class="hide-mobile">Montant</th>' +
+                '<th>Statut</th>' +
+                '<th class="hide-mobile">Date</th>' +
+                '<th>Actions</th>' +
+                '</tr>' +
+                '</thead>' +
+                '<tbody>';
+
+            orders.forEach(function(order) {
+                var date = order.date_creation
+                    ? new Date(order.date_creation).toLocaleDateString('fr-FR', {day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit'})
+                    : '-';
+
+                var typeClass = order.type === 'afribio_boost' ? 'type-afribio' : 'type-frais';
+                var typeLabel = order.type === 'afribio_boost' ? 'Afribio Boost' : 'Produits frais';
+
+                var produitInfo = '-';
+                if(order.type === 'afribio_boost') {
+                    produitInfo = order.format ? 'Sac ' + order.format : '-';
+                    if(order.quantite && order.quantite > 1) produitInfo += ' x' + order.quantite;
+                } else {
+                    produitInfo = order.produits ? order.produits.join(', ') : '-';
+                }
+
+                var montant = order.montant_total
+                    ? '<span class="montant">' + order.montant_total.toLocaleString() + ' FCFA</span>'
+                    : '-';
+                var badgeClass = 'badge-' + (order.statut || 'nouvelle');
+                var badgeText = statusLabels[order.statut] || order.statut;
+
+                var actions = '<button class="action-btn btn-view" onclick="showDetail(\'' + order.id + '\')">Voir</button>';
+                if(nextStatus[order.statut]) {
+                    actions += '<button class="action-btn btn-next" onclick="updateStatus(\'' + order.id + '\', \'' + nextStatus[order.statut] + '\')">' + nextLabels[order.statut] + '</button>';
+                }
+                if(order.statut !== 'annulee' && order.statut !== 'livree') {
+                    actions += '<button class="action-btn btn-cancel" onclick="updateStatus(\'' + order.id + '\', \'annulee\')">Annuler</button>';
+                }
+
+                html += '<tr>' +
+                    '<td><code style="font-size:0.78rem;color:var(--gris-leger);">' + order.id.slice(0,8) + '</code></td>' +
+                    '<td>' +
+                    '<div class="client-name">' + (order.prenom || '') + ' ' + (order.nom || '') + '</div>' +
+                    '<div class="client-phone">' + (order.telephone || '') + '</div>' +
+                    '</td>' +
+                    '<td><span class="badge-type ' + typeClass + '">' + typeLabel + '</span></td>' +
+                    '<td class="hide-mobile">' + produitInfo + '</td>' +
+                    '<td class="hide-mobile">' + montant + '</td>' +
+                    '<td><span class="badge ' + badgeClass + '">' + badgeText + '</span></td>' +
+                    '<td class="hide-mobile date-cell">' + date + '</td>' +
+                    '<td><div class="action-btns">' + actions + '</div></td>' +
+                    '</tr>';
+            });
+
+            html += '</tbody></table>';
+            document.getElementById('tableContent').innerHTML = html;
+        }
+
+        // ============================================
+        // ACTIONS
+        // ============================================
+        async function updateStatus(id, newStatus) {
+            if(!supabaseClient) return;
+            try {
+                var result = await supabaseClient
+                    .from('commandes')
+                    .update({ statut: newStatus })
+                    .eq('id', id);
+                if(result.error) throw result.error;
+                loadOrders();
+            } catch(err) {
+                alert('Erreur : ' + (err.message || 'Impossible de mettre a jour'));
+            }
+        }
+
+        // ============================================
+        // MODAL DETAIL
+        // ============================================
+        function showDetail(id) {
+            var order = allOrders.find(function(o) { return o.id === id; });
+            if(!order) return;
+
+            var statusLabels = {
+                'nouvelle': 'Nouvelle',
+                'confirmee': 'Confirmee',
+                'payee': 'Payee',
+                'en_preparation': 'En preparation',
+                'expediee': 'Expediee',
+                'livree': 'Livree',
+                'annulee': 'Annulee'
+            };
+
+            var paiementLabels = {
+                'livraison': '&#128181; Paiement a la livraison',
+                'mobile_money': '&#128241; Mobile Money',
+                'virement': '&#127974; Virement bancaire'
+            };
+
+            var produitInfo = '-';
+            if(order.type === 'afribio_boost') {
+                produitInfo = order.format ? 'Sac de ' + order.format : '-';
+                if(order.quantite) produitInfo += ' - Quantite : ' + order.quantite;
+                if(order.montant_total) produitInfo += '<br><strong style="color:var(--terre)">' + order.montant_total.toLocaleString() + ' FCFA</strong>';
+            } else {
+                produitInfo = order.produits && order.produits.length
+                    ? order.produits.join(', ')
+                    : '-';
+                if(order.details) produitInfo += '<br><em style="color:var(--gris)">Details : ' + order.details + '</em>';
+            }
+
+            var date = order.date_creation
+                ? new Date(order.date_creation).toLocaleString('fr-FR')
+                : '-';
+
+            var rows = [
+                ['Reference', order.id],
+                ['Statut', '<span class="badge badge-' + order.statut + '">' + (statusLabels[order.statut] || order.statut) + '</span>'],
+                ['Type', order.type === 'afribio_boost' ? '&#127793; Afribio Boost' : '&#129382; Produits frais'],
+                ['Produit(s)', produitInfo],
+                ['Client', (order.prenom || '') + ' ' + (order.nom || '')],
+                ['Telephone', order.telephone || '-'],
+                ['Email', order.email || '-'],
+                ['Ville / Adresse', [order.ville, order.adresse].filter(Boolean).join(' - ') || '-'],
+                ['Mode de paiement', paiementLabels[order.mode_paiement] || order.mode_paiement || '-'],
+                ['Commentaire', order.commentaire || '-'],
+                ['Date', date]
+            ];
+
+            var bodyHtml = '';
+            rows.forEach(function(r) {
+                bodyHtml += '<div class="detail-row">' +
+                    '<span class="detail-label">' + r[0] + '</span>' +
+                    '<span class="detail-value">' + r[1] + '</span>' +
+                    '</div>';
+            });
+            document.getElementById('modalBody').innerHTML = bodyHtml;
+
+            var nextStatusMap = {
+                'nouvelle': 'confirmee',
+                'confirmee': 'payee',
+                'payee': 'en_preparation',
+                'en_preparation': 'expediee',
+                'expediee': 'livree'
+            };
+            var nextLabelsMap = {
+                'nouvelle': '&#10003; Confirmer la commande',
+                'confirmee': '&#128176; Marquer comme payee',
+                'payee': '&#128230; Mettre en preparation',
+                'en_preparation': '&#128666; Marquer expediee',
+                'expediee': '&#9989; Marquer livree'
+            };
+
+            var footerHtml = '<button class="modal-btn modal-btn-secondary" onclick="closeModal()">Fermer</button>';
+            if(nextStatusMap[order.statut]) {
+                footerHtml += '<button class="modal-btn modal-btn-primary" onclick="updateStatus(\'' + order.id + '\', \'' + nextStatusMap[order.statut] + '\'); closeModal();">' + nextLabelsMap[order.statut] + '</button>';
+            }
+            if(order.statut !== 'annulee' && order.statut !== 'livree') {
+                footerHtml += '<button class="modal-btn" style="background:var(--rouge-pale);color:var(--rouge);" onclick="updateStatus(\'' + order.id + '\', \'annulee\'); closeModal();">&#10060; Annuler</button>';
+            }
+            document.getElementById('modalFooter').innerHTML = footerHtml;
+
+            document.getElementById('detailModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('detailModal').classList.remove('active');
+        }
+    </script>
+</body>
+</html>

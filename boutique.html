@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique — TERRA LOCALE - AFRIBIO BOOST</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --vert-principal: #2D5A27;
+            --vert-clair: #4A7C43;
+            --vert-pale: #E8F5E4;
+            --terre: #C17817;
+            --terre-clair: #D4A574;
+            --terre-pale: #FDF3E7;
+            --noir: #1A1A1A;
+            --gris: #5C5C5C;
+            --gris-leger: #9A9A9A;
+            --fond: #FCFCFA;
+            --blanc: #FFFFFF;
+            --ombre: rgba(0,0,0,0.06);
+            --ombre-hover: rgba(0,0,0,0.10);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --rouge: #E53935;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--fond);
+            color: var(--noir);
+            line-height: 1.6;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            background: var(--blanc);
+            box-shadow: 0 1px 3px var(--ombre);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--vert-principal);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo img {
+            width: 38px; height: 38px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gris);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+            position: relative;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--vert-principal);
+        }
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -6px; left: 0; right: 0;
+            height: 2px;
+            background: var(--vert-principal);
+            border-radius: 1px;
+        }
+        .nav-cta {
+            background: var(--vert-principal);
+            color: white !important;
+            padding: 10px 22px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .nav-cta:hover {
+            background: var(--vert-clair);
+        }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--vert-principal);
+        }
+
+        /* ===== HERO BOUTIQUE ===== */
+        .hero-boutique {
+            background: linear-gradient(135deg, var(--vert-principal) 0%, var(--vert-clair) 100%);
+            color: white;
+            padding: 80px 24px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-boutique::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('produits-frais.jpg') center/cover;
+            opacity: 0.08;
+            mix-blend-mode: overlay;
+        }
+        .hero-boutique h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            position: relative;
+        }
+        .hero-boutique p {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+            position: relative;
+        }
+
+        /* ===== SECTION CARTES CATÉGORIES ===== */
+        .categories-section {
+            max-width: 1200px;
+            margin: -40px auto 80px;
+            padding: 0 24px;
+            position: relative;
+            z-index: 10;
+        }
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .cat-card {
+            background: var(--blanc);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 4px 20px var(--ombre);
+            transition: all 0.35s ease;
+            cursor: pointer;
+            border: 1px solid rgba(0,0,0,0.04);
+            display: flex;
+            flex-direction: column;
+        }
+        .cat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px var(--ombre-hover);
+            border-color: rgba(45,90,39,0.15);
+        }
+        .cat-card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        .cat-card-header {
+            padding: 28px 28px 20px;
+            text-align: center;
+        }
+        .cat-icon {
+            width: 56px; height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 1.4rem;
+        }
+        .cat-card:nth-child(1) .cat-icon { background: var(--vert-pale); color: var(--vert-principal); }
+        .cat-card:nth-child(2) .cat-icon { background: var(--terre-pale); color: var(--terre); }
+        .cat-card:nth-child(3) .cat-icon { background: #E3F2FD; color: #1565C0; }
+        .cat-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            color: var(--noir);
+            margin-bottom: 10px;
+        }
+        .cat-card .cat-desc {
+            color: var(--gris);
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+        .cat-card-body {
+            padding: 0 28px 28px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .cat-features {
+            list-style: none;
+            margin: 12px 0;
+        }
+        .cat-features li {
+            padding: 8px 0;
+            font-size: 0.88rem;
+            color: var(--gris);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+        }
+        .cat-features li:last-child { border-bottom: none; }
+        .cat-features li::before {
+            content: '✓';
+            width: 20px; height: 20px;
+            background: var(--vert-pale);
+            color: var(--vert-principal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .cat-card:nth-child(2) .cat-features li::before { background: var(--terre-pale); color: var(--terre); }
+        .cat-card:nth-child(3) .cat-features li::before { background: #E3F2FD; color: #1565C0; }
+        .cat-btn {
+            margin-top: auto;
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+        }
+        .cat-card:nth-child(1) .cat-btn { background: var(--vert-principal); color: white; }
+        .cat-card:nth-child(1) .cat-btn:hover { background: var(--vert-clair); }
+        .cat-card:nth-child(2) .cat-btn { background: var(--terre); color: white; }
+        .cat-card:nth-child(2) .cat-btn:hover { background: #A86815; }
+        .cat-card:nth-child(3) .cat-btn { background: #1565C0; color: white; }
+        .cat-card:nth-child(3) .cat-btn:hover { background: #0D47A1; }
+
+        /* ===== SECTIONS PRODUITS (cachées par défaut) ===== */
+        .product-section {
+            max-width: 900px;
+            margin: 0 auto 80px;
+            padding: 0 24px;
+            display: none;
+        }
+        .product-section.active { display: block; animation: fadeIn 0.4s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .section-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gris);
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: inherit;
+        }
+        .section-back:hover { color: var(--vert-principal); }
+        .product-box {
+            background: var(--blanc);
+            border-radius: var(--radius);
+            box-shadow: 0 4px 24px var(--ombre);
+            overflow: hidden;
+        }
+        .product-box-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+        .product-box-header {
+            padding: 32px 40px 24px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .product-box-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--noir);
+            margin-bottom: 8px;
+        }
+        .product-box-header p { color: var(--gris); font-size: 1rem; }
+        .product-box-body { padding: 36px 40px; }
+
+        /* ===== AFRIBIO BOOST — PRODUITS ===== */
+        .boost-products {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        .boost-product-card {
+            border: 2px solid var(--vert-pale);
+            border-radius: var(--radius-sm);
+            padding: 28px;
+            text-align: center;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .boost-product-card:hover, .boost-product-card.selected {
+            border-color: var(--vert-principal);
+            background: var(--vert-pale);
+        }
+        .boost-product-card .poids {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--vert-principal);
+            margin-bottom: 6px;
+        }
+        .boost-product-card .prix {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--terre);
+        }
+        .boost-product-card .prix span {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--gris);
+        }
+
+        /* ===== FORMULAIRES ===== */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .form-group.full { grid-column: 1 / -1; }
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--noir);
+        }
+        .form-group label span { color: var(--rouge); }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 12px 14px;
+            border: 1.5px solid #E0E0E0;
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: border-color 0.2s;
+            background: var(--fond);
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--vert-principal);
+            background: var(--blanc);
+        }
+        .form-group textarea { resize: vertical; min-height: 100px; }
+        .form-submit {
+            grid-column: 1 / -1;
+            padding: 16px;
+            background: var(--vert-principal);
+            color: white;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 8px;
+            position: relative;
+        }
+        .form-submit:hover { background: var(--vert-clair); }
+        .form-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+        .form-submit.loading::after {
+            content: '';
+            position: absolute;
+            width: 18px; height: 18px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            right: 16px; top: 50%;
+            transform: translateY(-50%);
+        }
+        @keyframes spin { to { transform: translateY(-50%) rotate(360deg); } }
+
+        /* ===== MODE DE PAIEMENT ===== */
+        .payment-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .payment-option {
+            position: relative;
+        }
+        .payment-option input {
+            position: absolute;
+            opacity: 0;
+        }
+        .payment-option label {
+            display: block;
+            padding: 16px 12px;
+            border: 2px solid #E0E0E0;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            cursor: pointer;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            background: var(--fond);
+        }
+        .payment-option input:checked + label {
+            border-color: var(--vert-principal);
+            background: var(--vert-pale);
+            color: var(--vert-principal);
+            font-weight: 600;
+        }
+        .payment-option label:hover { border-color: var(--vert-clair); }
+        .payment-icon {
+            font-size: 1.4rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        /* ===== PRODUITS FRAIS — CHECKBOX GRID ===== */
+        .fresh-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+        .fresh-item {
+            position: relative;
+        }
+        .fresh-item input {
+            position: absolute;
+            opacity: 0;
+        }
+        .fresh-item label {
+            display: block;
+            padding: 14px;
+            border: 2px solid #E0E0E0;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            background: var(--fond);
+        }
+        .fresh-item input:checked + label {
+            border-color: var(--terre);
+            background: var(--terre-pale);
+            color: var(--terre);
+            font-weight: 600;
+        }
+        .fresh-item label:hover { border-color: var(--terre-clair); }
+
+        /* ===== CONFIRMATION ===== */
+        .confirmation {
+            text-align: center;
+            padding: 48px 32px;
+        }
+        .confirmation-icon {
+            width: 72px; height: 72px;
+            background: var(--vert-pale);
+            color: var(--vert-principal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 24px;
+        }
+        .confirmation h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+        }
+        .confirmation p { color: var(--gris); max-width: 450px; margin: 0 auto 12px; }
+        .confirmation .ref-commande {
+            display: inline-block;
+            background: var(--vert-pale);
+            color: var(--vert-principal);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin: 12px 0 20px;
+            font-family: monospace;
+            letter-spacing: 0.5px;
+        }
+        .confirmation-btn {
+            padding: 12px 28px;
+            background: var(--vert-principal);
+            color: white;
+            border: none;
+            border-radius: 100px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        /* ===== ALERTE ERREUR ===== */
+        .alert-error {
+            background: #FFEBEE;
+            color: var(--rouge);
+            padding: 14px 18px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            display: none;
+            border-left: 3px solid var(--rouge);
+        }
+        .alert-error.visible { display: block; animation: shake 0.4s ease; }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-6px); }
+            75% { transform: translateX(6px); }
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--noir);
+            color: white;
+            padding: 48px 24px 24px;
+            text-align: center;
+        }
+        footer .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: var(--vert-pale);
+        }
+        footer p { color: var(--gris-leger); font-size: 0.9rem; }
+        footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin: 20px 0;
+            list-style: none;
+        }
+        footer .footer-links a { color: var(--gris-leger); text-decoration: none; font-size: 0.9rem; }
+        footer .footer-links a:hover { color: white; }
+        footer .copyright { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; margin-top: 20px; font-size: 0.8rem; color: var(--gris-leger); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .categories-grid { grid-template-columns: 1fr; }
+            .boost-products { grid-template-columns: 1fr; }
+            .fresh-grid { grid-template-columns: repeat(2, 1fr); }
+            .form-grid { grid-template-columns: 1fr; }
+            .payment-options { grid-template-columns: 1fr; }
+            .product-box-header, .product-box-body { padding: 24px; }
+            .hero-boutique h1 { font-size: 2rem; }
+            .nav-links { display: none; }
+            .menu-toggle { display: block; }
+        }
+        @media (max-width: 480px) {
+            .fresh-grid { grid-template-columns: 1fr; }
+            .hero-boutique { padding: 60px 20px 40px; }
+            .cat-card-img { height: 160px; }
+            .product-box-img { height: 160px; }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logosans.png" alt="Terra Locale">
+                TERRA LOCALE - AFRIBIO BOOST
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Tableau de Bord</a></li>
+                <li><a href="production.html">Production</a></li>
+                <li><a href="formation.html">Formation</a></li>
+                <li><a href="impact.html">Impact</a></li>
+                <li><a href="boutique.html" class="active">Boutique</a></li>
+                <li><a href="communaute.html">Communauté</a></li>
+                <li><a href="inscription.html" class="nav-cta">Connexion</a></li>
+            </ul>
+            <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('mobile')">☰</button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero-boutique">
+        <h1>Notre Boutique</h1>
+        <p>Des solutions bio pour votre sol, des produits frais de notre ferme, et des ressources pour vous former. Choisissez votre catégorie.</p>
+    </header>
+
+    <!-- CATÉGORIES -->
+    <section class="categories-section" id="categoriesSection">
+        <div class="categories-grid">
+            <!-- Carte 1 : Afribio Boost -->
+            <article class="cat-card" onclick="showSection('afribioSection')">
+                <img src="afribio-boost.jpg" alt="Afribio Boost - Fertilisant biologique" class="cat-card-img">
+                <div class="cat-card-header">
+                    <div class="cat-icon">🌱</div>
+                    <h2>Afribio Boost</h2>
+                    <p class="cat-desc">Fertilisant biologique à 3 actions : enrichit le sol, stimule la croissance, protège les racines.</p>
+                </div>
+                <div class="cat-card-body">
+                    <ul class="cat-features">
+                        <li>Sac de 25 kg — 8 500 FCFA</li>
+                        <li>Sac de 50 kg — 17 000 FCFA</li>
+                        <li>Commande directe avec formulaire</li>
+                        <li>Livraison disponible</li>
+                    </ul>
+                    <button class="cat-btn">Commander Afribio Boost</button>
+                </div>
+            </article>
+
+            <!-- Carte 2 : Produits frais -->
+            <article class="cat-card" onclick="showSection('freshSection')">
+                <img src="produits-frais.jpg" alt="Produits frais de la ferme" class="cat-card-img">
+                <div class="cat-card-header">
+                    <div class="cat-icon">🥬</div>
+                    <h2>Produits frais de la ferme</h2>
+                    <p class="cat-desc">Directement de notre ferme à votre table. Fraîcheur garantie, produits locaux et saisonniers.</p>
+                </div>
+                <div class="cat-card-body">
+                    <ul class="cat-features">
+                        <li>Légumes frais & secs</li>
+                        <li>Poisson tilapia & poulet fermier</li>
+                        <li>Plantes & produits divers</li>
+                        <li>Confirmation prix par téléphone</li>
+                    </ul>
+                    <button class="cat-btn">Commander des produits frais</button>
+                </div>
+            </article>
+
+            <!-- Carte 3 : Documents & ressources -->
+            <article class="cat-card" onclick="window.open('https://fdqzzusg.mychariow.shop', '_blank')">
+                <img src="documents-ressources.jpg" alt="Documents et ressources agricoles" class="cat-card-img">
+                <div class="cat-card-header">
+                    <div class="cat-icon">📚</div>
+                    <h2>Documents & ressources</h2>
+                    <p class="cat-desc">Guides, fiches techniques, formations téléchargeables pour devenir autonome en agriculture bio.</p>
+                </div>
+                <div class="cat-card-body">
+                    <ul class="cat-features">
+                        <li>Guides pratiques PDF</li>
+                        <li>Fiches techniques détaillées</li>
+                        <li>Formations vidéo & ebooks</li>
+                        <li>Mise à jour régulière</li>
+                    </ul>
+                    <button class="cat-btn">Accéder à la boutique Chariow →</button>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ===== SECTION AFRIBIO BOOST ===== -->
+    <section class="product-section" id="afribioSection">
+        <button class="section-back" onclick="showSection('categoriesSection')">
+            ← Retour aux catégories
+        </button>
+        <div class="product-box">
+            <img src="afribio-boost.jpg" alt="Afribio Boost" class="product-box-img">
+            <div class="product-box-header">
+                <h2>🌱 Commander Afribio Boost</h2>
+                <p>Sélectionnez votre format, votre mode de paiement et remplissez le formulaire.</p>
+            </div>
+            <div class="product-box-body">
+                <form id="afribioForm">
+                    <div class="boost-products">
+                        <div class="boost-product-card" onclick="selectBoost(this, '25kg', 8500)">
+                            <div class="poids">Sac de 25 kg</div>
+                            <div class="prix">8 500 FCFA <span>/ sac</span></div>
+                        </div>
+                        <div class="boost-product-card" onclick="selectBoost(this, '50kg', 17000)">
+                            <div class="poids">Sac de 50 kg</div>
+                            <div class="prix">17 000 FCFA <span>/ sac</span></div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="boostFormat" required>
+                    <input type="hidden" id="boostPrixUnitaire">
+
+                    <label style="font-size:0.85rem;font-weight:600;margin-bottom:10px;display:block;">Mode de paiement :</label>
+                    <div class="payment-options">
+                        <div class="payment-option">
+                            <input type="radio" name="boostPaiement" id="bp_livraison" value="livraison" checked>
+                            <label for="bp_livraison"><span class="payment-icon">💵</span>Paiement à la livraison</label>
+                        </div>
+                        <div class="payment-option">
+                            <input type="radio" name="boostPaiement" id="bp_mobile" value="mobile_money">
+                            <label for="bp_mobile"><span class="payment-icon">📱</span>Mobile Money</label>
+                        </div>
+                        <div class="payment-option">
+                            <input type="radio" name="boostPaiement" id="bp_virement" value="virement">
+                            <label for="bp_virement"><span class="payment-icon">🏦</span>Virement bancaire</label>
+                        </div>
+                    </div>
+
+                    <div class="alert-error" id="boostError"></div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Prénom <span>*</span></label>
+                            <input type="text" id="boostPrenom" required placeholder="Votre prénom">
+                        </div>
+                        <div class="form-group">
+                            <label>Nom <span>*</span></label>
+                            <input type="text" id="boostNom" required placeholder="Votre nom">
+                        </div>
+                        <div class="form-group">
+                            <label>Téléphone <span>*</span></label>
+                            <input type="tel" id="boostTel" required placeholder="+225 XX XX XX XX">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="boostEmail" placeholder="votre@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Quantité <span>*</span></label>
+                            <input type="number" id="boostQte" min="1" value="1" required onchange="calculerTotalBoost()">
+                        </div>
+                        <div class="form-group">
+                            <label>Ville / Localité <span>*</span></label>
+                            <input type="text" id="boostVille" required placeholder="Ex : Abidjan, Bouaké...">
+                        </div>
+                        <div class="form-group full">
+                            <label>Adresse de livraison détaillée</label>
+                            <textarea id="boostAdresse" placeholder="Quartier, rue, point de repère..."></textarea>
+                        </div>
+                        <div class="form-group full">
+                            <label>Commentaire (optionnel)</label>
+                            <textarea id="boostComment" placeholder="Une précision sur votre commande ?"></textarea>
+                        </div>
+                        <button type="submit" class="form-submit" id="boostSubmit">📦 Confirmer ma commande</button>
+                    </div>
+                </form>
+
+                <!-- Confirmation -->
+                <div class="confirmation" id="boostConfirm" style="display:none;">
+                    <div class="confirmation-icon">✓</div>
+                    <h3>Commande enregistrée !</h3>
+                    <p>Merci <strong id="boostConfirmName"></strong>. Votre commande a bien été reçue.</p>
+                    <div class="ref-commande" id="boostRef"></div>
+                    <p id="boostConfirmMsg"></p>
+                    <button class="confirmation-btn" onclick="resetBoost()">Nouvelle commande</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION PRODUITS FRAIS ===== -->
+    <section class="product-section" id="freshSection">
+        <button class="section-back" onclick="showSection('categoriesSection')">
+            ← Retour aux catégories
+        </button>
+        <div class="product-box">
+            <img src="produits-frais.jpg" alt="Produits frais de la ferme" class="product-box-img">
+            <div class="product-box-header">
+                <h2>🥬 Commander des produits frais</h2>
+                <p>Sélectionnez les produits qui vous intéressent. Nous vous contacterons par téléphone pour confirmer la disponibilité et le prix.</p>
+            </div>
+            <div class="product-box-body">
+                <form id="freshForm">
+                    <label style="font-size:0.85rem;font-weight:600;margin-bottom:14px;display:block;">Sélectionnez vos produits :</label>
+                    <div class="fresh-grid">
+                        <div class="fresh-item">
+                            <input type="checkbox" id="f_laitue" name="fresh" value="Laitue">
+                            <label for="f_laitue">🥬 Laitue</label>
+                        </div>
+                        <div class="fresh-item">
+                            <input type="checkbox" id="f_legumes_frais" name="fresh" value="Légumes frais">
+                            <label for="f_legumes_frais">🍅 Légumes frais</label>
+                        </div>
+                        <div class="fresh-item">
+                            <input type="checkbox" id="f_legumes_secs" name="fresh" value="Légumes secs">
+                            <label for="f_legumes_secs">🧅 Légumes secs</label>
+                        </div>
+                        <div class="fresh-item">
+                            <input type="checkbox" id="f_tilapia" name="fresh" value="Poisson tilapia">
+                            <label for="f_tilapia">🐟 Tilapia</label>
+                        </div>
+                        <div class="fresh-item">
+                            <input type="checkbox" id="f_poulet" name="fresh" value="Poulet fermier">
+                            <label for="f_poulet">🐔 Poulet fermier</label>
+                        </div>
+                        <div class="fresh-item">
+                            <input type="checkbox" id="f_plantes" name="fresh" value="Plantes">
+                            <label for="f_plantes">🌿 Plantes</label>
+                        </div>
+                        <div class="fresh-item">
+                            <input type="checkbox" id="f_autres" name="fresh" value="Autres">
+                            <label for="f_autres">📦 Autres</label>
+                        </div>
+                    </div>
+
+                    <label style="font-size:0.85rem;font-weight:600;margin-bottom:10px;display:block;">Mode de paiement :</label>
+                    <div class="payment-options">
+                        <div class="payment-option">
+                            <input type="radio" name="freshPaiement" id="fp_livraison" value="livraison" checked>
+                            <label for="fp_livraison"><span class="payment-icon">💵</span>Paiement à la livraison</label>
+                        </div>
+                        <div class="payment-option">
+                            <input type="radio" name="freshPaiement" id="fp_mobile" value="mobile_money">
+                            <label for="fp_mobile"><span class="payment-icon">📱</span>Mobile Money</label>
+                        </div>
+                        <div class="payment-option">
+                            <input type="radio" name="freshPaiement" id="fp_virement" value="virement">
+                            <label for="fp_virement"><span class="payment-icon">🏦</span>Virement bancaire</label>
+                        </div>
+                    </div>
+
+                    <div class="alert-error" id="freshError"></div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Prénom <span>*</span></label>
+                            <input type="text" id="freshPrenom" required placeholder="Votre prénom">
+                        </div>
+                        <div class="form-group">
+                            <label>Nom <span>*</span></label>
+                            <input type="text" id="freshNom" required placeholder="Votre nom">
+                        </div>
+                        <div class="form-group">
+                            <label>Téléphone <span>*</span></label>
+                            <input type="tel" id="freshTel" required placeholder="+225 XX XX XX XX">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="freshEmail" placeholder="votre@email.com">
+                        </div>
+                        <div class="form-group full">
+                            <label>Précisez vos besoins (quantités, variétés préférées...)</label>
+                            <textarea id="freshDetails" placeholder="Ex : 2 kg de tomates, 1 poulet entier..."></textarea>
+                        </div>
+                        <div class="form-group full">
+                            <label>Adresse / Localité <span>*</span></label>
+                            <input type="text" id="freshAdresse" required placeholder="Ville, quartier, point de repère">
+                        </div>
+                        <button type="submit" class="form-submit" style="background:var(--terre);" id="freshSubmit">📞 Envoyer ma fiche de commande</button>
+                    </div>
+                </form>
+
+                <!-- Confirmation -->
+                <div class="confirmation" id="freshConfirm" style="display:none;">
+                    <div class="confirmation-icon" style="background:var(--terre-pale);color:var(--terre);">✓</div>
+                    <h3>Fiche envoyée avec succès !</h3>
+                    <p>Merci <strong id="freshConfirmName"></strong>. Votre demande a bien été reçue.</p>
+                    <div class="ref-commande" id="freshRef"></div>
+                    <p id="freshConfirmMsg"></p>
+                    <button class="confirmation-btn" style="background:var(--terre);" onclick="resetFresh()">Nouvelle commande</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">🌿 TERRA LOCALE - AFRIBIO BOOST</div>
+        <p>L'agriculture biologique au service de l'Afrique.</p>
+        <ul class="footer-links">
+            <li><a href="index.html">Tableau de Bord</a></li>
+            <li><a href="production.html">Production</a></li>
+            <li><a href="boutique.html">Boutique</a></li>
+            <li><a href="communaute.html">Communauté</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="copyright">© 2026 TERRA LOCALE - AFRIBIO BOOST — Tous droits réservés.</div>
+    </footer>
+
+    <!-- SUPABASE SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // ============================================
+        // CONFIGURATION SUPABASE
+        // ============================================
+        const SUPABASE_URL = 'https://ncqozqhhhletyjfujzjc.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5jcW96cWhoaGxldHlqZnVqempjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwMDAzMjgsImV4cCI6MjA5NTU3NjMyOH0.qz78q5peBL46lyjfcZgksvJnR9LwiTQrqw1TYQ13HsE';
+
+        let supabaseClient;
+        try {
+            supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        } catch(e) {
+            console.warn('Supabase non configuré. Mode simulation activé.');
+            supabaseClient = null;
+        }
+
+        // ============================================
+        // NAVIGATION ENTRE SECTIONS
+        // ============================================
+        function showSection(id) {
+            document.querySelectorAll('.product-section, .categories-section').forEach(s => {
+                s.classList.remove('active');
+                if(s.id === id) {
+                    if(s.classList.contains('categories-section')) {
+                        s.style.display = 'block';
+                    } else {
+                        s.classList.add('active');
+                    }
+                } else {
+                    if(s.classList.contains('categories-section')) {
+                        s.style.display = 'none';
+                    } else {
+                        s.classList.remove('active');
+                    }
+                }
+            });
+            if(id === 'categoriesSection') {
+                document.getElementById('categoriesSection').style.display = 'block';
+                document.querySelectorAll('.product-section').forEach(s => s.classList.remove('active'));
+            } else {
+                document.getElementById('categoriesSection').style.display = 'none';
+                document.getElementById(id).classList.add('active');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ============================================
+        // AFRIBIO BOOST
+        // ============================================
+        function selectBoost(el, format, prix) {
+            document.querySelectorAll('.boost-product-card').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+            document.getElementById('boostFormat').value = format;
+            document.getElementById('boostPrixUnitaire').value = prix;
+            calculerTotalBoost();
+        }
+
+        function calculerTotalBoost() {
+            const prix = parseInt(document.getElementById('boostPrixUnitaire').value) || 0;
+            const qte = parseInt(document.getElementById('boostQte').value) || 1;
+            const total = prix * qte;
+            const btn = document.getElementById('boostSubmit');
+            if(total > 0) {
+                btn.textContent = `📦 Confirmer — ${total.toLocaleString()} FCFA`;
+            } else {
+                btn.textContent = '📦 Confirmer ma commande';
+            }
+        }
+
+        document.getElementById('afribioForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const format = document.getElementById('boostFormat').value;
+            if(!format) {
+                showError('boostError', 'Veuillez sélectionner un format (25 kg ou 50 kg).');
+                return;
+            }
+
+            const prixUnitaire = parseInt(document.getElementById('boostPrixUnitaire').value) || 0;
+            const quantite = parseInt(document.getElementById('boostQte').value) || 1;
+            const total = prixUnitaire * quantite;
+            const modePaiement = document.querySelector('input[name="boostPaiement"]:checked').value;
+
+            const data = {
+                type: 'afribio_boost',
+                format: format,
+                quantite: quantite,
+                montant_total: total,
+                mode_paiement: modePaiement,
+                prenom: document.getElementById('boostPrenom').value.trim(),
+                nom: document.getElementById('boostNom').value.trim(),
+                telephone: document.getElementById('boostTel').value.trim(),
+                email: document.getElementById('boostEmail').value.trim() || null,
+                ville: document.getElementById('boostVille').value.trim(),
+                adresse: document.getElementById('boostAdresse').value.trim() || null,
+                commentaire: document.getElementById('boostComment').value.trim() || null,
+                statut: 'nouvelle'
+            };
+
+            const btn = document.getElementById('boostSubmit');
+            btn.disabled = true;
+            btn.classList.add('loading');
+            btn.textContent = 'Envoi en cours...';
+
+            try {
+                let result;
+                if(supabaseClient) {
+                    const { data: inserted, error } = await supabaseClient
+                        .from('commandes')
+                        .insert([data])
+                        .select()
+                        .single();
+                    if(error) throw error;
+                    result = inserted;
+                } else {
+                    result = { id: 'SIM-' + Math.random().toString(36).substr(2, 8).toUpperCase(), ...data };
+                    console.log('Mode simulation — Commande Afribio Boost :', result);
+                }
+
+                document.getElementById('boostConfirmName').textContent = data.prenom + ' ' + data.nom;
+                document.getElementById('boostRef').textContent = 'Réf. : ' + result.id;
+
+                let msg = '';
+                if(modePaiement === 'livraison') {
+                    msg = 'Nous vous appellerons au ' + data.telephone + ' sous 24h pour confirmer et organiser la livraison. Vous paierez à la réception.';
+                } else if(modePaiement === 'mobile_money') {
+                    msg = 'Nous vous appellerons au ' + data.telephone + ' sous 24h pour vous envoyer les instructions de paiement Mobile Money.';
+                } else {
+                    msg = 'Nous vous appellerons au ' + data.telephone + ' sous 24h pour vous communiquer les coordonnées bancaires.';
+                }
+                document.getElementById('boostConfirmMsg').textContent = msg;
+
+                this.style.display = 'none';
+                document.getElementById('boostConfirm').style.display = 'block';
+                document.getElementById('boostError').classList.remove('visible');
+
+            } catch(err) {
+                showError('boostError', 'Erreur lors de l\'envoi : ' + (err.message || 'Veuillez réessayer.'));
+                btn.disabled = false;
+                btn.classList.remove('loading');
+                calculerTotalBoost();
+            }
+        });
+
+        function resetBoost() {
+            document.getElementById('afribioForm').reset();
+            document.querySelectorAll('.boost-product-card').forEach(c => c.classList.remove('selected'));
+            document.getElementById('boostFormat').value = '';
+            document.getElementById('boostPrixUnitaire').value = '';
+            document.getElementById('afribioForm').style.display = 'block';
+            document.getElementById('boostConfirm').style.display = 'none';
+            document.getElementById('boostSubmit').disabled = false;
+            document.getElementById('boostSubmit').classList.remove('loading');
+            document.getElementById('boostSubmit').textContent = '📦 Confirmer ma commande';
+            document.getElementById('boostError').classList.remove('visible');
+        }
+
+        // ============================================
+        // PRODUITS FRAIS
+        // ============================================
+        document.getElementById('freshForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const produits = Array.from(document.querySelectorAll('input[name="fresh"]:checked')).map(cb => cb.value);
+            if(produits.length === 0) {
+                showError('freshError', 'Veuillez sélectionner au moins un produit.');
+                return;
+            }
+
+            const modePaiement = document.querySelector('input[name="freshPaiement"]:checked').value;
+
+            const data = {
+                type: 'produits_frais',
+                produits: produits,
+                mode_paiement: modePaiement,
+                prenom: document.getElementById('freshPrenom').value.trim(),
+                nom: document.getElementById('freshNom').value.trim(),
+                telephone: document.getElementById('freshTel').value.trim(),
+                email: document.getElementById('freshEmail').value.trim() || null,
+                details: document.getElementById('freshDetails').value.trim() || null,
+                adresse: document.getElementById('freshAdresse').value.trim(),
+                statut: 'nouvelle'
+            };
+
+            const btn = document.getElementById('freshSubmit');
+            btn.disabled = true;
+            btn.classList.add('loading');
+            btn.textContent = 'Envoi en cours...';
+
+            try {
+                let result;
+                if(supabaseClient) {
+                    const { data: inserted, error } = await supabaseClient
+                        .from('commandes')
+                        .insert([data])
+                        .select()
+                        .single();
+                    if(error) throw error;
+                    result = inserted;
+                } else {
+                    result = { id: 'SIM-' + Math.random().toString(36).substr(2, 8).toUpperCase(), ...data };
+                    console.log('Mode simulation — Fiche produits frais :', result);
+                }
+
+                document.getElementById('freshConfirmName').textContent = data.prenom + ' ' + data.nom;
+                document.getElementById('freshRef').textContent = 'Réf. : ' + result.id;
+
+                let msg = '';
+                if(modePaiement === 'livraison') {
+                    msg = 'Notre équipe vous contactera au ' + data.telephone + ' pour confirmer la disponibilité, le prix final et organiser la livraison.';
+                } else {
+                    msg = 'Notre équipe vous contactera au ' + data.telephone + ' pour confirmer la disponibilité, le prix final et les modalités de paiement.';
+                }
+                document.getElementById('freshConfirmMsg').textContent = msg;
+
+                this.style.display = 'none';
+                document.getElementById('freshConfirm').style.display = 'block';
+                document.getElementById('freshError').classList.remove('visible');
+
+            } catch(err) {
+                showError('freshError', 'Erreur lors de l\'envoi : ' + (err.message || 'Veuillez réessayer.'));
+                btn.disabled = false;
+                btn.classList.remove('loading');
+                btn.textContent = '📞 Envoyer ma fiche de commande';
+            }
+        });
+
+        function resetFresh() {
+            document.getElementById('freshForm').reset();
+            document.getElementById('freshForm').style.display = 'block';
+            document.getElementById('freshConfirm').style.display = 'none';
+            document.getElementById('freshSubmit').disabled = false;
+            document.getElementById('freshSubmit').classList.remove('loading');
+            document.getElementById('freshSubmit').textContent = '📞 Envoyer ma fiche de commande';
+            document.getElementById('freshError').classList.remove('visible');
+        }
+
+        // ============================================
+        // UTILITAIRES
+        // ============================================
+        function showError(id, message) {
+            const el = document.getElementById(id);
+            el.textContent = message;
+            el.classList.add('visible');
+            setTimeout(() => el.classList.remove('visible'), 5000);
+        }
+    </script>
+</body>
+</html>

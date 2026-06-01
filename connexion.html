@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - AFRIBIO BOOST</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: #FCFCFA;
+            font-family: 'Inter', sans-serif;
+            color: #2D2D2D;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .auth-container {
+            width: 100%;
+            max-width: 440px;
+            padding: 40px;
+            background: #FFFFFF;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(74, 103, 65, 0.08);
+            margin: 20px;
+        }
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: #4A6741;
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 6px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #8B8B8B;
+            margin-bottom: 32px;
+            font-size: 14px;
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            font-size: 13px;
+            color: #2D2D2D;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid #E5E5E5;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+        }
+        input:focus {
+            outline: none;
+            border-color: #4A6741;
+            box-shadow: 0 0 0 3px rgba(74, 103, 65, 0.1);
+        }
+        button[type="submit"] {
+            width: 100%;
+            padding: 14px;
+            background-color: #4A6741;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 8px;
+        }
+        button[type="submit"]:hover {
+            background-color: #3d5636;
+            transform: translateY(-1px);
+        }
+        #message {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 14px;
+            min-height: 20px;
+            font-weight: 500;
+        }
+        .link-box {
+            text-align: center;
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid #F0F0F0;
+            font-size: 14px;
+            color: #8B8B8B;
+        }
+        .link-box a {
+            color: #D4A373;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .link-box a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <main class="auth-container">
+        <h1>AFRIBIO BOOST</h1>
+        <p class="subtitle">Connexion client</p>
+        
+        <form id="form-connexion">
+            <div class="form-group">
+                <label for="email">Adresse email</label>
+                <input type="email" id="email" placeholder="votre@email.com" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" placeholder="••••••" required>
+            </div>
+            <button type="submit">Se connecter</button>
+        </form>
+        
+        <p id="message"></p>
+        
+        <div class="link-box">
+            Pas encore de compte ? <a href="inscription.html">S'inscrire</a>
+        </div>
+    </main>
+
+    <script>
+        const SUPABASE_URL = 'https://ncqozqhhhletyjfujzjc.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5jcW96cWhoaGxldHlqZnVqempjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwMDAzMjgsImV4cCI6MjA5NTU3NjMyOH0.qz78q5peBL46lyjfcZgksvJnR9LwiTQrqw1TYQ13HsE';
+        
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        document.getElementById('form-connexion').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const msg = document.getElementById('message');
+            
+            try {
+                const { data, error } = await supabaseClient.auth.signInWithPassword({
+                    email: email,
+                    password: password
+                });
+                
+                if (error) {
+                    msg.textContent = '❌ ' + error.message;
+                    msg.style.color = '#c0392b';
+                } else {
+                    msg.textContent = '✅ Connexion réussie ! Redirection...';
+                    msg.style.color = '#4A6741';
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1000);
+                }
+            } catch (err) {
+                msg.textContent = '❌ Erreur technique : ' + err.message;
+                msg.style.color = '#c0392b';
+                console.error(err);
+            }
+        });
+    </script>
+</body>
+</html>

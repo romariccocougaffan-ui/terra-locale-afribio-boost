@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Irrigation - Tomate - AFRIBIO BOOST</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2D5016; --primary-light: #4A7C23; --secondary: #8B6914;
+            --accent: #D4A843; --light: #FCFCFA; --dark: #1A1A1A;
+            --text: #333333; --text-light: #666666; --border: #E0E0E0;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08); --shadow-hover: 0 8px 30px rgba(0,0,0,0.15);
+            --radius: 16px; --radius-sm: 8px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: var(--light); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+        .sidebar { width: 260px; height: 100vh; background: linear-gradient(180deg, #2d3436 0%, #1a1a2e 100%); position: fixed; left: 0; top: 0; z-index: 1000; display: flex; flex-direction: column; padding: 20px 0; overflow-y: auto; border-right: 1px solid rgba(255,255,255,0.1); }
+        .sidebar-logo { display: flex; align-items: center; gap: 12px; padding: 15px 20px 20px; margin: 0 12px 15px; background: rgba(255,255,255,0.25); border-radius: 12px; border: 1px solid rgba(255,255,255,0.35); }
+        .sidebar-logo img { width: 45px; height: 45px; border-radius: 10px; object-fit: cover; background: white; padding: 3px; }
+        .sidebar-logo .logo-text { color: white; font-weight: 700; font-size: 1.1rem; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+        .sidebar-logo .logo-text span { color: var(--accent); display: block; font-size: 0.75rem; font-weight: 400; opacity: 0.7; }
+        .btn-secondary { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 8px 15px; border-radius: 8px; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 8px; margin: 0 20px 15px; transition: var(--transition); font-family: 'Poppins', sans-serif; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.2); }
+        .sidebar-menu { flex: 1; display: flex; flex-direction: column; gap: 4px; padding: 0 12px; }
+        .menu-item { display: flex; align-items: center; gap: 12px; padding: 12px 15px; border-radius: 10px; color: rgba(255,255,255,0.95); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: var(--transition); position: relative; }
+        .menu-item:hover { background: rgba(255,255,255,0.08); color: white; }
+        .menu-item.active { background: #2D5A27; color: white; }
+        .menu-item.active .menu-icon { color: var(--accent); }
+        .menu-icon { width: 22px; text-align: center; font-size: 1rem; }
+        .menu-label { flex: 1; }
+        .menu-badge { background: #DC2626; color: white; font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; min-width: 20px; text-align: center; }
+        .sidebar-profile { display: flex; align-items: center; gap: 12px; padding: 15px 20px; margin: 15px 12px 0; background: rgba(255,255,255,0.05); border-radius: 12px; cursor: pointer; transition: var(--transition); }
+        .sidebar-profile:hover { background: rgba(255,255,255,0.1); }
+        .profile-avatar { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; border: 2px solid var(--accent); flex-shrink: 0; }
+        .profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .profile-info { flex: 1; min-width: 0; }
+        .profile-name { color: white; font-size: 0.85rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .profile-role { color: rgba(255,255,255,0.5); font-size: 0.75rem; }
+        .profile-chevron { color: rgba(255,255,255,0.4); font-size: 1.2rem; font-weight: 300; }
+        .main-wrapper { margin-left: 260px; min-height: 100vh; }
+        .hero { height: 280px; background: linear-gradient(rgba(45, 80, 22, 0.7), rgba(45, 80, 22, 0.85)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; color: white; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.5; }
+        .hero-content { position: relative; z-index: 1; }
+        .hero h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .hero p { font-size: 1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+        .breadcrumb { display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem; font-size: 0.85rem; opacity: 0.8; justify-content: center; flex-wrap: wrap; }
+        .breadcrumb a { color: var(--accent); text-decoration: none; transition: var(--transition); }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { color: rgba(255,255,255,0.6); }
+        .main-content { max-width: 900px; margin: 0 auto; padding: 3rem 2rem; background: var(--light); }
+        .article-header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 3px solid var(--primary); }
+        .article-header .step-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; padding: 0.5rem 1.2rem; border-radius: 30px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
+        .article-header h2 { font-size: 2rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+        .article-header .subtitle { color: var(--text-light); font-size: 1rem; }
+        .article-content { background: white; border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow); }
+        .article-content h3 { font-size: 1.3rem; font-weight: 600; color: var(--primary); margin: 2rem 0 1rem; display: flex; align-items: center; gap: 0.75rem; }
+        .article-content h3:first-child { margin-top: 0; }
+        .article-content h3 i { color: var(--accent); font-size: 1.1rem; }
+        .article-content p { color: var(--text); font-size: 1rem; line-height: 1.8; margin-bottom: 1rem; text-align: justify; }
+        .article-content ul { margin: 1rem 0 1.5rem 1.5rem; color: var(--text); }
+        .article-content ul li { margin-bottom: 0.6rem; line-height: 1.7; }
+        .article-content ul li::marker { color: var(--primary-light); }
+        .highlight-box { background: linear-gradient(135deg, rgba(45, 80, 22, 0.05) 0%, rgba(74, 124, 35, 0.05) 100%); border-left: 4px solid var(--primary); padding: 1.2rem 1.5rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+        .highlight-box p { margin: 0; font-size: 0.95rem; }
+        .highlight-box strong { color: var(--primary); }
+        .warning-box { background: linear-gradient(135deg, rgba(220, 38, 38, 0.05) 0%, rgba(220, 38, 38, 0.02) 100%); border-left: 4px solid #DC2626; padding: 1.2rem 1.5rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+        .warning-box p { margin: 0; font-size: 0.95rem; }
+        .warning-box strong { color: #DC2626; }
+        .tip-box { background: linear-gradient(135deg, rgba(212, 168, 67, 0.08) 0%, rgba(212, 168, 67, 0.03) 100%); border-left: 4px solid var(--accent); padding: 1.2rem 1.5rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+        .tip-box p { margin: 0; font-size: 0.95rem; }
+        .tip-box strong { color: var(--secondary); }
+        .step-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+        .step-nav a { display: flex; align-items: center; gap: 0.75rem; padding: 0.8rem 1.5rem; background: white; border: 2px solid var(--primary); color: var(--primary); border-radius: var(--radius-sm); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: var(--transition); }
+        .step-nav a:hover { background: var(--primary); color: white; }
+        .step-nav a.disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+        .step-nav .nav-center { text-align: center; color: var(--text-light); font-size: 0.85rem; }
+        .step-nav .nav-center span { display: block; font-weight: 600; color: var(--primary); font-size: 1rem; }
+        .site-footer { background: var(--primary); color: white; padding: 2rem; text-align: center; margin-top: 3rem; }
+        .site-footer p { opacity: 0.8; font-size: 0.9rem; }
+        @media (max-width: 1024px) { .sidebar { transform: translateX(-100%); transition: transform 0.3s ease; } .sidebar.open { transform: translateX(0); } .main-wrapper { margin-left: 0; } .menu-toggle { display: block !important; position: fixed; top: 20px; left: 20px; z-index: 1001; background: var(--primary); color: white; border: none; padding: 12px 15px; border-radius: 8px; cursor: pointer; font-size: 1.2rem; } }
+        @media (min-width: 1025px) { .menu-toggle { display: none !important; } }
+        @media (max-width: 768px) { .hero h1 { font-size: 1.8rem; } .article-content { padding: 1.5rem; } .main-content { padding: 2rem 1rem; } .step-nav { flex-direction: column; gap: 1rem; } .step-nav a { width: 100%; justify-content: center; } }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <aside class="sidebar" id="sidebar">
+        <button class="btn-secondary"><i class="fas fa-calendar"></i> <span id="date-jour"></span></button>
+        <div class="sidebar-logo">
+            <img src="assets/images/logosans.png" alt="Logo AFRIBIO BOOST">
+            <div class="logo-text">AFRIBIO BOOST<span>Agriculture intelligente</span></div>
+        </div>
+        <nav class="sidebar-menu">
+            <a href="index.html" class="menu-item"><i class="fas fa-home menu-icon"></i><span class="menu-label">Tableau de bord</span></a>
+            <a href="production.html" class="menu-item active"><i class="fas fa-seedling menu-icon"></i><span class="menu-label">Production végétale</span></a>
+            <a href="suivi.html" class="menu-item"><i class="fas fa-chart-line menu-icon"></i><span class="menu-label">Suivi personnalisé</span></a>
+            <a href="boutique.html" class="menu-item"><i class="fas fa-shopping-cart menu-icon"></i><span class="menu-label">Boutique</span></a>
+            <a href="formation.html" class="menu-item"><i class="fas fa-graduation-cap menu-icon"></i><span class="menu-label">Formation</span></a>
+            <a href="communaute.html" class="menu-item"><i class="fas fa-users menu-icon"></i><span class="menu-label">Communauté</span><span class="menu-badge">12</span></a>
+            <a href="notifications.html" class="menu-item"><i class="fas fa-bell menu-icon"></i><span class="menu-label">Notifications</span><span class="menu-badge">3</span></a>
+            <a href="impact.html" class="menu-item"><i class="fas fa-leaf menu-icon"></i><span class="menu-label">Impact écologique</span></a>
+        </nav>
+        <div class="sidebar-profile">
+            <div class="profile-avatar"><img src="assets/images/profil.png" alt="Photo de profil"></div>
+            <div class="profile-info"><div class="profile-name">GAFFAN Romaric</div><div class="profile-role">Agronome - Béninois</div></div>
+            <div class="profile-chevron">›</div>
+        </div>
+    </aside>
+    <button class="menu-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')"><i class="fas fa-bars"></i></button>
+    <div class="main-wrapper">
+        <section class="hero">
+            <div class="hero-content">
+                <h1><i class="fas fa-tint"></i> Irrigation</h1>
+                <p>Gestion optimisée de l'eau pour une culture productive en zone tropicale</p>
+                <div class="breadcrumb">
+                    <a href="index.html">Accueil</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                    <a href="production.html">Production</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                    <a href="culture-tomate.html">Tomate</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                    <span>Irrigation</span>
+                </div>
+            </div>
+        </section>
+        <main class="main-content">
+            <div class="article-header">
+                <div class="step-badge"><i class="fas fa-hashtag"></i> Étape 6 sur 13</div>
+                <h2>Irrigation de la culture de tomate</h2>
+                <p class="subtitle">Stratégies d'apport d'eau adaptées aux contraintes climatiques et aux ressources disponibles</p>
+            </div>
+            <div class="article-content">
+                <h3><i class="fas fa-tint"></i> Besoins hydriques de la tomate</h3>
+                <p>La tomate est une culture exigeante en eau mais très sensible à l'excès. Ses besoins varient selon le stade de développement, la température, l'humidité relative et le type de sol. En zone tropicale africaine, l'évapotranspiration potentielle peut atteindre 6 à 8 mm/jour en saison sèche, ce qui représente un défi majeur pour l'irrigation.</p>
+
+                <p>Les besoins totaux sur le cycle varient de 400 à 600 mm selon la durée de la culture et le climat. Voici la répartition par phase :</p>
+
+                <ul>
+                    <li><strong>Phase végétative (J0 à J30) :</strong> 3-4 mm/jour. L'enracinement se développe, les besoins sont modérés mais constants.</li>
+                    <li><strong>Phase de floraison (J30 à J50) :</strong> 5-6 mm/jour. La nouaison est très sensible au stress hydrique. Un déficit à ce stade provoque la chute florale et l'abcission des fruits.</li>
+                    <li><strong>Phase de fructification (J50 à J80) :</strong> 6-8 mm/jour. C'est la phase de consommation maximale. Le calibre et la qualité des fruits dépendent directement de l'irrigation.</li>
+                    <li><strong>Phase de maturation (J80 à J100) :</strong> 4-5 mm/jour. Réduisez progressivement pour concentrer les sucres et favoriser la coloration.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong>À retenir :</strong> Un stress hydrique même de 2-3 jours pendant la floraison peut entraîner une perte de rendement de 20 à 30%. La régularité de l'irrigation est plus importante que la quantité totale.</p>
+                </div>
+
+                <h3><i class="fas fa-water"></i> Systèmes d'irrigation adaptés</h3>
+                <p>Le choix du système d'irrigation dépend des ressources en eau, du budget, de la superficie et du niveau technique. Voici les options pour la tomate en Afrique :</p>
+
+                <ul>
+                    <li><strong>Goutte-à-goutte :</strong> système le plus efficace. Rendement d'eau de 90-95%, apport localisé au pied des plants, évite le mouillage du feuillage (réduction des maladies fongiques). Coût initial élevé mais amorti en 2-3 saisons. Débit par goutteur : 2-4 L/heure. Espacement des goutteurs : 30-40 cm.</li>
+                    <li><strong>Gravitaire par sillons :</strong> technique traditionnelle peu coûteuse. Efficacité 40-50%. Risque de mouillage du feuillage et de maladies. Nécessite un nivellement précis et une source en eau abondante. Adaptée aux petites surfaces en zone rizicole.</li>
+                    <li><strong>Aspersion (arroseurs) :</strong> couvre de grandes surfaces mais avec une efficacité moyenne (60-70%). Problème majeur : mouillage du feuillage favorisant le mildiou. À utiliser tôt le matin pour que le feuillage sèche rapidement.</li>
+                    <li><i class="fas fa-sun"></i> <strong>Pots à eau (olla) ou jarres enfouies :</strong> technique ancestrale africaine très efficace pour les petites parcelles familiales. Les jarres en terre cuite poreuses libèrent l'eau progressivement par capillarité. Zéro perte par évaporation.</li>
+                </ul>
+
+                <h3><i class="fas fa-clock"></i> Fréquence et calendrier d'irrigation</h3>
+                <p>La fréquence d'irrigation doit être ajustée au stade de la culture, au type de sol et à la météo. Voici les recommandations :</p>
+
+                <p><strong>En saison sèche (forte évaporation) :</strong></p>
+                <ul>
+                    <li>Phase végétative : tous les 2-3 jours, 4-5 L/plant.</li>
+                    <li>Floraison-fructification : quotidien, 6-8 L/plant.</li>
+                    <li>Maturation : tous les 2 jours, 4 L/plant.</li>
+                </ul>
+
+                <p><strong>En saison des pluies (irrigation complémentaire) :</strong></p>
+                <ul>
+                    <li>Si pluie > 20 mm dans la semaine : pas d'irrigation.</li>
+                    <li>Si pluie 10-20 mm : irrigation complémentaire tous les 3-4 jours.</li>
+                    <li>Si absence de pluie > 7 jours : reprendre le calendrier saison sec.</li>
+                </ul>
+
+                <p><strong>En sol sableux :</strong> fréquence plus élevée (tous les jours) avec de petites doses pour éviter le lessivage. <strong>En sol argileux :</strong> fréquence réduite (tous les 3-4 jours) avec de fortes doses pour favoriser la pénétration en profondeur.</p>
+
+                <div class="tip-box">
+                    <p><strong>Astuce AFRIBIO :</strong> Utilisez des bouteilles plastiques de 1,5 L percées de petits trous au cou enfouies à 15 cm de profondeur près de chaque plant. Remplissez-les 2 fois par semaine. Cette technique de "goutte-à-goutte artisanale" coûte quasi rien et améliore l'efficacité de 40% par rapport à l'arrosage à la main.</p>
+                </div>
+
+                <h3><i class="fas fa-flask"></i> Fertigation : irrigation et fertilisation combinées</h3>
+                <p>La fertigation consiste à injecter des engrais solubles dans l'eau d'irrigation. Cette technique, particulièrement adaptée au goutte-à-goutte, permet une fertilisation ciblée, fractionnée et efficace. Les avantages sont considérables : réduction des doses de 30%, absorption immédiate par les racines, pas de perte par volatilisation.</p>
+
+                <p><strong>Engrais compatibles avec la fertigation :</strong></p>
+                <ul>
+                    <li><strong>Urée (46% N) :</strong> 2-3 kg/ha/application, tous les 10 jours pendant la fructification.</li>
+                    <li><strong>NPK 19-19-19 soluble :</strong> 3-5 kg/ha/application, toutes les 2 semaines.</li>
+                    <li><strong>Sulfate de potassium (50% K₂O) :</strong> 2 kg/ha/application, toutes les semaines pendant la maturation.</li>
+                    <li><strong>Oligo-éléments chélatés (Fe, Zn, Mn, B) :</strong> 200-500 g/ha/application, 3 fois pendant le cycle.</li>
+                </ul>
+
+                <p><strong>Précautions :</strong> ne jamais mélanger dans le même tank des engrais incompatibles (calcium + phosphate, sulfate de cuivre + calcaire). Injectez les engrais après avoir irrigué 15-20 minutes pour remplir les conduites d'eau. Terminez toujours par 15 minutes d'eau pure pour rincer les conduites.</p>
+
+                <h3><i class="fas fa-exclamation-triangle"></i> Stress hydrique et excès d'eau</h3>
+                <p>Les deux excès sont nuisibles à la tomate :</p>
+
+                <p><strong>Stress hydrique (manque d'eau) :</strong> se manifeste par le flétrissement des feuilles en milieu de journée, le roulé des feuilles, la chute florale, et des fruits déformés (catfacing). Un stress répété provoque la montée en graines (fruits mous, peu de chair). En cas de stress, ne compenser jamais par un excès d'eau brutal : revenez progressivement au calendrier normal.</p>
+
+                <p><strong>Excès d'eau :</strong> provoque le jaunissement des feuilles basses, la pourriture des racines (phytophthora), l'éclatement des fruits, et la réduction de la teneur en sucre. En sol mal drainé, l'excès d'eau est plus dangereux que le déficit. Si le sol est saturé, suspendez l'irrigation pendant 3-4 jours et améliorez le drainage.</p>
+
+                <div class="warning-box">
+                    <p><strong>Attention :</strong> L'irrigation au coucher du soleil en climat tropical humide est à proscrire. Le feuillage reste humide toute la nuit, créant des conditions idéales pour le mildiou et les bactérioses. Irriguez tôt le matin (5h-8h) pour que le feuillage sèche avant la chaleur de midi.</p>
+                </div>
+
+                <h3><i class="fas fa-leaf"></i> Irrigation et qualité des fruits</h3>
+                <p>La gestion de l'eau influence directement la qualité commerciale des fruits :</p>
+
+                <ul>
+                    <li><strong>Calibre :</strong> un déficit hydrique pendant la fructification réduit le calibre des fruits. Maintenez une irrigation constante pour des fruits homogènes.</li>
+                    <li><strong>Coloration :</strong> réduisez l'irrigation de 30% pendant les 10 jours précédant la récolte pour concentrer les pigments (lycopène) et obtenir une coloration rouge intense.</li>
+                    <li><strong>Teneur en sucre (Brix) :</strong> un léger stress hydrique contrôlé en fin de cycle augmente le Brix de 0,5 à 1 degré, améliorant la qualité gustative.</li>
+                    <li><strong>Éclatement :</strong> provoqué par un excès d'eau brutal après une période sèche. Maintenez la régularité pour éviter ce problème.</li>
+                    <li><strong>Blossom end rot (pourriture apicale) :</strong> causée par un déficit calcique souvent lié à une irrigation irrégulière. Maintenez l'humidité constante et apportez du calcium foliaire.</li>
+                </ul>
+
+                <h3><i class="fas fa-check-circle"></i> Points de contrôle avant passage à l'étape suivante</h3>
+                <ul>
+                    <li>Le système d'irrigation est fonctionnel et testé sur toute la parcelle.</li>
+                    <li>Un calendrier d'irrigation est établi et affiché.</li>
+                    <li>Les plants ne présentent ni signe de stress hydrique ni de pourriture racinaire.</li>
+                    <li>Le drainage est efficace (pas d'eau stagnante après l'irrigation).</li>
+                    <li>Le paillage est en place pour réduire l'évaporation.</li>
+                    <li>En cas de fertigation, les injecteurs et les stocks d'engrais solubles sont prêts.</li>
+                </ul>
+            </div>
+            <div class="step-nav">
+                <a href="transplantation.html"><i class="fas fa-arrow-left"></i> Étape précédente</a>
+                <div class="nav-center"><span>Tomate</span>Étape 6 / 13</div>
+                <a href="fertilisation-entretien.html">Étape suivante <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </main>
+    </div>
+    <footer class="site-footer"><p>© 2026 TERRA LOCALE - AFRIBIO BOOST - Tous droits réservés</p></footer>
+    <script>
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('date-jour').textContent = new Date().toLocaleDateString('fr-FR', options);
+    </script>
+</body>
+</html>

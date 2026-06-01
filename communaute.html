@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communauté - AFRIBIO BOOST | Terra Locale · Bénin</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<base target="_blank">
+</head>
+<body style="background: #FCFCFA;">
+        <!-- ===== BARRE LATÉRALE CORRIGÉE ===== -->
+    <aside class="sidebar">
+
+        <!-- Logo corrigé -->
+        <div class="sidebar-logo">
+            <div class="logo-icon">AB</div>
+            <div class="logo-text">
+                AFRIBIO BOOST
+                <span>Terra Locale · Bénin</span>
+            </div>
+        </div>
+
+        <!-- Menu corrigé -->
+        <nav class="sidebar-menu">
+
+            <!-- Tableau de bord -->
+            <a href="index.html" class="menu-item">
+                <i class="fas fa-home menu-icon"></i>
+                <span class="menu-label">Tableau de bord</span>
+            </a>
+
+            <!-- Production Végétale -->
+            <a href="production.html" class="menu-item">
+                <i class="fas fa-seedling menu-icon"></i>
+                <span class="menu-label">Production végétale</span>
+            </a>
+
+            <!-- Suivi personnalisé -->
+            <a href="suivi.html" class="menu-item">
+                <i class="fas fa-chart-line menu-icon"></i>
+                <span class="menu-label">Suivi personnalisé</span>
+            </a>
+
+            <!-- Boutique -->
+            <a href="boutique.html" class="menu-item">
+                <i class="fas fa-shopping-cart menu-icon"></i>
+                <span class="menu-label">Boutique</span>
+            </a>
+
+            <!-- Formation -->
+            <a href="formation.html" class="menu-item">
+                <i class="fas fa-graduation-cap menu-icon"></i>
+                <span class="menu-label">Formation</span>
+            </a>
+
+            <!-- Communauté -->
+            <a href="communaute.html" class="menu-item active">
+                <i class="fas fa-users menu-icon"></i>
+                <span class="menu-label">Communauté</span>
+                <span class="menu-badge">12</span>
+            </a>
+
+            <!-- Notifications -->
+            <a href="notifications.html" class="menu-item">
+                <i class="fas fa-bell menu-icon"></i>
+                <span class="menu-label">Notifications</span>
+                <span class="menu-badge">3</span>
+            </a>
+
+            <!-- Impact écologique -->
+            <a href="impact.html" class="menu-item">
+                <i class="fas fa-leaf menu-icon"></i>
+                <span class="menu-label">Impact écologique</span>
+            </a>
+
+        </nav>
+
+        <!-- Profil corrigé en bas -->
+        <div class="sidebar-profile">
+            <div class="profile-avatar">KO</div>
+            <div class="profile-info">
+                <div class="profile-name">Kossi Agbo</div>
+                <div class="profile-role">Agriculteur - Bohicon</div>
+            </div>
+            <i class="fas fa-chevron-right profile-chevron"></i>
+        </div>
+
+    </aside>
+
+    <main class="main-content" style="background: #FCFCFA; min-height: 100vh;">
+        <header>
+            <h1><i class="fas fa-users"></i> Communauté AFRIBIO BOOST</h1>
+            <button class="btn-primary" onclick="openMessageModal()">
+                <i class="fas fa-envelope"></i> Nouveau message
+            </button>
+        </header>
+
+        <div class="community-stats">
+            <div class="community-stat">
+                <h3>127</h3>
+                <p>Membres actifs</p>
+            </div>
+            <div class="community-stat">
+                <h3>45</h3>
+                <p>Discussions</p>
+            </div>
+            <div class="community-stat">
+                <h3>12</h3>
+                <p>Aujourd'hui</p>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 25px;">
+            <section>
+                <h2>💬 Discussions récentes</h2>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="user-avatar" style="width: 50px; height: 50px;">KA</div>
+                        <div style="flex: 1;">
+                            <h4>Kossi Agbo <small style="color: var(--text-light);">- Il y a 2h</small></h4>
+                            <p><strong>Rendement maïs avec AFRIBIO :</strong> J'ai obtenu 4.2 tonnes/ha cette saison avec le Standard. Quelqu'un a fait mieux ?</p>
+                            <div style="margin-top: 10px;">
+                                <span style="color: var(--primary); cursor: pointer;"><i class="fas fa-comment"></i> 8 réponses</span>
+                                <span style="margin-left: 20px; color: var(--text-light);"><i class="fas fa-heart"></i> 15</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="user-avatar" style="width: 50px; height: 50px; background: var(--accent);">FA</div>
+                        <div style="flex: 1;">
+                            <h4>Fatou Alassane <small style="color: var(--text-light);">- Il y a 5h</small></h4>
+                            <p><strong>Traitement bio contre mildiou :</strong> La décoction de papayer fonctionne très bien sur mes tomates. Je partage la recette !</p>
+                            <div style="margin-top: 10px;">
+                                <span style="color: var(--primary); cursor: pointer;"><i class="fas fa-comment"></i> 12 réponses</span>
+                                <span style="margin-left: 20px; color: var(--text-light);"><i class="fas fa-heart"></i> 23</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="user-avatar" style="width: 50px; height: 50px; background: var(--secondary);">MK</div>
+                        <div style="flex: 1;">
+                            <h4>Moussa Kpakpo <small style="color: var(--text-light);">- Hier</small></h4>
+                            <p><strong>Irrigation goutte-à-goutte :</strong> Quelqu'un a un fournisseur fiable de kits au Bénin ? Je cherche pour 2 hectares.</p>
+                            <div style="margin-top: 10px;">
+                                <span style="color: var(--primary); cursor: pointer;"><i class="fas fa-comment"></i> 5 réponses</span>
+                                <span style="margin-left: 20px; color: var(--text-light);"><i class="fas fa-heart"></i> 8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>👥 Membres actifs</h2>
+                <div class="members-grid" style="grid-template-columns: 1fr;">
+                    <div class="member-card" style="display: flex; align-items: center; gap: 15px; text-align: left;">
+                        <div class="member-avatar" style="width: 50px; height: 50px; margin: 0;">KA</div>
+                        <div>
+                            <h4>Kossi Agbo</h4>
+                            <small>Bohicon - Maïs, Tomate</small>
+                        </div>
+                        <span style="margin-left: auto; color: var(--success);"><i class="fas fa-circle" style="font-size: 0.5rem;"></i> En ligne</span>
+                    </div>
+                    
+                    <div class="member-card" style="display: flex; align-items: center; gap: 15px; text-align: left;">
+                        <div class="member-avatar" style="width: 50px; height: 50px; margin: 0; background: var(--accent);">FA</div>
+                        <div>
+                            <h4>Fatou Alassane</h4>
+                            <small>Parakou - Piment, Oignon</small>
+                        </div>
+                        <span style="margin-left: auto; color: var(--success);"><i class="fas fa-circle" style="font-size: 0.5rem;"></i> En ligne</span>
+                    </div>
+                    
+                    <div class="member-card" style="display: flex; align-items: center; gap: 15px; text-align: left;">
+                        <div class="member-avatar" style="width: 50px; height: 50px; margin: 0; background: var(--secondary);">MK</div>
+                        <div>
+                            <h4>Moussa Kpakpo</h4>
+                            <small>Abomey - Mangue, Ananas</small>
+                        </div>
+                        <span style="margin-left: auto; color: var(--text-light);"><i class="fas fa-circle" style="font-size: 0.5rem;"></i> Hors ligne</span>
+                    </div>
+                    
+                    <div class="member-card" style="display: flex; align-items: center; gap: 15px; text-align: left;">
+                        <div class="member-avatar" style="width: 50px; height: 50px; margin: 0; background: var(--danger);">AD</div>
+                        <div>
+                            <h4>Aïcha Dossou</h4>
+                            <small>Ouidah - Riz, Maraîchage</small>
+                        </div>
+                        <span style="margin-left: auto; color: var(--success);"><i class="fas fa-circle" style="font-size: 0.5rem;"></i> En ligne</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal Message -->
+    <div id="message-modal" class="modal hidden">
+        <div class="modal-content">
+            <button onclick="closeModal('message-modal')" class="btn-close-modal"><i class="fas fa-times"></i></button>
+            <h2>💬 Nouveau message</h2>
+            <form onsubmit="sendMessage(event)">
+                <div class="form-group" style="margin: 20px 0;">
+                    <label>Sujet</label>
+                    <input type="text" placeholder="Ex: Question sur la fertilisation" required>
+                </div>
+                <div class="form-group" style="margin: 20px 0;">
+                    <label>Message</label>
+                    <textarea rows="5" placeholder="Votre message..." required></textarea>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%;">
+                    <i class="fas fa-paper-plane"></i> Envoyer
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        function openMessageModal() {
+            document.getElementById('message-modal').classList.remove('hidden');
+        }
+        
+        function sendMessage(e) {
+            e.preventDefault();
+            showToast('Message envoyé à la communauté !', 'success');
+            closeModal('message-modal');
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuteurage et taille - Tomate - AFRIBIO BOOST</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2D5016; --primary-light: #4A7C23; --secondary: #8B6914;
+            --accent: #D4A843; --light: #FCFCFA; --dark: #1A1A1A;
+            --text: #333333; --text-light: #666666; --border: #E0E0E0;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08); --shadow-hover: 0 8px 30px rgba(0,0,0,0.15);
+            --radius: 16px; --radius-sm: 8px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: var(--light); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+        .sidebar { width: 260px; height: 100vh; background: linear-gradient(180deg, #2d3436 0%, #1a1a2e 100%); position: fixed; left: 0; top: 0; z-index: 1000; display: flex; flex-direction: column; padding: 20px 0; overflow-y: auto; border-right: 1px solid rgba(255,255,255,0.1); }
+        .sidebar-logo { display: flex; align-items: center; gap: 12px; padding: 15px 20px 20px; margin: 0 12px 15px; background: rgba(255,255,255,0.25); border-radius: 12px; border: 1px solid rgba(255,255,255,0.35); }
+        .sidebar-logo img { width: 45px; height: 45px; border-radius: 10px; object-fit: cover; background: white; padding: 3px; }
+        .sidebar-logo .logo-text { color: white; font-weight: 700; font-size: 1.1rem; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+        .sidebar-logo .logo-text span { color: var(--accent); display: block; font-size: 0.75rem; font-weight: 400; opacity: 0.7; }
+        .btn-secondary { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 8px 15px; border-radius: 8px; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 8px; margin: 0 20px 15px; transition: var(--transition); font-family: 'Poppins', sans-serif; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.2); }
+        .sidebar-menu { flex: 1; display: flex; flex-direction: column; gap: 4px; padding: 0 12px; }
+        .menu-item { display: flex; align-items: center; gap: 12px; padding: 12px 15px; border-radius: 10px; color: rgba(255,255,255,0.95); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: var(--transition); position: relative; }
+        .menu-item:hover { background: rgba(255,255,255,0.08); color: white; }
+        .menu-item.active { background: #2D5A27; color: white; }
+        .menu-item.active .menu-icon { color: var(--accent); }
+        .menu-icon { width: 22px; text-align: center; font-size: 1rem; }
+        .menu-label { flex: 1; }
+        .menu-badge { background: #DC2626; color: white; font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; min-width: 20px; text-align: center; }
+        .sidebar-profile { display: flex; align-items: center; gap: 12px; padding: 15px 20px; margin: 15px 12px 0; background: rgba(255,255,255,0.05); border-radius: 12px; cursor: pointer; transition: var(--transition); }
+        .sidebar-profile:hover { background: rgba(255,255,255,0.1); }
+        .profile-avatar { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; border: 2px solid var(--accent); flex-shrink: 0; }
+        .profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .profile-info { flex: 1; min-width: 0; }
+        .profile-name { color: white; font-size: 0.85rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .profile-role { color: rgba(255,255,255,0.5); font-size: 0.75rem; }
+        .profile-chevron { color: rgba(255,255,255,0.4); font-size: 1.2rem; font-weight: 300; }
+        .main-wrapper { margin-left: 260px; min-height: 100vh; }
+        .hero { height: 280px; background: linear-gradient(rgba(45, 80, 22, 0.7), rgba(45, 80, 22, 0.85)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; color: white; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.5; }
+        .hero-content { position: relative; z-index: 1; }
+        .hero h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .hero p { font-size: 1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+        .breadcrumb { display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem; font-size: 0.85rem; opacity: 0.8; justify-content: center; flex-wrap: wrap; }
+        .breadcrumb a { color: var(--accent); text-decoration: none; transition: var(--transition); }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { color: rgba(255,255,255,0.6); }
+        .main-content { max-width: 900px; margin: 0 auto; padding: 3rem 2rem; background: var(--light); }
+        .article-header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 3px solid var(--primary); }
+        .article-header .step-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; padding: 0.5rem 1.2rem; border-radius: 30px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
+        .article-header h2 { font-size: 2rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+        .article-header .subtitle { color: var(--text-light); font-size: 1rem; }
+        .article-content { background: white; border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow); }
+        .article-content h3 { font-size: 1.3rem; font-weight: 600; color: var(--primary); margin: 2rem 0 1rem; display: flex; align-items: center; gap: 0.75rem; }
+        .article-content h3:first-child { margin-top: 0; }
+        .article-content h3 i { color: var(--accent); font-size: 1.1rem; }
+        .article-content p { color: var(--text); font-size: 1rem; line-height: 1.8; margin-bottom: 1rem; text-align: justify; }
+        .article-content ul { margin: 1rem 0 1.5rem 1.5rem; color: var(--text); }
+        .article-content ul li { margin-bottom: 0.6rem; line-height: 1.7; }
+        .article-content ul li::marker { color: var(--primary-light); }
+        .highlight-box { background: linear-gradient(135deg, rgba(45, 80, 22, 0.05) 0%, rgba(74, 124, 35, 0.05) 100%); border-left: 4px solid var(--primary); padding: 1.2rem 1.5rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+        .highlight-box p { margin: 0; font-size: 0.95rem; }
+        .highlight-box strong { color: var(--primary); }
+        .warning-box { background: linear-gradient(135deg, rgba(220, 38, 38, 0.05) 0%, rgba(220, 38, 38, 0.02) 100%); border-left: 4px solid #DC2626; padding: 1.2rem 1.5rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+        .warning-box p { margin: 0; font-size: 0.95rem; }
+        .warning-box strong { color: #DC2626; }
+        .tip-box { background: linear-gradient(135deg, rgba(212, 168, 67, 0.08) 0%, rgba(212, 168, 67, 0.03) 100%); border-left: 4px solid var(--accent); padding: 1.2rem 1.5rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+        .tip-box p { margin: 0; font-size: 0.95rem; }
+        .tip-box strong { color: var(--secondary); }
+        .step-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+        .step-nav a { display: flex; align-items: center; gap: 0.75rem; padding: 0.8rem 1.5rem; background: white; border: 2px solid var(--primary); color: var(--primary); border-radius: var(--radius-sm); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: var(--transition); }
+        .step-nav a:hover { background: var(--primary); color: white; }
+        .step-nav a.disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+        .step-nav .nav-center { text-align: center; color: var(--text-light); font-size: 0.85rem; }
+        .step-nav .nav-center span { display: block; font-weight: 600; color: var(--primary); font-size: 1rem; }
+        .site-footer { background: var(--primary); color: white; padding: 2rem; text-align: center; margin-top: 3rem; }
+        .site-footer p { opacity: 0.8; font-size: 0.9rem; }
+        @media (max-width: 1024px) { .sidebar { transform: translateX(-100%); transition: transform 0.3s ease; } .sidebar.open { transform: translateX(0); } .main-wrapper { margin-left: 0; } .menu-toggle { display: block !important; position: fixed; top: 20px; left: 20px; z-index: 1001; background: var(--primary); color: white; border: none; padding: 12px 15px; border-radius: 8px; cursor: pointer; font-size: 1.2rem; } }
+        @media (min-width: 1025px) { .menu-toggle { display: none !important; } }
+        @media (max-width: 768px) { .hero h1 { font-size: 1.8rem; } .article-content { padding: 1.5rem; } .main-content { padding: 2rem 1rem; } .step-nav { flex-direction: column; gap: 1rem; } .step-nav a { width: 100%; justify-content: center; } }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <aside class="sidebar" id="sidebar">
+        <button class="btn-secondary"><i class="fas fa-calendar"></i> <span id="date-jour"></span></button>
+        <div class="sidebar-logo">
+            <img src="assets/images/logosans.png" alt="Logo AFRIBIO BOOST">
+            <div class="logo-text">AFRIBIO BOOST<span>Agriculture intelligente</span></div>
+        </div>
+        <nav class="sidebar-menu">
+            <a href="index.html" class="menu-item"><i class="fas fa-home menu-icon"></i><span class="menu-label">Tableau de bord</span></a>
+            <a href="production.html" class="menu-item active"><i class="fas fa-seedling menu-icon"></i><span class="menu-label">Production végétale</span></a>
+            <a href="suivi.html" class="menu-item"><i class="fas fa-chart-line menu-icon"></i><span class="menu-label">Suivi personnalisé</span></a>
+            <a href="boutique.html" class="menu-item"><i class="fas fa-shopping-cart menu-icon"></i><span class="menu-label">Boutique</span></a>
+            <a href="formation.html" class="menu-item"><i class="fas fa-graduation-cap menu-icon"></i><span class="menu-label">Formation</span></a>
+            <a href="communaute.html" class="menu-item"><i class="fas fa-users menu-icon"></i><span class="menu-label">Communauté</span><span class="menu-badge">12</span></a>
+            <a href="notifications.html" class="menu-item"><i class="fas fa-bell menu-icon"></i><span class="menu-label">Notifications</span><span class="menu-badge">3</span></a>
+            <a href="impact.html" class="menu-item"><i class="fas fa-leaf menu-icon"></i><span class="menu-label">Impact écologique</span></a>
+        </nav>
+        <div class="sidebar-profile">
+            <div class="profile-avatar"><img src="assets/images/profil.png" alt="Photo de profil"></div>
+            <div class="profile-info"><div class="profile-name">GAFFAN Romaric</div><div class="profile-role">Agronome - Béninois</div></div>
+            <div class="profile-chevron">›</div>
+        </div>
+    </aside>
+    <button class="menu-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')"><i class="fas fa-bars"></i></button>
+    <div class="main-wrapper">
+        <section class="hero">
+            <div class="hero-content">
+                <h1><i class="fas fa-tools"></i> Tuteurage et taille</h1>
+                <p>Conduite de la plante pour optimiser la production et la qualité des fruits</p>
+                <div class="breadcrumb">
+                    <a href="index.html">Accueil</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                    <a href="production.html">Production</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                    <a href="culture-tomate.html">Tomate</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                    <span>Tuteurage et taille</span>
+                </div>
+            </div>
+        </section>
+        <main class="main-content">
+            <div class="article-header">
+                <div class="step-badge"><i class="fas fa-hashtag"></i> Étape 8 sur 13</div>
+                <h2>Tuteurage et taille de la tomate</h2>
+                <p class="subtitle">Techniques de conduite pour maximiser l'aération, la luminosité et la production</p>
+            </div>
+            <div class="article-content">
+                <h3><i class="fas fa-question-circle"></i> Faut-il tuteurer et tailler la tomate ?</h3>
+                <p>La réponse dépend de la variété et du système de production. Les variétés déterminées (bush, port buissonnant) produisent un nombre limité de grappes puis s'arrêtent. Elles peuvent se passer de tuteurage sur de courtes distances, mais un tuteurage léger améliore quand même la qualité. Les variétés indéterminées (grimpantes) produisent indéfiniment tant que les conditions le permettent. Elles nécessitent impérativement un tuteurage et une taille régulière sans lesquelles elles s'étalent au sol, pourrissent et deviennent inproductives.</p>
+
+                <p>En zone tropicale humide, le tuteurage est fortement recommandé même pour les variétés déterminées car il :</p>
+                <ul>
+                    <li>Élève le feuillage hors du sol, réduisant les maladies fongiques de 60%.</li>
+                    <li>Améliore l'aération entre les plants, limitant l'humidité stagnante.</li>
+                    <li>Facilite les opérations culturales (désherbage, pulvérisation, récolte).</li>
+                    <li>Permet une meilleure exposition au soleil, améliorant la coloration des fruits.</li>
+                    <li>Réduit la casse des branches sous le poids des fruits.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong>À retenir :</strong> Un plant tuteuré et taillé produit 30 à 50% plus de fruits commercialisables qu'un plant laissé au sol, principalement grâce à la réduction des maladies et des fruits pourris.</p>
+                </div>
+
+                <h3><i class="fas fa-grip-lines-vertical"></i> Systèmes de tuteurage</h3>
+                <p>Plusieurs techniques de tuteurage sont adaptées aux conditions africaines selon les moyens disponibles :</p>
+
+                <ul>
+                    <li><strong>Tuteur individuel (piquet) :</strong> un piquet de bambou ou de bois de 1,8 à 2 m de hauteur est planté à 10 cm de chaque plant. La tige principale est attachée au piquet avec des liens souples (tissu, raphia, liens en plastique) tous les 25-30 cm. Technique simple, adaptée aux petites parcelles. Coût : 15-25 FCFA par piquet.</li>
+                    <li><strong>Tuteurage sur fil (Florida weave) :</strong> des piquets sont plantés tous les 3-4 plants et des fils de fer ou de nylon sont tendus entre eux à différentes hauteurs (30, 60, 90 cm). Les plants sont pris en sandwich entre les fils. Technique efficace pour les grandes surfaces, coût réduit par plant.</li>
+                    <li><strong>Treillage sur poteaux :</strong> des poteaux de 2,5 m sont plantés aux extrémités et au milieu des rangées. Des fils de fer sont tendus en hauteur et les plants s'y accrochent naturellement ou sont attachés. Adapté aux variétés très vigoureuses.</li>
+                    <li><strong>Tuteurage en nattes (sur fils horizontaux) :</strong> des fils sont tendus horizontalement à 20 cm du sol. Les branches s'étalent sur les fils. Technique adaptée aux variétés très productives à port étalé.</li>
+                </ul>
+
+                <p><strong>Matériaux locaux recommandés :</strong> bambou (résistant, léger, abondant en Afrique), bois de karité ou d'acacia (durables), fil de fer galvanisé 2 mm (réutilisable 3-4 saisons), cordes en fibre de raphia ou de coco (biodégradables). Évitez les piquets trop courts (<1,5 m) car la tomate dépasse rapidement cette hauteur.</p>
+
+                <h3><i class="fas fa-cut"></i> Techniques de taille</h3>
+                <p>La taille vise à concentrer l'énergie de la plante sur la production de fruits de qualité plutôt que sur la végétation. Elle s'applique principalement aux variétés indéterminées.</p>
+
+                <p><strong>Ébourgeonnage (suppression des gourmands) :</strong> les gourmands sont les pousses axillaires qui se développent dans l'angle entre la tige principale et les feuilles. Ils consomment l'énergie de la plante sans produire de fruits de qualité. Supprimez-les dès qu'ils atteignent 5-10 cm de longueur, en les pinçant à la base entre le pouce et l'index. Ne jamais arracher pour éviter de blesser la tige principale.</p>
+
+                <p><strong>Fréquence :</strong> tous les 7 à 10 jours. En saison des pluies avec forte vigueur, tous les 5 jours. Un gourmand laissé 3 semaines devient difficile à retirer sans blesser la plante.</p>
+
+                <p><strong>Suppression des feuilles basses :</strong> retirez progressivement les feuilles les plus basses (surtout celles touchant le sol) dès que la plante atteint 50 cm de hauteur. Cette opération améliore l'aération au pied des plants et réduit les maladies fongiques. Ne retirez jamais plus de 2-3 feuilles à la fois pour ne pas stresser la plante. Continuez cette opération jusqu'à ce que les fruits du bas mûrissent.</p>
+
+                <p><strong>Décapitation (topping) :</strong> pour les variétés indéterminées, coupez la tige principale au-dessus de la 5ème ou 6ème grappe lorsque celle-ci est bien formée. Cette opération concentre l'énergie sur les fruits en développement et accélère la maturation. En zone tropicale où les cycles sont courts, la décapitation à la 4ème grappe est souvent préférable.</p>
+
+                <div class="tip-box">
+                    <p><strong>Astuce AFRIBIO :</strong> Conservez les gourmands vigoureux que vous retirez. En les enfonçant dans un godet de terre humide et en les plaçant à l'ombre, 70% d'entre eux s'enracinent en 10 jours. Vous obtenez ainsi des plants de remplacement gratuits en cas de perte au champ. Cette technique de "bouturage de gourmands" est très pratiquée par les maraîchers béninois.</p>
+                </div>
+
+                <h3><i class="fas fa-hand-paper"></i> Conduite à un seul tige vs deux tiges</h3>
+                <p>Deux stratégies de conduite dominent :</p>
+
+                <ul>
+                    <li><strong>Conduite à une seule tige :</strong> seule la tige principale est conservée, tous les gourmands sont supprimés. Rendement plus faible mais fruits de meilleur calibre et plus précoce. Adaptée aux marchés premium et aux cultures sous serre.</li>
+                    <li><strong>Conduite à deux tiges :</strong> la tige principale et le premier gourmand sous la première grappe sont conservés. Les autres gourmands sont supprimés. Rendement supérieur de 20-30%, fruits de calibre moyen. Technique la plus répandue en maraîchage africain.</li>
+                </ul>
+
+                <p>En zone tropicale avec forte luminosité, la conduite à deux tiges est généralement préférable car la plante a suffisamment d'énergie pour nourrir deux tiges productivement. En saison des pluies avec luminosité réduite, privilégiez la conduite à une tige.</p>
+
+                <h3><i class="fas fa-bug"></i> Taille et protection phytosanitaire</h3>
+                <p>La taille crée des plaies sur la plante qui peuvent servir de portes d'entrée aux pathogènes. Respectez ces règles d'hygiène :</p>
+
+                <ul>
+                    <li>Taillez uniquement par temps sec, jamais après l'irrigation ou sous la rosée.</li>
+                    <li>Désinfectez vos outils (couteau, sécateur) entre chaque plant avec de l'eau de javel diluée (1%) ou de l'alcool à 70%.</li>
+                    <li>Retirez immédiatement les gourmands et feuilles taillés du champ pour ne pas attirer les ravageurs.</li>
+                    <li>Ne taillez jamais plus de 20% du feuillage à la fois.</li>
+                    <li>Appliquez un traitement préventif au cuivre ou au bicarbonate 24h après la taille pour cicatriser les plaies.</li>
+                </ul>
+
+                <div class="warning-box">
+                    <p><strong>Attention :</strong> La taille excessive ou tardive expose les fruits au soleil direct et provoque des coups de soleil (sunscald) : taches blanchâtres sur la peau du fruit qui le rend invendable. Laissez toujours un feuillage suffisant pour protéger les fruits, surtout en saison sèche avec forte luminosité.</p>
+                </div>
+
+                <h3><i class="fas fa-calendar-check"></i> Calendrier de tuteurage et taille</h3>
+                <ul>
+                    <li><strong>J+10 :</strong> installation des piquets de tuteurage (avant que les racines ne s'étalent).</li>
+                    <li><strong>J+15 :</strong> premier attachage de la tige principale au piquet (lien souple, laisser de la marge pour l'épaississement).</li>
+                    <li><strong>J+20 :</strong> début de l'ébourgeonnage. Supprimez les gourmands < 5 cm.</li>
+                    <li><strong>J+30 :</strong> suppression des 2-3 feuilles les plus basses. Second attachage.</li>
+                    <li><strong>J+40 :</strong> décapitation si conduite déterminée, ou poursuite de l'ébourgeonnage.</li>
+                    <li><strong>Tous les 7-10 jours :</strong> ébourgeonnage régulier, suppression des feuilles basses, attachage des nouvelles sections de tige.</li>
+                    <li><strong>J+70 :</strong> dernière taille majeure, arrêt de l'ébourgeonnage pour laisser les dernières grappes se développer.</li>
+                </ul>
+
+                <h3><i class="fas fa-check-circle"></i> Points de contrôle avant passage à l'étape suivante</h3>
+                <ul>
+                    <li>Tous les plants sont tuteurés et attachés correctement.</li>
+                    <li>Les gourmands sont supprimés régulièrement (pas de gourmand > 15 cm).</li>
+                    <li>Le feuillage basal est dégagé pour l'aération.</li>
+                    <li>Les outils de taille sont désinfectés.</li>
+                    <li>Aucun coup de soleil n'est visible sur les fruits exposés.</li>
+                    <li>Les débris de taille sont retirés du champ.</li>
+                </ul>
+            </div>
+            <div class="step-nav">
+                <a href="fertilisation-entretien.html"><i class="fas fa-arrow-left"></i> Étape précédente</a>
+                <div class="nav-center"><span>Tomate</span>Étape 8 / 13</div>
+                <a href="desherbage.html">Étape suivante <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </main>
+    </div>
+    <footer class="site-footer"><p>© 2026 TERRA LOCALE - AFRIBIO BOOST - Tous droits réservés</p></footer>
+    <script>
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('date-jour').textContent = new Date().toLocaleDateString('fr-FR', options);
+    </script>
+</body>
+</html>

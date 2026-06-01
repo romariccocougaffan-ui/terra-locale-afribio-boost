@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aperçu — Boutique en bref</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+    --vert-principal: #2D5A27;
+    --vert-clair: #4A7C43;
+    --vert-pale: #E8F5E4;
+    --terre: #C17817;
+    --terre-clair: #D4A574;
+    --terre-pale: #FDF3E7;
+    --noir: #1A1A1A;
+    --gris: #5C5C5C;
+    --gris-leger: #9A9A9A;
+    --fond: #FCFCFA;
+    --blanc: #FFFFFF;
+    --ombre: rgba(0,0,0,0.06);
+    --ombre-hover: rgba(0,0,0,0.10);
+    --radius: 16px;
+    --radius-sm: 10px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--fond);
+    color: var(--noir);
+    line-height: 1.6;
+    padding: 60px 24px;
+}
+
+/* ===== SECTION BOUTIQUE EN BREF ===== */
+.boutique-bref {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+.boutique-bref-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.boutique-bref-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--noir);
+    margin-bottom: 10px;
+}
+.boutique-bref-header p {
+    color: var(--gris);
+    font-size: 1.05rem;
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.bref-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+.bref-card {
+    background: var(--blanc);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+    box-shadow: 0 4px 20px var(--ombre);
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: all 0.3s ease;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.bref-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px var(--ombre-hover);
+    border-color: rgba(45,90,39,0.12);
+}
+.bref-icon {
+    width: 64px; height: 64px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin-bottom: 18px;
+}
+.bref-card:nth-child(1) .bref-icon { background: var(--vert-pale); }
+.bref-card:nth-child(2) .bref-icon { background: var(--terre-pale); }
+.bref-card:nth-child(3) .bref-icon { background: #E3F2FD; }
+.bref-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--noir);
+    margin-bottom: 10px;
+}
+.bref-card p {
+    font-size: 0.9rem;
+    color: var(--gris);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex: 1;
+}
+.bref-tag {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+}
+.bref-card:nth-child(1) .bref-tag { background: var(--vert-pale); color: var(--vert-principal); }
+.bref-card:nth-child(2) .bref-tag { background: var(--terre-pale); color: var(--terre); }
+.bref-card:nth-child(3) .bref-tag { background: #E3F2FD; color: #1565C0; }
+.bref-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 10px 22px;
+    border-radius: 100px;
+    transition: all 0.2s;
+}
+.bref-card:nth-child(1) .bref-btn { background: var(--vert-principal); color: white; }
+.bref-card:nth-child(1) .bref-btn:hover { background: var(--vert-clair); }
+.bref-card:nth-child(2) .bref-btn { background: var(--terre); color: white; }
+.bref-card:nth-child(2) .bref-btn:hover { background: #A86815; }
+.bref-card:nth-child(3) .bref-btn { background: #1565C0; color: white; }
+.bref-card:nth-child(3) .bref-btn:hover { background: #0D47A1; }
+
+.bref-footer {
+    text-align: center;
+    margin-top: 40px;
+}
+.bref-footer a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--vert-principal);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1rem;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s;
+}
+.bref-footer a:hover { border-bottom-color: var(--vert-principal); }
+
+/* Responsive */
+@media (max-width: 900px) {
+    .bref-grid { grid-template-columns: 1fr; }
+}
+</style>
+<base target="_blank">
+</head>
+<body>
+
+<!-- ===== COPIER À PARTIR D'ICI ===== -->
+<section class="boutique-bref">
+    <div class="boutique-bref-header">
+        <h2>🛒 Notre Boutique</h2>
+        <p>Commandez nos produits bio et fermiers en quelques clics, ou accédez à nos ressources de formation.</p>
+    </div>
+
+    <div class="bref-grid">
+        <!-- Afribio Boost -->
+        <article class="bref-card">
+            <div class="bref-icon">🌱</div>
+            <span class="bref-tag">À partir de 8 500 FCFA</span>
+            <h3>Afribio Boost</h3>
+            <p>Fertilisant biologique 3-en-1 : enrichit le sol, stimule la croissance et protège les racines. Disponible en 25 kg et 50 kg.</p>
+            <a href="boutique.html#afribioSection" class="bref-btn">Commander →</a>
+        </article>
+
+        <!-- Produits frais -->
+        <article class="bref-card">
+            <div class="bref-icon">🥬</div>
+            <span class="bref-tag">Prix sur demande</span>
+            <h3>Produits frais</h3>
+            <p>Légumes, poisson tilapia, poulet fermier et plantes directement de notre ferme à votre table. Fraîcheur garantie.</p>
+            <a href="boutique.html#freshSection" class="bref-btn">Commander →</a>
+        </article>
+
+        <!-- Documents -->
+        <article class="bref-card">
+            <div class="bref-icon">📚</div>
+            <span class="bref-tag">Ressources</span>
+            <h3>Guides & formations</h3>
+            <p>Guides pratiques, fiches techniques et formations vidéo pour devenir autonome en agriculture biologique.</p>
+            <a href="https://fdqzzusg.mychariow.shop" target="_blank" class="bref-btn">Accéder →</a>
+        </article>
+    </div>
+
+    <div class="bref-footer">
+        <a href="boutique.html">Voir toute la boutique →</a>
+    </div>
+</section>
+<!-- ===== JUSQU'ICI ===== -->
+
+</body>
+</html>

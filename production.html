@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Production Végétale - AFRIBIO BOOST</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2D5016;
+            --primary-light: #4A7C23;
+            --secondary: #8B6914;
+            --accent: #D4A843;
+            --light: #FCFCFA;
+            --dark: #1A1A1A;
+            --text: #333333;
+            --text-light: #666666;
+            --border: #E0E0E0;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-hover: 0 8px 30px rgba(0,0,0,0.15);
+            --radius: 16px;
+            --radius-sm: 8px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            width: 260px;
+            height: 100vh;
+            background: linear-gradient(180deg, #2d3436 0%, #1a1a2e 100%);
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            padding: 20px 0;
+            overflow-y: auto;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 20px 20px;
+            margin: 0 12px 15px;
+            background: rgba(255,255,255,0.25);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.35);
+        }
+
+        .sidebar-logo img {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            object-fit: cover;
+            background: white;
+            padding: 3px;
+        }
+
+        .sidebar-logo .logo-text {
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .sidebar-logo .logo-text span {
+            color: var(--accent);
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 400;
+            opacity: 0.7;
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 20px 15px;
+            transition: var(--transition);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-secondary:hover { background: rgba(255,255,255,0.2); }
+
+        .sidebar-menu {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 0 12px;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            border-radius: 10px;
+            color: rgba(255,255,255,0.95);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .menu-item:hover {
+            background: rgba(255,255,255,0.08);
+            color: white;
+        }
+
+        .menu-item.active {
+            background: #2D5A27;
+            color: white;
+        }
+
+        .menu-item.active .menu-icon { color: var(--accent); }
+
+        .menu-icon {
+            width: 22px;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .menu-label { flex: 1; }
+
+        .menu-badge {
+            background: #DC2626;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 10px;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .sidebar-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 20px;
+            margin: 15px 12px 0;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .sidebar-profile:hover { background: rgba(255,255,255,0.1); }
+
+        .profile-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--accent);
+            flex-shrink: 0;
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .profile-name {
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .profile-role {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.75rem;
+        }
+
+        .profile-chevron {
+            color: rgba(255,255,255,0.4);
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-wrapper {
+            margin-left: 260px;
+            min-height: 100vh;
+        }
+
+        /* Hero */
+        .hero {
+            height: 400px;
+            background: linear-gradient(rgba(45, 80, 22, 0.7), rgba(45, 80, 22, 0.8)), 
+                        url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            opacity: 0.8;
+            justify-content: center;
+        }
+
+        .breadcrumb a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            background: var(--light);
+        }
+
+        /* Volet Section */
+        .volet-section { margin-bottom: 4rem; }
+
+        .volet-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .volet-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: var(--shadow);
+            flex-shrink: 0;
+        }
+
+        .volet-title { flex: 1; }
+
+        .volet-title h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .volet-title p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .volet-count {
+            background: var(--accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        /* Culture Grid */
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .culture-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .culture-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .culture-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .culture-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .culture-card:hover .culture-image img { transform: scale(1.1); }
+
+        .culture-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.7) 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 1rem;
+        }
+
+        .culture-badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .culture-content { padding: 1.5rem; }
+
+        .culture-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .culture-name i { color: var(--accent); font-size: 1.1rem; }
+
+        .culture-desc {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .culture-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            flex-wrap: wrap;
+        }
+
+        .culture-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .culture-meta i { color: var(--primary-light); }
+
+        .culture-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .culture-btn:hover {
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(45, 80, 22, 0.3);
+        }
+
+        .culture-btn i { transition: var(--transition); }
+        .culture-btn:hover i { transform: translateX(3px); }
+
+        /* Footer */
+        .site-footer {
+            background: var(--primary);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .site-footer p { opacity: 0.8; font-size: 0.9rem; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            .sidebar.open { transform: translateX(0); }
+            .main-wrapper { margin-left: 0; }
+            .menu-toggle {
+                display: block !important;
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                z-index: 1001;
+                background: var(--primary);
+                color: white;
+                border: none;
+                padding: 12px 15px;
+                border-radius: 8px;
+                cursor: pointer;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .menu-toggle { display: none !important; }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .culture-grid { grid-template-columns: 1fr; }
+            .main-content { padding: 2rem 1rem; }
+            .volet-header { flex-wrap: wrap; }
+            .volet-count { margin-top: 0.5rem; }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .culture-card {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .culture-card:nth-child(1) { animation-delay: 0.1s; }
+        .culture-card:nth-child(2) { animation-delay: 0.2s; }
+        .culture-card:nth-child(3) { animation-delay: 0.3s; }
+        .culture-card:nth-child(4) { animation-delay: 0.4s; }
+        .culture-card:nth-child(5) { animation-delay: 0.5s; }
+        .culture-card:nth-child(6) { animation-delay: 0.6s; }
+        .culture-card:nth-child(7) { animation-delay: 0.7s; }
+        .culture-card:nth-child(8) { animation-delay: 0.8s; }
+    </style>
+<base target="_blank">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<script>
+    const SUPABASE_URL = 'https://ncqozqhhhletyjfujzjc.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5jcW96cWhoaGxldHlqZnVqempjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwMDAzMjgsImV4cCI6MjA5NTU3NjMyOH0.qz78q5peBL46lyjfcZgksvJnR9LwiTQrqw1TYQ13HsE';
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    async function checkAuth() {
+        const { data: { user } } = await supabaseClient.auth.getUser();
+        const authBtn = document.getElementById('auth-btn');
+        const authText = document.getElementById('auth-text');
+        const authIcon = document.getElementById('auth-icon');
+        
+        if (!authBtn) return; // Sécurité si le bouton n'existe pas
+        
+        if (user) {
+            authText.textContent = 'Déconnexion';
+            authIcon.className = 'fas fa-sign-out-alt';
+            authBtn.href = '#';
+            authBtn.onclick = async (e) => {
+                e.preventDefault();
+                await supabaseClient.auth.signOut();
+                window.location.reload();
+            };
+        } else {
+            authText.textContent = 'Connexion';
+            authIcon.className = 'fas fa-user';
+            authBtn.href = 'connexion.html';
+        }
+    }
+    checkAuth();
+</script>
+<body>
+
+    <!-- ===== BARRE LATÉRALE ===== -->
+    <aside class="sidebar" id="sidebar">
+
+        <!-- Date -->
+        <button class="btn-secondary"><i class="fas fa-calendar"></i> <span id="date-jour"></span></button>
+        <!-- Logo -->
+        <div class="sidebar-logo">
+            <img src="assets/images/logosans.png" alt="Logo AFRIBIO BOOST">
+            <div class="logo-text">
+                AFRIBIO BOOST
+                <span>Agriculture intelligente</span>
+            </div>
+        </div>
+
+
+
+        <!-- Menu -->
+        <nav class="sidebar-menu">
+            <a href="index.html" class="menu-item">
+                <i class="fas fa-home menu-icon"></i>
+                <span class="menu-label">Tableau de bord</span>
+            </a>
+            <a href="production.html" class="menu-item active">
+                <i class="fas fa-seedling menu-icon"></i>
+                <span class="menu-label">Production végétale</span>
+            </a>
+            <a href="suivi.html" class="menu-item">
+                <i class="fas fa-chart-line menu-icon"></i>
+                <span class="menu-label">Suivi personnalisé</span>
+            </a>
+            <a href="boutique.html" class="menu-item">
+                <i class="fas fa-shopping-cart menu-icon"></i>
+                <span class="menu-label">Boutique</span>
+            </a>
+            <a href="formation.html" class="menu-item">
+                <i class="fas fa-graduation-cap menu-icon"></i>
+                <span class="menu-label">Formation</span>
+            </a>
+            <a href="communaute.html" class="menu-item">
+                <i class="fas fa-users menu-icon"></i>
+                <span class="menu-label">Communauté</span>
+                <span class="menu-badge">12</span>
+            </a>
+            <a href="notifications.html" class="menu-item">
+                <i class="fas fa-bell menu-icon"></i>
+                <span class="menu-label">Notifications</span>
+                <span class="menu-badge">3</span>
+            </a>
+            <a href="impact.html" class="menu-item">
+                <i class="fas fa-leaf menu-icon"></i>
+                <span class="menu-label">Impact écologique</span>
+            </a>
+        </nav>
+
+        <!-- Profil -->
+        <div class="sidebar-profile">
+            <div class="profile-avatar">
+                <img src="assets/images/profil.png" alt="Photo de profil">
+            </div>
+            <div class="profile-info">
+                <div class="profile-name">GAFFAN Romaric</div>
+                <div class="profile-role">Agronome - Béninois</div>
+            </div>
+            <div class="profile-chevron">›</div>
+        </div>
+
+    </aside>
+
+    <!-- Bouton menu mobile -->
+    <button class="menu-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- ===== CONTENU PRINCIPAL ===== -->
+    <div class="main-wrapper">
+<!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1><i class="fas fa-seedling"></i> Êtes-vous prêt à la faire parler ?</h1>
+                — associations culturales intelligentes, gestion optimisée de l'eau, amendements biologiques — vous cultivez mieux, en dépensant moins et en préservant ce que vous avez de plus précieux : votre terre.</p>
+            <div class="breadcrumb">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- VOLET 1: Le Maraîchage -->
+        <section class="volet-section">
+            <div class="volet-header">
+                <div class="volet-icon">
+                    <i class="fas fa-carrot"></i>
+                </div>
+                <div class="volet-title">
+                    <h2>Le Maraîchage</h2>
+                    <p>Cultures de légumes à cycle court, souvent en irrigué</p>
+                </div>
+                <div class="volet-count">8 cultures</div>
+            </div>
+
+            <div class="culture-grid">
+                <!-- Tomate -->
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/pixnio.com/0396c8efe3959ade6a38b4a17ed1a08cf7c38557.jpg" alt="Tomate">
+                        <div class="culture-overlay">
+                            <span class="culture-badge">Cycle court</span>
+                        </div>
+                    </div>
+                    <div class="culture-content">
+                        <h3 class="culture-name"><i class="fas fa-apple-alt"></i> Tomate</h3>
+                        <p class="culture-desc">Culture principale du maraîchage africain, riche en vitamines et très demandée sur les marchés locaux.</p>
+                        <div class="culture-meta">
+                            <span><i class="fas fa-clock"></i> 90-120 jours</span>
+                            <span><i class="fas fa-tint"></i> Irrigué</span>
+                        </div>
+                        <a href="production/pagetomate.html" class="culture-btn">
+                            Voir la fiche <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Piment / Poivron -->
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/www.julieandrieu.com/e0de9533a4d8a9a8efb1969e44320b59c1e67654.jpg" alt="Piment / Poivron">
+                        <div class="culture-overlay">
+                            <span class="culture-badge">Épice</span>
+                        </div>
+                    </div>
+                    <div class="culture-content">
+                        <h3 class="culture-name"><i class="fas fa-pepper-hot"></i> Piment / Poivron</h3>
+                        <p class="culture-desc">Indispensable dans la cuisine africaine, culture très rentable avec une forte demande export.</p>
+                        <div class="culture-meta">
+                            <span><i class="fas fa-clock"></i> 120-150 jours</span>
+                            <span><i class="fas fa-sun"></i> Soleil</span>
+                        </div>
+                        <a href="culture-piment.html" class="culture-btn">
+                            Voir la fiche <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Oignon -->
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/img-3.journaldesfemmes.fr/e0b72b7f39494d21d67df04beaff203059af88d6.jpg" alt="Oignon">
+                        <div class="culture-overlay">
+                            <span class="culture-badge">Bulbe</span>
+                        </div>
+                    </div>
+                    <div class="culture-content">
+                        <h3 class="culture-name"><i class="fas fa-circle"></i> Oignon</h3>
+                        <p class="culture-desc">Base de l'alimentation quotidienne, l'oignon se conserve bien et offre de bonnes marges.</p>
+                        <div class="culture-meta">
+                            <span><i class="fas fa-clock"></i> 150-180 jours</span>
+                            <span><i class="fas fa-tint"></i> Modéré</span>
+                        </div>
+                        <a href="culture-oignon.html" class="culture-btn">
+                            Voir la fiche <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Gombo -->
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/m.media-amazon.com/7e56d1936b71875dd11f91b8a8ebfcf7d9bf0fe0.jpg" alt="Gombo">
+                        <div class="culture-overlay">
+                            <span class="culture-badge">Légume fruit</span>
+                        </div>
+                    </div>
+                    <div class="culture-content">
+                        <h3 class="culture-name"><i class="fas fa-seedling"></i> Gombo</h3>
+                        <p class="culture-desc">Légume très populaire en Afrique de l'Ouest, résistant à la chaleur et peu exigeant en eau.</p>
+                        <div class="culture-meta">
+                            <span><i class="fas fa-clock"></i> 60-90 jours</span>
+                            <span><i class="fas fa-thermometer-half"></i> Chaleur</span>
+                        </div>
+                        <a href="culture-gombo.html" class="culture-btn">
+                            Voir la fiche <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Laitue / Chou -->
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/media.istockphoto.com/fef6b395d66184c0ee333cbb18851e5cfee529b8.jpg" alt="Laitue / Chou">
+                        <div class="culture-overlay">
+                            <span class="culture-badge">Feuille</span>
+                        </div>
+                    </div>
+                    <div class="culture-content">
+                        <h3 class="culture-name"><i class="fas fa-leaf"></i> Laitue / Chou</h3>
+                        <p class="culture-desc">Cultures rapides pour les marchés urbains, très rentables en saison sèche sous irrigation.</p>
+                        <div class="culture-meta">
+                            <span><i class="fas fa-clock"></i> 45-60 jours</span>
+                            <span><i class="fas fa-tint"></i> Irrigué</span>
+                        </div>
+                        <a href="culture-laitue.html" class="culture-btn">
+                            Voir la fiche <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Carotte -->
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/img.freepik.com/a04360ab0d795adf7939f635f2c5c910a65f5398.jpg" alt="Carotte">
+                        <div class="culture-overlay">
+                            <span class="culture-badge">Racine</span>
+                        </div>
+                    </div>
+                    <div class="culture-content">
+                        <h3 class="culture-name"><i class="fas fa-carrot"></i> Carotte</h3>
+                        <p class="culture-desc">Racine orange riche en bêta-carotène, très appréciée des enfants et des marchés premium.</p>
+                        <div class="culture-meta">
+                            <span><i class="fas fa-clock"></i> 90-120 jours</span>
+                            <span><i class="fas fa-mountain"></i> Sol léger</span>
+                        </div>
+                        <a href="culture-carotte.html" class="culture-btn">
+                            Voir la fiche <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Concombre / Courgette -->
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/assets.afcdn.com/f21bae046094327b474336d2b7e9d2fb7ba523aa.webp" alt="Concombre / Courgette">
+                        <div class="culture-overlay">
+                            <span class="culture-badge">Courge</span>
+                        </div>
+                    </div>
+                    <div class="culture-content">
+                        <h3 class="culture-name"><i class="fas fa-spa"></i> Concombre / Courgette</h3>
+                        <p class="culture-desc">Cultures grimpantes productives, idéales pour la diversification et les marchés frais.</p>
+                        <div class="culture-meta">
+                            <span><i class="fas fa-clock"></i> 50-70 jours</span>
+                            <span><i class="fas fa-tint"></i> Irrigué</span>
+                        </div>
+                        <a href="culture-concombre.html" class="culture-btn">
+                            Voir la fiche <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Aubergine -->
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/i0.wp.com/79e6fc682130679cca975ec6c6d9d695295ba104.jpg" alt="Aubergine">
+                        <div class="culture-overlay">
+                            <span class="culture-badge">Solanacée</span>
+                        </div>
+                    </div>
+                    <div class="culture-content">
+                        <h3 class="culture-name"><i class="fas fa-eggplant"></i> Aubergine</h3>
+                        <p class="culture-desc">Légume violet très productif, résistant aux climats chauds et aux maladies courantes.</p>
+                        <div class="culture-meta">
+                            <span><i class="fas fa-clock"></i> 100-130 jours</span>
+                            <span><i class="fas fa-sun"></i> Chaleur</span>
+                        </div>
+                        <a href="culture-aubergine.html" class="culture-btn">
+                            Voir la fiche <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VOLET 2: Les Grandes Cultures -->
+        <section class="volet-section">
+            <div class="volet-header">
+                <div class="volet-icon">
+                    <i class="fas fa-wheat-awn"></i>
+                </div>
+                <div class="volet-title">
+                    <h2>Les Grandes Cultures</h2>
+                    <p>Cultures pluviales à grande échelle, base alimentaire et commerciale</p>
+                </div>
+                <div class="volet-count">7 cultures</div>
+            </div>
+
+            <div class="culture-grid">
+                <!-- Maïs -->
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/previews.123rf.com/c256296b007d5d6fc5db4d35cfa8e498d2ff49d9.jpg" alt="Maïs">
+                        <div class="culture-overlay">
+                            <span class="culture-badge">Céréale</span>
+                        </div>
+                    </div>
+                    <div class="culture-content">
+                        <h3 class="culture-name"><i class="fas fa-corn"></i> Maïs</h3>
+                        <p class="culture-desc">Céréale principale de l'alimentation africaine, culture de sécurité alimentaire par excellence.</p>
+                        <div class="culture-meta">
+                            <span><i class="fas fa-clock"></i> 90-120 jours</span>
+                            <span><i class="fas fa-cloud-rain"></i> Pluvial</span>
+                        </div>
+                        <a href="culture-mais.html" class="culture-btn">
+                            Voir la fiche <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Sorgho / Mil -->
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/willagri.com/bbe6f280b11e8f293b27e1b1078103690666a11f.jpg" alt="Sorgho / Mil">
+                        <div class="culture-overlay">
+                            <span class="culture-badge">Céréale sèche</span>
+                        </div>
+                    </div>
+                    <div class="culture-content">
+                        <h3 class="culture-name"><i class="fas fa-wheat-awn"></i> Sorgho / Mil</h3>
+                        <p class="culture-desc">Céréales résistantes à la sécheresse, essentielles dans les zones sahéliennes et semi-arides.</p>
+                        <div class="culture-meta">
+                            <span><i class="fas fa-clock"></i> 100-150 jours</span>
+                            <span><i class="fas fa-sun"></i> Aride</span>
+                        </div>
+                        <a href="culture-sorgho.html" class="culture-btn">
+                            Voir la fiche <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Riz -->
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/l450v.alamy.com/add7f9922b1fc531854b03b3ef824744b69e3766.jpg" alt="Riz">
+                        <div class="culture-overlay">
+                            <span class="culture-badge">Céréale inondée</span>
+                        </div>
+                    </div>
+                    <div class="culture-content">
+                        <h3 class="culture-name"><i class="fas fa-bowl-rice"></i> Riz</h3>
+                        <p class="culture-desc">Aliment de base pour plus de la moitié de l'humanité, culture irriguée à fort potentiel.</p>
+                        <div class="culture-meta">
+                            <span><i class="fas fa-clock"></i> 120-150 jours</span>
+                            <span><i class="fas fa-water"></i> Inondé</span>
+                        </div>
+                        <a href="culture-riz.html" class="culture-btn">
+                            Voir la fiche <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Soja -->
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/www.jardiner-malin.fr/b39de2cbbf38f89ca5fc00d424682dda61a0ab4f.jpg" alt="Soja">
+                        <div class="culture-overlay">
+                            <span class="culture-badge">Légumineuse</span>
+                        </div>
+                    </div>
+                    <div class="culture-content">
+                        <h3 class="culture-name"><i class="fas fa-seedling"></i> Soja</h3>
+                        <p class="culture-desc">Riche en protéines et en huile, le soja améliore la fertilité des sols grâce à sa fixation d'azote.</p>
+                        <div class="culture-meta">
+                            <span><i class="fas fa-clock"></i> 100-130 jours</span>
+                            <span><i class="fas fa-leaf"></i> Fixatrice N</span>
+                        </div>
+                        <a href="culture-soja.html" class="culture-btn">
+                            Voir la fiche <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Arachide -->
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/cloudfront-eu-central-1.images.arcpublishing.com/9659999bb3cefb64d7bf24f755a529663ea41ba4.jpg" alt="Arachide">
+                        <div class="culture-overlay">
+                            <span class="culture-badge">Oléagineux</span>
+                        </div>
+                    </div>
+                    <div class="culture-content">
+                        <h3 class="culture-name"><i class="fas fa-seedling"></i> Arachide</h3>
+                        <p class="culture-desc">Culture paysanne par excellence, l'arachide fournit huile et tourteau avec un bon rendement.</p>
+                        <div class="culture-meta">
+                            <span><i class="fas fa-clock"></i> 120-140 jours</span>
+                            <span><i class="fas fa-sun"></i> Soleil</span>
+                        </div>
+                        <a href="culture-arachide.html" class="culture-btn">
+                            Voir la fiche <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Coton -->
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/previews.123rf.com/4db3f14a4004616fd0b93952e7e206e26df5430c.jpg" alt="Coton">
+                        <div class="culture-overlay">
+                            <span class="culture-badge">Fibre</span>
+                        </div>
+                    </div>
+                    <div class="culture-content">
+                        <h3 class="culture-name"><i class="fas fa-shirt"></i> Coton</h3>
+                        <p class="culture-desc">Première fibre textile mondiale, culture commerciale majeure pour l'industrie et l'export.</p>
+                        <div class="culture-meta">
+                            <span><i class="fas fa-clock"></i> 150-180 jours</span>
+                            <span><i class="fas fa-industry"></i> Industrie</span>
+                        </div>
+                        <a href="culture-coton.html" class="culture-btn">
+                            Voir la fiche <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Niébé -->
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/binette-et-jardin.ouest-france.fr/252900f02b7fa581d9547ffd8bcb01391a7943e9.jpg" alt="Niébé">
+                        <div class="culture-overlay">
+                            <span class="culture-badge">Légumineuse</span>
+                        </div>
+                    </div>
+                    <div class="culture-content">
+                        <h3 class="culture-name"><i class="fas fa-seedling"></i> Niébé (Haricot)</h3>
+                        <p class="culture-desc">Haricot à œil noir très nutritif, résistant à la sécheresse et apprécié dans toute l'Afrique.</p>
+                        <div class="culture-meta">
+                            <span><i class="fas fa-clock"></i> 70-100 jours</span>
+                            <span><i class="fas fa-droplet"></i> Résistant</span>
+                        </div>
+                        <a href="culture-niebe.html" class="culture-btn">
+                            Voir la fiche <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VOLET 3: L'Arboriculture -->
+        <section class="volet-section">
+            <div class="volet-header">
+                <div class="volet-icon">
+                    <i class="fas fa-tree"></i>
+                </div>
+                <div class="volet-title">
+                    <h2>L'Arboriculture</h2>
+                    <p>Cultures pérennes fruitières à cycle long</p>
+                </div>
+                <div class="volet-count">7 cultures</div>
+            </div>
+
+            <div class="culture-grid">
+                <!-- Manguier -->
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/www.rustica.fr/e1c8ab5c160e505c2b0b74c0b6294828b0704236.jpg" alt="Manguier">
+                        <div class="culture-overlay">
+                            <span class="culture-badge">Fruit tropical</span>
+                        </div>
+                    </div>
+                    <div class="culture-content">
+                        <h3 class="culture-name"><i class="fas fa-lemon"></i> Manguier</h3>
+                        <p class="culture-desc">Roi des fruits tropicaux, le manguier offre un excellent rendement et de nombreuses variétés adaptées.</p>
+                        <div class="culture-meta">
+                            <span><i class="fas fa-clock"></i> 3-5 ans</span>
+                            <span><i class="fas fa-calendar"></i> Pérenne</span>
+                        </div>
+                        <a href="culture-manguier.html" class="culture-btn">
+                            Voir la fiche <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Anacardier -->
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/upload.wikimedia.org/42dc55993b5587c9517cf08167a4fd991b79df0c.jpg" alt="Anacardier">
+                        <div class="culture-overlay">
+                            <span class="culture-badge">Noix</span>
+                        </div>
+                    </div>
+                    <div class="culture-content">
+                        <h3 class="culture-name"><i class="fas fa-tree"></i> Anacardier (Cajou)</h3>
+                        <p class="culture-desc">Culture d'export très rentable, produisant à la fois la pomme de cajou et la noix précieuse.</p>
+                        <div class="culture-meta">
+                            <span><i class="fas fa-clock"></i> 3-4 ans</span>
+                            <span><i class="fas fa-plane"></i> Export</span>
+                        </div>
+                        <a href="culture-anacardier.html" class="culture-btn">
+                            Voir la fiche <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Agrumes -->
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/www.jacques-briant.fr/f6a92672d7637b12f7dfc09a99b3389046f23e65.jpg" alt="Agrumes">
+                        <div class="culture-overlay">
+                            <span class="culture-badge">Vitamine C</span>
+                        </div>
+                    </div>
+                    <div class="culture-content">
+                        <h3 class="culture-name"><i class="fas fa-lemon"></i> Agrumes</h3>
+                        <p class="culture-desc">Orange, citron et mandarine : fruits riches en vitamine C avec un marché local et international fort.</p>
+                        <div class="culture-meta">
+                            <span><i class="fas fa-clock"></i> 2-4 ans</span>
+                            <span><i class="fas fa-sun"></i> Soleil</span>
+                        </div>
+                        <a href="culture-agrumes.html" class="culture-btn">
+                            Voir la fiche <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Banane / Plantain -->
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/c8.alamy.com/06b1d764d6bb4cf1f1da45f2a589193b5d2e088b.jpg" alt="Banane / Plantain">
+                        <div class="culture-overlay">
+                            <span class="culture-badge">Régime</span>
+                        </div>
+                    </div>
+                    <div class="culture-content">
+                        <h3 class="culture-name"><i class="fas fa-banana"></i> Banane / Plantain</h3>
+                        <p class="culture-desc">Aliment de base en Afrique centrale et de l'Ouest, culture très productive toute l'année.</p>
+                        <div class="culture-meta">
+                            <span><i class="fas fa-clock"></i> 12-15 mois</span>
+                            <span><i class="fas fa-infinity"></i> Continue</span>
+                        </div>
+                        <a href="culture-banane.html" class="culture-btn">
+                            Voir la fiche <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Papayer -->
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/framerusercontent.com/b7c006cc50baaacd5a02c801c95bcc080d02f772.jpg" alt="Papayer">
+                        <div class="culture-overlay">
+                            <span class="culture-badge">Fruit rapide</span>
+                        </div>
+                    </div>
+                    <div class="culture-content">
+                        <h3 class="culture-name"><i class="fas fa-apple-whole"></i> Papayer</h3>
+                        <p class="culture-desc">Arbre fruitier à croissance rapide, produisant en 6-9 mois avec un fort potentiel commercial.</p>
+                        <div class="culture-meta">
+                            <span><i class="fas fa-clock"></i> 6-9 mois</span>
+                            <span><i class="fas fa-bolt"></i> Rapide</span>
+                        </div>
+                        <a href="culture-papayer.html" class="culture-btn">
+                            Voir la fiche <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Avocat -->
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/img-3.journaldesfemmes.fr/e0e937120ea307f38969530913297b76774b995d.jpg" alt="Avocat">
+                        <div class="culture-overlay">
+                            <span class="culture-badge">Fruit gras</span>
+                        </div>
+                    </div>
+                    <div class="culture-content">
+                        <h3 class="culture-name"><i class="fas fa-avocado"></i> Avocat</h3>
+                        <p class="culture-desc">Fruit à la mode mondiale, très rentable à l'export avec une demande croissante sur les marchés premium.</p>
+                        <div class="culture-meta">
+                            <span><i class="fas fa-clock"></i> 3-4 ans</span>
+                            <span><i class="fas fa-plane-departure"></i> Export</span>
+                        </div>
+                        <a href="culture-avocat.html" class="culture-btn">
+                            Voir la fiche <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Cocotier / Palmier -->
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/static.wixstatic.com/e815f0b2925adfd9382ae1a3e9c75d9ad93ffdff.jpg" alt="Cocotier / Palmier">
+                        <div class="culture-overlay">
+                            <span class="culture-badge">Multi-usage</span>
+                        </div>
+                    </div>
+                    <div class="culture-content">
+                        <h3 class="culture-name"><i class="fas fa-tree"></i> Cocotier / Palmier</h3>
+                        <p class="culture-desc">Arbre aux mille usages : huile, noix de coco, coprah, avec une production sur plusieurs décennies.</p>
+                        <div class="culture-meta">
+                            <span><i class="fas fa-clock"></i> 4-6 ans</span>
+                            <span><i class="fas fa-oil-can"></i> Huile</span>
+                        </div>
+                        <a href="culture-cocotier.html" class="culture-btn">
+                            Voir la fiche <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VOLET 4: Cultures Spécialisées -->
+        <section class="volet-section">
+            <div class="volet-header">
+                <div class="volet-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="volet-title">
+                    <h2>Cultures Spécialisées</h2>
+                    <p>Cultures à haute valeur ajoutée ou usage particulier</p>
+                </div>
+                <div class="volet-count">7 cultures</div>
+            </div>
+
+            <div class="culture-grid">
+                <!-- Manioc -->
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/upload.wikimedia.org/ffe4193b15afb6a3f7bac3e27ab9c65fb4caab15.jpg" alt="Manioc">
+                        <div class="culture-overlay">
+                            <span class="culture-badge">Féculent</span>
+                        </div>
+                    </div>
+                    <div class="culture-content">
+                        <h3 class="culture-name"><i class="fas fa-seedling"></i> Manioc</h3>
+                        <p class="culture-desc">Tubercule de base pour plus de 500 millions d'Africains, résistant et productif en conditions difficiles.</p>
+                        <div class="culture-meta">
+                            <span><i class="fas fa-clock"></i> 12-18 mois</span>
+                            <span><i class="fas fa-shield-alt"></i> Résistant</span>
+                        </div>
+                        <a href="culture-manioc.html" class="culture-btn">
+                            Voir la fiche <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Patate douce -->
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/static.wixstatic.com/cf658f2852e717795876b98f555b91f0d0160d39.jpg" alt="Patate douce">
+                        <div class="culture-overlay">
+                            <span class="culture-badge">Orange</span>
+                        </div>
+                    </div>
+                    <div class="culture-content">
+                        <h3 class="culture-name"><i class="fas fa-carrot"></i> Patate douce</h3>
+                        <p class="culture-desc">Riche en bêta-carotène, la patate douce orange combat la carence en vitamine A et s'adapte partout.</p>
+                        <div class="culture-meta">
+                            <span><i class="fas fa-clock"></i> 4-6 mois</span>
+                            <span><i class="fas fa-heart"></i> Nutritif</span>
+                        </div>
+                        <a href="culture-patate-douce.html" class="culture-btn">
+                            Voir la fiche <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Ananas -->
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/static.libertyprim.com/12d727817f3b7c1b9e3dd23f10d4fd8a04129762.jpg" alt="Ananas">
+                        <div class="culture-overlay">
+                            <span class="culture-badge">Fruit d'export</span>
+                        </div>
+                    </div>
+                    <div class="culture-content">
+                        <h3 class="culture-name"><i class="fas fa-apple-whole"></i> Ananas</h3>
+                        <p class="culture-desc">Fruit tropical de prestige, l'ananas offre d'excellentes opportunités d'export vers l'Europe.</p>
+                        <div class="culture-meta">
+                            <span><i class="fas fa-clock"></i> 18-24 mois</span>
+                            <span><i class="fas fa-plane-departure"></i> Export</span>
+                        </div>
+                        <a href="culture-ananas.html" class="culture-btn">
+                            Voir la fiche <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Moringa -->
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/www.santarome.fr/d71620789e64d7e18f15d2dbd69a4ac98a00bf93.jpg" alt="Moringa">
+                        <div class="culture-overlay">
+                            <span class="culture-badge">Superfood</span>
+                        </div>
+                    </div>
+                    <div class="culture-content">
+                        <h3 class="culture-name"><i class="fas fa-leaf"></i> Moringa</h3>
+                        <p class="culture-desc">Arbre miracle aux feuilles hyper-nutritives, utilisé en médecine traditionnelle et alimentation.</p>
+                        <div class="culture-meta">
+                            <span><i class="fas fa-clock"></i> 6-8 mois</span>
+                            <span><i class="fas fa-mortar-pestle"></i> Médicinal</span>
+                        </div>
+                        <a href="culture-moringa.html" class="culture-btn">
+                            Voir la fiche <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Champignons -->
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/c8.alamy.com/42406c80446e085fdcbdff6e0cd334802459bb98.jpg" alt="Champignons">
+                        <div class="culture-overlay">
+                            <span class="culture-badge">Indoor</span>
+                        </div>
+                    </div>
+                    <div class="culture-content">
+                        <h3 class="culture-name"><i class="fas fa-mushroom"></i> Champignons</h3>
+                        <p class="culture-desc">Culture en milieu contrôlé, les champignons offrent des cycles rapides et une forte valeur ajoutée.</p>
+                        <div class="culture-meta">
+                            <span><i class="fas fa-clock"></i> 3-8 semaines</span>
+                            <span><i class="fas fa-warehouse"></i> Serre</span>
+                        </div>
+                        <a href="culture-champignons.html" class="culture-btn">
+                            Voir la fiche <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Stévia / Plantes aromatiques -->
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/upload.wikimedia.org/c12175b2be2d8e3fe37c28aeb60eb57c471039f0.JPG" alt="Stévia">
+                        <div class="culture-overlay">
+                            <span class="culture-badge">Édulcorant</span>
+                        </div>
+                    </div>
+                    <div class="culture-content">
+                        <h3 class="culture-name"><i class="fas fa-mortar-pestle"></i> Stévia / Aromatiques</h3>
+                        <p class="culture-desc">Plantes médicinales et aromatiques à forte valeur ajoutée pour les marchés bio et pharmaceutiques.</p>
+                        <div class="culture-meta">
+                            <span><i class="fas fa-clock"></i> 3-4 mois</span>
+                            <span><i class="fas fa-flask"></i> Pharma</span>
+                        </div>
+                        <a href="culture-stevia.html" class="culture-btn">
+                            Voir la fiche <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>© 2026 TERRA LOCALE - AFRIBIO BOOST - Tous droits réservés</p>
+    </footer>
+
+    <script>
+        // Date du jour
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('date-jour').textContent = new Date().toLocaleDateString('fr-FR', options);
+
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.culture-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+
+</body>
+</html>

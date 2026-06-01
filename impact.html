@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impact - AFRIBIO BOOST</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .impact-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .impact-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .impact-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.2s;
+        }
+
+        .impact-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .impact-card i {
+            font-size: 32px;
+            color: #2D5A27;
+            margin-bottom: 12px;
+        }
+
+        .impact-card h3 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2D5A27;
+            margin: 8px 0;
+        }
+
+        .impact-card p {
+            font-size: 14px;
+            color: #333;
+            margin: 4px 0;
+        }
+
+        .impact-card small {
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* Responsive : 1 colonne sur mobile */
+        @media (max-width: 600px) {
+            .impact-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="impact-grid">
+        <!-- Ligne 1 -->
+        <div class="impact-row">
+            <div class="impact-card">
+                <i class="fas fa-cloud"></i>
+                <h3>45.2</h3>
+                <p>Tonnes de CO₂ évité</p>
+                <small>vs engrais chimiques</small>
+            </div>
+            <div class="impact-card">
+                <i class="fas fa-tint"></i>
+                <h3>12,500</h3>
+                <p>m³ d'eau économisés</p>
+                <small>par irrigation optimisée</small>
+            </div>
+        </div>
+        
+        <!-- Ligne 2 -->
+        <div class="impact-row">
+            <div class="impact-card">
+                <i class="fas fa-briefcase"></i>
+                <h3>89</h3>
+                <p>Emplois créés</p>
+                <small>directs et indirects</small>
+            </div>
+            <div class="impact-card">
+                <i class="fas fa-map"></i>
+                <h3>156</h3>
+                <p>Hectares en bio</p>
+                <small>cultivés avec AFRIBIO</small>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

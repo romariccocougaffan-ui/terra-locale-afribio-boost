@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications - AFRIBIO BOOST | Terra Locale · Bénin</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="brand">
+            <div class="brand-logo">TL</div>
+            <div>
+                <h2>AFRIBIO BOOST</h2>
+                <small>Terra Locale · Bénin</small>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> Tableau de bord</a></li>
+            <li><a href="production.html"><i class="fas fa-seedling"></i> Production végétale</a></li>
+            <li><a href="suivi.html"><i class="fas fa-chart-line"></i> Suivi personnalisé</a></li>
+            <li><a href="boutique.html"><i class="fas fa-shopping-cart"></i> Boutique</a></li>
+            <li><a href="formation.html"><i class="fas fa-graduation-cap"></i> Formation</a></li>
+            <li><a href="communaute.html"><i class="fas fa-users"></i> Communauté</a></li>
+            <li class="active"><a href="notifications.html"><i class="fas fa-bell"></i> Notifications <span class="badge">3</span></a></li>
+            <li><a href="impact.html"><i class="fas fa-leaf"></i> Impact écologique</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <header>
+            <h1><i class="fas fa-bell"></i> Notifications Intelligentes</h1>
+            <button class="btn-secondary" onclick="markAllRead()">
+                <i class="fas fa-check-double"></i> Tout marquer comme lu
+            </button>
+        </header>
+
+        <section>
+            <div class="notif-list">
+                <div class="notif-item alert">
+                    <div class="notif-icon"><i class="fas fa-cloud-rain"></i></div>
+                    <div class="notif-content">
+                        <h4>🌧️ Alerte météo - Fortes pluies prévues</h4>
+                        <p>Précipitations de 80mm attendues dans votre zone (Bohicon) les 3 prochains jours. Réduisez l'irrigation et protégez vos cultures sensibles.</p>
+                        <small><i class="fas fa-clock"></i> Il y a 30 minutes</small>
+                    </div>
+                </div>
+
+                <div class="notif-item warning">
+                    <div class="notif-icon"><i class="fas fa-bug"></i></div>
+                    <div class="notif-content">
+                        <h4>🐛 Alerte ravageurs - Saison des chenilles</h4>
+                        <p>Surveillance accrue recommandée pour vos cultures de maïs. Les chenilles légionnaires sont actives en cette période dans la région des Collines.</p>
+                        <small><i class="fas fa-clock"></i> Il y a 2 heures</small>
+                    </div>
+                </div>
+
+                <div class="notif-item success">
+                    <div class="notif-icon"><i class="fas fa-shopping-bag"></i></div>
+                    <div class="notif-content">
+                        <h4>📦 Commande livrée</h4>
+                        <p>Votre commande AFRIBIO BOOST (2 sacs Standard) a été livrée à votre point relais de Bohicon. Vous pouvez la retirer dès maintenant.</p>
+                        <small><i class="fas fa-clock"></i> Il y a 5 heures</small>
+                    </div>
+                </div>
+
+                <div class="notif-item alert">
+                    <div class="notif-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div class="notif-content">
+                        <h4>⚠️ Stade critique - Fertilisation requise</h4>
+                        <p>Votre culture de tomate (Parcelle B) passe au Stade 2 dans 3 jours. Prévoyez 80kg/ha d'AFRIBIO BOOST Standard + 3L de Liquide.</p>
+                        <small><i class="fas fa-clock"></i> Hier</small>
+                    </div>
+                </div>
+
+                <div class="notif-item success">
+                    <div class="notif-icon"><i class="fas fa-trophy"></i></div>
+                    <div class="notif-content">
+                        <h4>🏆 Module de formation terminé</h4>
+                        <p>Félicitations ! Vous avez complété le Module 1 "Introduction à l'agroécologie". Passez au Module 2 dès maintenant.</p>
+                        <small><i class="fas fa-clock"></i> Il y a 2 jours</small>
+                    </div>
+                </div>
+
+                <div class="notif-item warning">
+                    <div class="notif-icon"><i class="fas fa-tint"></i></div>
+                    <div class="notif-content">
+                        <h4>💧 Rappel irrigation - Sécheresse imminente</h4>
+                        <p>Prévisions météo : 10 jours sans pluie à venir. Augmentez l'irrigation de vos cultures de maraîchage à 35mm/semaine.</p>
+                        <small><i class="fas fa-clock"></i> Il y a 3 jours</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script>
+        function markAllRead() {
+            document.querySelectorAll('.notif-item').forEach(item => {
+                item.style.opacity = '0.6';
+            });
+            showToast('Toutes les notifications ont été marquées comme lues', 'success');
+        }
+    </script>
+</body>
+</html>
