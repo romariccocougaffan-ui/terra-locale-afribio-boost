@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche Piment - AFRIBIO BOOST</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2D5016;
+            --primary-light: #4A7C23;
+            --secondary: #8B6914;
+            --accent: #D4A843;
+            --light: #FCFCFA;
+            --dark: #1A1A1A;
+            --text: #333333;
+            --text-light: #666666;
+            --border: #E0E0E0;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-hover: 0 8px 30px rgba(0,0,0,0.15);
+            --radius: 16px;
+            --radius-sm: 8px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .sidebar {
+            width: 260px;
+            height: 100vh;
+            background: linear-gradient(180deg, #2d3436 0%, #1a1a2e 100%);
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            padding: 20px 0;
+            overflow-y: auto;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 20px 20px;
+            margin: 0 12px 15px;
+            background: rgba(255,255,255,0.25);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.35);
+        }
+
+        .sidebar-logo img {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            object-fit: cover;
+            background: white;
+            padding: 3px;
+        }
+
+        .sidebar-logo .logo-text {
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .sidebar-logo .logo-text span {
+            color: var(--accent);
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 400;
+            opacity: 0.7;
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 20px 15px;
+            transition: var(--transition);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-secondary:hover { background: rgba(255,255,255,0.2); }
+
+        .sidebar-menu {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 0 12px;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            border-radius: 10px;
+            color: rgba(255,255,255,0.95);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .menu-item:hover {
+            background: rgba(255,255,255,0.08);
+            color: white;
+        }
+
+        .menu-item.active {
+            background: #2D5A27;
+            color: white;
+        }
+
+        .menu-item.active .menu-icon { color: var(--accent); }
+
+        .menu-icon {
+            width: 22px;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .menu-label { flex: 1; }
+
+        .menu-badge {
+            background: #DC2626;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 10px;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .sidebar-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 20px;
+            margin: 15px 12px 0;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .sidebar-profile:hover { background: rgba(255,255,255,0.1); }
+
+        .profile-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--accent);
+            flex-shrink: 0;
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .profile-name {
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .profile-role {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.75rem;
+        }
+
+        .profile-chevron {
+            color: rgba(255,255,255,0.4);
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        .main-wrapper {
+            margin-left: 260px;
+            min-height: 100vh;
+        }
+
+        .hero {
+            height: 300px;
+            background: linear-gradient(rgba(45, 80, 22, 0.7), rgba(45, 80, 22, 0.85)), 
+                        url('https://images.unsplash.com/photo-1588252303782-cb80119abd6d?w=1920') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            justify-content: center;
+        }
+
+        .breadcrumb a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        .breadcrumb span { color: rgba(255,255,255,0.6); }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            background: var(--light);
+        }
+
+        .culture-info-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .culture-info-image {
+            width: 200px;
+            height: 200px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            flex-shrink: 0;
+            box-shadow: var(--shadow);
+        }
+
+        .culture-info-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .culture-info-text h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .culture-info-text .subtitle {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .culture-info-meta {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .culture-info-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .culture-info-meta i {
+            color: var(--primary-light);
+        }
+
+        .steps-section {
+            margin-bottom: 3rem;
+        }
+
+        .steps-section h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .steps-section h3 i {
+            color: var(--accent);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .step-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text);
+            display: block;
+            position: relative;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--primary-light) 100%);
+            transition: var(--transition);
+        }
+
+        .step-card:hover::before {
+            width: 6px;
+        }
+
+        .step-number {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 8px rgba(45, 80, 22, 0.3);
+        }
+
+        .step-content {
+            padding: 1.5rem 1.5rem 1.5rem 2rem;
+        }
+
+        .step-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(45, 80, 22, 0.1) 0%, rgba(74, 124, 35, 0.1) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .step-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .step-desc {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .step-arrow {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-light);
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .step-card:hover .step-arrow {
+            color: var(--primary);
+            gap: 0.75rem;
+        }
+
+        .step-arrow i {
+            transition: var(--transition);
+        }
+
+        .step-card:hover .step-arrow i {
+            transform: translateX(3px);
+        }
+
+        .site-footer {
+            background: var(--primary);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .site-footer p { opacity: 0.8; font-size: 0.9rem; }
+
+        @media (max-width: 1024px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            .sidebar.open { transform: translateX(0); }
+            .main-wrapper { margin-left: 0; }
+            .menu-toggle {
+                display: block !important;
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                z-index: 1001;
+                background: var(--primary);
+                color: white;
+                border: none;
+                padding: 12px 15px;
+                border-radius: 8px;
+                cursor: pointer;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .menu-toggle { display: none !important; }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .culture-info-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .culture-info-image {
+                width: 150px;
+                height: 150px;
+            }
+            .steps-grid { grid-template-columns: 1fr; }
+            .main-content { padding: 2rem 1rem; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .step-card {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .step-card:nth-child(1) { animation-delay: 0.05s; }
+        .step-card:nth-child(2) { animation-delay: 0.1s; }
+        .step-card:nth-child(3) { animation-delay: 0.15s; }
+        .step-card:nth-child(4) { animation-delay: 0.2s; }
+        .step-card:nth-child(5) { animation-delay: 0.25s; }
+        .step-card:nth-child(6) { animation-delay: 0.3s; }
+        .step-card:nth-child(7) { animation-delay: 0.35s; }
+        .step-card:nth-child(8) { animation-delay: 0.4s; }
+        .step-card:nth-child(9) { animation-delay: 0.45s; }
+        .step-card:nth-child(10) { animation-delay: 0.5s; }
+        .step-card:nth-child(11) { animation-delay: 0.55s; }
+        .step-card:nth-child(12) { animation-delay: 0.6s; }
+        .step-card:nth-child(13) { animation-delay: 0.65s; }
+    </style>
+<base target="_blank">
+<base target="_blank">
+</head>
+<body>
+
+    <aside class="sidebar" id="sidebar">
+        <button class="btn-secondary"><i class="fas fa-calendar"></i> <span id="date-jour"></span></button>
+        <div class="sidebar-logo">
+            <img src="assets/images/logosans.png" alt="Logo AFRIBIO BOOST">
+            <div class="logo-text">
+                AFRIBIO BOOST
+                <span>Agriculture intelligente</span>
+            </div>
+        </div>
+        <nav class="sidebar-menu">
+            <a href="index.html" class="menu-item">
+                <i class="fas fa-home menu-icon"></i>
+                <span class="menu-label">Tableau de bord</span>
+            </a>
+            <a href="production.html" class="menu-item active">
+                <i class="fas fa-seedling menu-icon"></i>
+                <span class="menu-label">Production végétale</span>
+            </a>
+            <a href="suivi.html" class="menu-item">
+                <i class="fas fa-chart-line menu-icon"></i>
+                <span class="menu-label">Suivi personnalisé</span>
+            </a>
+            <a href="boutique.html" class="menu-item">
+                <i class="fas fa-shopping-cart menu-icon"></i>
+                <span class="menu-label">Boutique</span>
+            </a>
+            <a href="formation.html" class="menu-item">
+                <i class="fas fa-graduation-cap menu-icon"></i>
+                <span class="menu-label">Formation</span>
+            </a>
+            <a href="communaute.html" class="menu-item">
+                <i class="fas fa-users menu-icon"></i>
+                <span class="menu-label">Communauté</span>
+                <span class="menu-badge">12</span>
+            </a>
+            <a href="notifications.html" class="menu-item">
+                <i class="fas fa-bell menu-icon"></i>
+                <span class="menu-label">Notifications</span>
+                <span class="menu-badge">3</span>
+            </a>
+            <a href="impact.html" class="menu-item">
+                <i class="fas fa-leaf menu-icon"></i>
+                <span class="menu-label">Impact écologique</span>
+            </a>
+        </nav>
+        <div class="sidebar-profile">
+            <div class="profile-avatar">
+                <img src="assets/images/profil.png" alt="Photo de profil">
+            </div>
+            <div class="profile-info">
+                <div class="profile-name">GAFFAN Romaric</div>
+                <div class="profile-role">Agronome - Béninois</div>
+            </div>
+            <div class="profile-chevron">›</div>
+        </div>
+    </aside>
+
+    <button class="menu-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="main-wrapper">
+        <section class="hero">
+            <div class="hero-content">
+                <h1><i class="fas fa-pepper-hot"></i> Fiche Technique : Piment</h1>
+                <p>Guide complet de production pour une culture rentable du piment en conditions tropicales</p>
+                <div class="breadcrumb">
+                    <a href="index.html">Accueil</a>
+                    <i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                    <a href="production.html">Production végétale</a>
+                    <i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                    <span>Piment</span>
+                </div>
+            </div>
+        </section>
+
+        <main class="main-content">
+            <div class="culture-info-header">
+                <div class="culture-info-image">
+                    <img src="https://images.unsplash.com/photo-1568283089353-8f3a1d15b57b?w=800" alt="Piment">
+                </div>
+                <div class="culture-info-text">
+                    <h2><i class="fas fa-pepper-hot" style="color: var(--accent);"></i> Piment (Capsicum annuum & Capsicum frutescens)</h2>
+                    <p class="subtitle">Culture de rente très prisée en Afrique de l'Ouest, le piment est indispensable en cuisine locale et offre d'excellentes opportunités de marché.</p>
+                    <div class="culture-info-meta">
+                        <span><i class="fas fa-clock"></i> Cycle : 120-150 jours</span>
+                        <span><i class="fas fa-tint"></i> Besoin : Irrigué</span>
+                        <span><i class="fas fa-thermometer-half"></i> Température : 20-30°C</span>
+                        <span><i class="fas fa-sun"></i> Ensoleillement : Élevé</span>
+                        <span><i class="fas fa-mountain"></i> Sol : Léger, riche, drainé</span>
+                        <span><i class="fas fa-globe-africa"></i> Zone : Tropicale</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="steps-section">
+                <h3><i class="fas fa-tasks"></i> Les 13 étapes de production</h3>
+                <div class="steps-grid">
+
+                    <a href="preparation-du-sol-piment.html" class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <div class="step-icon"><i class="fas fa-tractor"></i></div>
+                            <h4 class="step-title">Préparation du sol</h4>
+                            <p class="step-desc">Labourage profond, amendements organiques et création de buttes pour assurer le drainage optimal du piment.</p>
+                            <div class="step-arrow">Voir les détails <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </a>
+
+                    <a href="fertilisation-fond-piment.html" class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <div class="step-icon"><i class="fas fa-flask"></i></div>
+                            <h4 class="step-title">Fertilisation de fond</h4>
+                            <p class="step-desc">Apport des engrais de base riches en phosphore et potassium pour stimuler le développement racinaire et la floraison.</p>
+                            <div class="step-arrow">Voir les détails <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </a>
+
+                    <a href="choix-varietal-piment.html" class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <div class="step-icon"><i class="fas fa-dna"></i></div>
+                            <h4 class="step-title">Choix variétal</h4>
+                            <p class="step-desc">Sélection parmi les variétés locales (Ata Rodo, Tokoin) et améliorées adaptées aux marchés frais et de transformation.</p>
+                            <div class="step-arrow">Voir les détails <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </a>
+
+                    <a href="pepiniere-semis-piment.html" class="step-card">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <div class="step-icon"><i class="fas fa-seedling"></i></div>
+                            <h4 class="step-title">Pépinière / Semis</h4>
+                            <p class="step-desc">Semis en godets avec substrat stérile, conditions de chaleur et d'humidité pour une levée rapide en 7-10 jours.</p>
+                            <div class="step-arrow">Voir les détails <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </a>
+
+                    <a href="transplantation-piment.html" class="step-card">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <div class="step-icon"><i class="fas fa-exchange-alt"></i></div>
+                            <h4 class="step-title">Transplantation</h4>
+                            <p class="step-desc">Repiquage à 40-50 cm d'écartement sur buttes, arrosage de reprise et protection contre l'ensoleillement direct initial.</p>
+                            <div class="step-arrow">Voir les détails <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </a>
+
+                    <a href="irrigation-piment.html" class="step-card">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <div class="step-icon"><i class="fas fa-tint"></i></div>
+                            <h4 class="step-title">Irrigation</h4>
+                            <p class="step-desc">Gestion rigoureuse de l'eau : le piment est exigeant en humidité mais très sensible au pourrissement racinaire.</p>
+                            <div class="step-arrow">Voir les détails <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </a>
+
+                    <a href="fertilisation-entretien-piment.html" class="step-card">
+                        <div class="step-number">7</div>
+                        <div class="step-content">
+                            <div class="step-icon"><i class="fas fa-leaf"></i></div>
+                            <h4 class="step-title">Fertilisation d'entretien</h4>
+                            <p class="step-desc">Apports fractionnés en azote et potassium, fertilisations foliaires au bore pour prévenir la chute florale.</p>
+                            <div class="step-arrow">Voir les détails <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </a>
+
+                    <a href="tuteurage-taille-piment.html" class="step-card">
+                        <div class="step-number">8</div>
+                        <div class="step-content">
+                            <div class="step-icon"><i class="fas fa-tools"></i></div>
+                            <h4 class="step-title">Tuteurage et taille</h4>
+                            <p class="step-desc">Conduite des plants buissonnants ou grimpants, éclaircissage et suppression des branches basses pour aérer la culture.</p>
+                            <div class="step-arrow">Voir les détails <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </a>
+
+                    <a href="desherbage-piment.html" class="step-card">
+                        <div class="step-number">9</div>
+                        <div class="step-content">
+                            <div class="step-icon"><i class="fas fa-cut"></i></div>
+                            <h4 class="step-title">Désherbage</h4>
+                            <p class="step-desc">Sarclage régulier et paillage pour limiter la concurrence des adventices et maintenir la température du sol.</p>
+                            <div class="step-arrow">Voir les détails <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </a>
+
+                    <a href="protection-phytosanitaire-piment.html" class="step-card">
+                        <div class="step-number">10</div>
+                        <div class="step-content">
+                            <div class="step-icon"><i class="fas fa-shield-alt"></i></div>
+                            <h4 class="step-title">Protection phytosanitaire</h4>
+                            <p class="step-desc">Lutte intégrée contre l'anthracnose, le mildiou, les thrips et les pucerons vecteurs de virus.</p>
+                            <div class="step-arrow">Voir les détails <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </a>
+
+                    <a href="floraison-nouaison-piment.html" class="step-card">
+                        <div class="step-number">11</div>
+                        <div class="step-content">
+                            <div class="step-icon"><i class="fas fa-flower"></i></div>
+                            <h4 class="step-title">Floraison et nouaison</h4>
+                            <p class="step-desc">Gestion de la floraison, prévention de la chute florale par stress hydrique et apport de micro-éléments.</p>
+                            <div class="step-arrow">Voir les détails <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </a>
+
+                    <a href="recolte-piment.html" class="step-card">
+                        <div class="step-number">12</div>
+                        <div class="step-content">
+                            <div class="step-icon"><i class="fas fa-hand-holding"></i></div>
+                            <h4 class="step-title">Récolte</h4>
+                            <p class="step-desc">Cueillette sélective selon le stade de maturité et le marché visé : vert, rouge ou sec.</p>
+                            <div class="step-arrow">Voir les détails <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </a>
+
+                    <a href="post-recolte-piment.html" class="step-card">
+                        <div class="step-number">13</div>
+                        <div class="step-content">
+                            <div class="step-icon"><i class="fas fa-shopping-cart"></i></div>
+                            <h4 class="step-title">Post-récolte et commercialisation</h4>
+                            <p class="step-desc">Séchage, transformation en poudre ou pâte, conditionnement et accès aux marchés locaux et urbains.</p>
+                            <div class="step-arrow">Voir les détails <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="site-footer">
+        <p>© 2026 TERRA LOCALE - AFRIBIO BOOST - Tous droits réservés</p>
+    </footer>
+
+    <script>
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('date-jour').textContent = new Date().toLocaleDateString('fr-FR', options);
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.step-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

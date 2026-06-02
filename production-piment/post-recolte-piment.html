@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post-récolte et commercialisation - Piment - AFRIBIO BOOST</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2D5016; --primary-light: #4A7C23; --secondary: #8B6914;
+            --accent: #D4A843; --light: #FCFCFA; --dark: #1A1A1A;
+            --text: #333333; --text-light: #666666; --border: #E0E0E0;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08); --shadow-hover: 0 8px 30px rgba(0,0,0,0.15);
+            --radius: 16px; --radius-sm: 8px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: var(--light); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+        .sidebar { width: 260px; height: 100vh; background: linear-gradient(180deg, #2d3436 0%, #1a1a2e 100%); position: fixed; left: 0; top: 0; z-index: 1000; display: flex; flex-direction: column; padding: 20px 0; overflow-y: auto; border-right: 1px solid rgba(255,255,255,0.1); }
+        .sidebar-logo { display: flex; align-items: center; gap: 12px; padding: 15px 20px 20px; margin: 0 12px 15px; background: rgba(255,255,255,0.25); border-radius: 12px; border: 1px solid rgba(255,255,255,0.35); }
+        .sidebar-logo img { width: 45px; height: 45px; border-radius: 10px; object-fit: cover; background: white; padding: 3px; }
+        .sidebar-logo .logo-text { color: white; font-weight: 700; font-size: 1.1rem; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+        .sidebar-logo .logo-text span { color: var(--accent); display: block; font-size: 0.75rem; font-weight: 400; opacity: 0.7; }
+        .btn-secondary { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 8px 15px; border-radius: 8px; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 8px; margin: 0 20px 15px; transition: var(--transition); font-family: 'Poppins', sans-serif; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.2); }
+        .sidebar-menu { flex: 1; display: flex; flex-direction: column; gap: 4px; padding: 0 12px; }
+        .menu-item { display: flex; align-items: center; gap: 12px; padding: 12px 15px; border-radius: 10px; color: rgba(255,255,255,0.95); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: var(--transition); position: relative; }
+        .menu-item:hover { background: rgba(255,255,255,0.08); color: white; }
+        .menu-item.active { background: #2D5A27; color: white; }
+        .menu-item.active .menu-icon { color: var(--accent); }
+        .menu-icon { width: 22px; text-align: center; font-size: 1rem; }
+        .menu-label { flex: 1; }
+        .menu-badge { background: #DC2626; color: white; font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; min-width: 20px; text-align: center; }
+        .sidebar-profile { display: flex; align-items: center; gap: 12px; padding: 15px 20px; margin: 15px 12px 0; background: rgba(255,255,255,0.05); border-radius: 12px; cursor: pointer; transition: var(--transition); }
+        .sidebar-profile:hover { background: rgba(255,255,255,0.1); }
+        .profile-avatar { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; border: 2px solid var(--accent); flex-shrink: 0; }
+        .profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .profile-info { flex: 1; min-width: 0; }
+        .profile-name { color: white; font-size: 0.85rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .profile-role { color: rgba(255,255,255,0.5); font-size: 0.75rem; }
+        .profile-chevron { color: rgba(255,255,255,0.4); font-size: 1.2rem; font-weight: 300; }
+        .main-wrapper { margin-left: 260px; min-height: 100vh; }
+        .hero { height: 280px; background: linear-gradient(rgba(45, 80, 22, 0.7), rgba(45, 80, 22, 0.85)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; color: white; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.5; }
+        .hero-content { position: relative; z-index: 1; }
+        .hero h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .hero p { font-size: 1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+        .breadcrumb { display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem; font-size: 0.85rem; opacity: 0.8; justify-content: center; flex-wrap: wrap; }
+        .breadcrumb a { color: var(--accent); text-decoration: none; transition: var(--transition); }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { color: rgba(255,255,255,0.6); }
+        .main-content { max-width: 900px; margin: 0 auto; padding: 3rem 2rem; background: var(--light); }
+        .article-header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 3px solid var(--primary); }
+        .article-header .step-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; padding: 0.5rem 1.2rem; border-radius: 30px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
+        .article-header h2 { font-size: 2rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+        .article-header .subtitle { color: var(--text-light); font-size: 1rem; }
+        .article-content { background: white; border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow); }
+        .article-content h3 { font-size: 1.3rem; font-weight: 600; color: var(--primary); margin: 2rem 0 1rem; display: flex; align-items: center; gap: 0.75rem; }
+        .article-content h3:first-child { margin-top: 0; }
+        .article-content h3 i { color: var(--accent); font-size: 1.1rem; }
+        .article-content p { color: var(--text); font-size: 1rem; line-height: 1.8; margin-bottom: 1rem; text-align: justify; }
+        .article-content ul { margin: 1rem 0 1.5rem 1.5rem; color: var(--text); }
+        .article-content ul li { margin-bottom: 0.6rem; line-height: 1.7; }
+        .article-content ul li::marker { color: var(--primary-light); }
+        .highlight-box { background: linear-gradient(135deg, rgba(45, 80, 22, 0.05) 0%, rgba(74, 124, 35, 0.05) 100%); border-left: 4px solid var(--primary); padding: 1.2rem 1.5rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+        .highlight-box p { margin: 0; font-size: 0.95rem; }
+        .highlight-box strong { color: var(--primary); }
+        .warning-box { background: linear-gradient(135deg, rgba(220, 38, 38, 0.05) 0%, rgba(220, 38, 38, 0.02) 100%); border-left: 4px solid #DC2626; padding: 1.2rem 1.5rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+        .warning-box p { margin: 0; font-size: 0.95rem; }
+        .warning-box strong { color: #DC2626; }
+        .tip-box { background: linear-gradient(135deg, rgba(212, 168, 67, 0.08) 0%, rgba(212, 168, 67, 0.03) 100%); border-left: 4px solid var(--accent); padding: 1.2rem 1.5rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+        .tip-box p { margin: 0; font-size: 0.95rem; }
+        .tip-box strong { color: var(--secondary); }
+        .step-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+        .step-nav a { display: flex; align-items: center; gap: 0.75rem; padding: 0.8rem 1.5rem; background: white; border: 2px solid var(--primary); color: var(--primary); border-radius: var(--radius-sm); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: var(--transition); }
+        .step-nav a:hover { background: var(--primary); color: white; }
+        .step-nav a.disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+        .step-nav .nav-center { text-align: center; color: var(--text-light); font-size: 0.85rem; }
+        .step-nav .nav-center span { display: block; font-weight: 600; color: var(--primary); font-size: 1rem; }
+        .site-footer { background: var(--primary); color: white; padding: 2rem; text-align: center; margin-top: 3rem; }
+        .site-footer p { opacity: 0.8; font-size: 0.9rem; }
+        @media (max-width: 1024px) { .sidebar { transform: translateX(-100%); transition: transform 0.3s ease; } .sidebar.open { transform: translateX(0); } .main-wrapper { margin-left: 0; } .menu-toggle { display: block !important; position: fixed; top: 20px; left: 20px; z-index: 1001; background: var(--primary); color: white; border: none; padding: 12px 15px; border-radius: 8px; cursor: pointer; font-size: 1.2rem; } }
+        @media (min-width: 1025px) { .menu-toggle { display: none !important; } }
+        @media (max-width: 768px) { .hero h1 { font-size: 1.8rem; } .article-content { padding: 1.5rem; } .main-content { padding: 2rem 1rem; } .step-nav { flex-direction: column; gap: 1rem; } .step-nav a { width: 100%; justify-content: center; } }
+    </style>
+<base target="_blank">
+<base target="_blank">
+</head>
+<body>
+    <aside class="sidebar" id="sidebar">
+        <button class="btn-secondary"><i class="fas fa-calendar"></i> <span id="date-jour"></span></button>
+        <div class="sidebar-logo">
+            <img src="assets/images/logosans.png" alt="Logo AFRIBIO BOOST">
+            <div class="logo-text">AFRIBIO BOOST<span>Agriculture intelligente</span></div>
+        </div>
+        <nav class="sidebar-menu">
+            <a href="index.html" class="menu-item"><i class="fas fa-home menu-icon"></i><span class="menu-label">Tableau de bord</span></a>
+            <a href="production.html" class="menu-item active"><i class="fas fa-seedling menu-icon"></i><span class="menu-label">Production végétale</span></a>
+            <a href="suivi.html" class="menu-item"><i class="fas fa-chart-line menu-icon"></i><span class="menu-label">Suivi personnalisé</span></a>
+            <a href="boutique.html" class="menu-item"><i class="fas fa-shopping-cart menu-icon"></i><span class="menu-label">Boutique</span></a>
+            <a href="formation.html" class="menu-item"><i class="fas fa-graduation-cap menu-icon"></i><span class="menu-label">Formation</span></a>
+            <a href="communaute.html" class="menu-item"><i class="fas fa-users menu-icon"></i><span class="menu-label">Communauté</span><span class="menu-badge">12</span></a>
+            <a href="notifications.html" class="menu-item"><i class="fas fa-bell menu-icon"></i><span class="menu-label">Notifications</span><span class="menu-badge">3</span></a>
+            <a href="impact.html" class="menu-item"><i class="fas fa-leaf menu-icon"></i><span class="menu-label">Impact écologique</span></a>
+        </nav>
+        <div class="sidebar-profile">
+            <div class="profile-avatar"><img src="assets/images/profil.png" alt="Photo de profil"></div>
+            <div class="profile-info"><div class="profile-name">GAFFAN Romaric</div><div class="profile-role">Agronome - Béninois</div></div>
+            <div class="profile-chevron">›</div>
+        </div>
+    </aside>
+    <button class="menu-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')"><i class="fas fa-bars"></i></button>
+    <div class="main-wrapper">
+        <section class="hero">
+            <div class="hero-content">
+                <h1><i class="fas fa-shopping-cart"></i> Post-récolte et commercialisation</h1>
+                <p>Transformation, conditionnement et accès aux marchés pour valoriser la production</p>
+                <div class="breadcrumb">
+                    <a href="index.html">Accueil</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                    <a href="production.html">Production</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                    <a href="culture-piment.html">Piment</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                    <span>Post-récolte</span>
+                </div>
+            </div>
+        </section>
+        <main class="main-content">
+            <div class="article-header">
+                <div class="step-badge"><i class="fas fa-hashtag"></i> Étape 13 sur 13</div>
+                <h2>Post-récolte et commercialisation du piment</h2>
+                <p class="subtitle">Valoriser la récolte par la transformation, le conditionnement et l'accès aux marchés</p>
+            </div>
+            <div class="article-content">
+                <h3><i class="fas fa-fire"></i> Transformation : ajouter de la valeur</h3>
+                <p>Le piment est l'un des légumes qui se prête le mieux à la transformation, ce qui permet de stabiliser les prix, réduire les pertes post-récolte et accéder à des marchés plus rémunérateurs. Contrairement à la tomate qui se transforme principalement en concentré, le piment offre une diversité de produits :</p>
+
+                <ul>
+                    <li><strong>Pâte de piment fraîche :</strong> broyez les piments rouges mûrs avec un peu d'huile, de sel et d'ail. Stérilisez par ébullition (15 minutes) et mettez en pots hermétiques. Conservation : 3-6 mois à température ambiante. Marché : local, diaspora africaine en Europe. Prix : 3-5 fois le prix du piment frais au kilo.</li>
+                    <li><strong>Poudre de piment :</strong> séchez les fruits mûrs au soleil (3-5 jours) ou au four solaire (2 jours), puis broyez finement. Tamisez pour obtenir une poudre homogène. Conservation : 6-12 mois dans des sacs hermétiques à l'abri de l'humidité. Marché : épicerie locale, supermarchés, export. C'est la transformation la plus rentable.</li>
+                    <li><strong>Piment séché entier :</strong> séchez les fruits complets (Cayenne, Bird Eye) au soleil ou en séchoir (50-60°C). Conservation : 12 mois. Marché : restaurants, transformation industrielle, export vers l'Europe et l'Asie.</li>
+                    <li><strong>Sauce piquante :</strong> fermentation lactique des piments broyés avec du sel (3-5%) dans des récipients clos pendant 2-4 semaines. Produit premium très demandé. Conservation : 6-12 mois.</li>
+                    <li><strong>Piment confit / mariné :</strong> piments verts conservés dans du vinaigre avec des épices. Marché : gastronomie, hôtellerie.</li>
+                    <li><strong>Huile pimentée :</strong> macération de piments secs dans de l'huile végétale chauffée. Produit à forte valeur ajoutée, très prisé en cuisine asiatique et africaine.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong>À retenir :</strong> La transformation du piment en poudre ou pâte multiplie par 3 à 5 la valeur du produit et élimine le problème de la conservation. Un producteur qui transforme 20% de sa récolte peut doubler son revenu net.</p>
+                </div>
+
+                <h3><i class="fas fa-sun"></i> Techniques de séchage</h3>
+                <p>Le séchage est la transformation la plus accessible et la plus rentable pour le piment. Voici les méthodes adaptées à l'Afrique rurale :</p>
+
+                <p><strong>Séchage au soleil (traditionnel) :</strong> étalez les fruits en couche unique sur des claies en treillis ou des nattes propres, en plein soleil. Retournez les fruits tous les jours. Durée : 3-5 jours selon l'ensoleillement. Protégez la nuit et en cas de pluie avec des bâches transparentes. Risque : contamination par la poussière, les insectes et l'humidité nocturne. Qualité : moyenne.</p>
+
+                <p><strong>Séchoir solaire amélioré :</strong> construisez une boîte en bois avec un couvercle vitré, des ouvertures d'aération et des claies à l'intérieur. Le séchoir capte la chaleur solaire et protège des insectes. Température interne : 45-55°C. Durée : 2-3 jours. Qualité : bonne. Coût : faible (bois local, vitre récupérée).</p>
+
+                <p><strong>Séchoir à énergie mixte :</strong> pour les coopératives ou les unités de transformation, un séchoir alimenté par biomasse (résidus de culture) avec ventilateur permet un séchage contrôlé à 50-60°C indépendamment du soleil. Durée : 24-36 heures. Qualité : excellente, couleur conservée. Investissement : 500 000 à 2 000 000 FCFA selon la capacité.</p>
+
+                <p><strong>Précautions :</strong> le séchage doit être rapide et homogène. Un séchage trop lent ou à température >65°C dégrade la couleur (brunissement) et le piquant (perte de capsaïcine). La teneur en eau finale doit être <10% pour éviter la moisissure.</p>
+
+                <div class="tip-box">
+                    <p><strong>Astuce AFRIBIO :</strong> Pour un séchage rapide et hygiénique au soleil, utilisez des moustiquaires tendues sur des cadres en bois. Les fruits sont exposés au soleil mais protégés des mouches, des poussières et des oiseaux. Cette technique, utilisée au Sénégal et au Mali, améliore la qualité microbiologique et réduit le séchage de 1 jour.</p>
+                </div>
+
+                <h3><i class="fas fa-box-open"></i> Conditionnement et stockage</h3>
+                <p>Le conditionnement du piment transformé est crucial pour la conservation et la commercialisation :</p>
+                <ul>
+                    <li><strong>Poudre :</strong> conditionnez dans des sachets en aluminium thermoscellés ou des pots en verre avec couvercle hermétique. Ajoutez un sachet déshydratant (silice) pour absorber l'humidité résiduelle. Étiquetez avec la date de production, la variété et le piquant approximatif.</li>
+                    <li><strong>Pâte :</strong> pots en verre stérilisés, remplis à chaud, fermeture hermétique. Conservation à température ambiante une fois ouverts : 2-3 semaines au réfrigérateur.</li>
+                    <li><strong>Frisés / séchés entiers :</strong> sacs en polypropylène tissé de 10-25 kg, stockés en hauteur sur des palettes dans un local ventilé et sec. Surveillez régulièrement l'humidité et la présence d'insectes.</li>
+                    <li><strong>Stockage :</strong> local propre, sec, ventilé, à l'abri de la lumière directe. Température < 25°C, humidité relative < 60%. Pour les piments frais, utilisez des clayettes en bois ou des cagettes perforées, jamais empilées directement sur le sol.</li>
+                </ul>
+
+                <h3><i class="fas fa-store"></i> Circuits de commercialisation</h3>
+                <p>Le piment africain dispose de plusieurs débouchés, du plus local au plus international :</p>
+
+                <ul>
+                    <li><strong>Marché local direct (souks, marchés ruraux) :</strong> vente en vrac, prix fluctuant selon l'offre (500-1 500 FCFA/kg selon la saison). Avantage : paiement immédiat, pas de transport long. Inconvénient : prix bas, concurrence forte.</li>
+                    <li><strong>Marché urbain (supermarchés, grossistes) :</strong> vente en cagettes calibrées, prix plus stable (1 500-3 000 FCFA/kg). Exigences : qualité homogène, absence de pesticides, conditionnement propre. Contrats possibles avec les chaînes de supermarchés.</li>
+                    <li><strong>Transformation industrielle :</strong> vente en gros aux unités de production de pâte, sauce ou poudre. Prix contractuel (800-1 500 FCFA/kg). Avantage : volumes importants, régularité. Inconvénient : dépendance à un seul acheteur, normes strictes.</li>
+                    <li><strong>Restauration et hôtellerie :</strong> niche premium pour les variétés spécifiques (Habanero, poivrons). Prix élevé (3 000-8 000 FCFA/kg). Exigences : qualité gustative, traçabilité, livraison régulière.</li>
+                    <li><strong>Export sous-régional :</strong> CEDEAO, CEMAC. Piment sec ou poudre. Prix : 2-4 €/kg. Exigences : conformité phytosanitaire, emballage standardisé, certificat d'origine.</li>
+                    <li><strong>Export international (Europe, Amérique, Asie) :</strong> poudre, piments secs, pâte. Prix : 5-15 €/kg selon la qualité. Exigences : normes GlobalGAP, HACCP, analyses de résidus, emballage attractif, traçabilité complète.</li>
+                </ul>
+
+                <div class="warning-box">
+                    <p><strong>Attention :</strong> Les marchés d'export et les supermarchés urbains exigent de plus en plus des analyses de résidus de pesticides et des certificats phytosanitaires. Si vous visez ces marchés, tenez un registre de traitements, respectez les doses et les délais de sécurité (PHI), et faites analyser vos sols et produits avant la commercialisation.</p>
+                </div>
+
+                <h3><i class="fas fa-truck"></i> Logistique et transport</h3>
+                <p>Le transport du piment en zone tropicale est critique car la chaleur et les vibrations accélèrent la dégradation :</p>
+                <ul>
+                    <li><strong>Transport des frais :</strong> utilisez des véhicules ventilés ou climatisés si possible. Les camions fermés doivent être chargés tôt le matin ou tard le soir. Durée maximale transport : 12 heures pour les rouges, 24 heures pour les verts. Utilisez des cagettes perforées et ne surchargez pas (max 20 kg par cagette).</li>
+                    <li><strong>Transport des transformés :</strong> la poudre et les piments secs supportent bien le transport. Protégez de l'humidité avec des bâches en cas de pluie. La pâte doit être transportée à l'ombre et rapidement.</li>
+                    <li><strong>Traçabilité :</strong> pour les marchés structurés, mettez en place un système simple de traçabilité (date de récolte, parcelle, variété, traitements). Cela rassure les acheteurs et facilite l'accès aux marchés premium.</li>
+                </ul>
+
+                <h3><i class="fas fa-chart-line"></i> Stratégie de commercialisation AFRIBIO</h3>
+                <p>Notre recommandation pour maximiser la rentabilité :</p>
+                <ul>
+                    <li><strong>50% de la production :</strong> vendue fraîche sur les marchés locaux et urbains pour assurer le cash-flow immédiat.</li>
+                    <li><strong>30% de la production :</strong> transformée en poudre ou pâte pour le marché national et sous-régional (meilleure marge, conservation longue).</li>
+                    <li><strong>20% de la production :</strong> réservée à la production de semences de qualité ou vendue aux transformateurs industriels sous contrat.</li>
+                </ul>
+
+                <p>Cette diversification réduit les risques liés aux fluctuations de prix du marché frais et augmente significativement le revenu moyen par hectare. Un producteur qui transforme 30% de sa récolte peut voir son revenu augmenter de 60 à 80% par rapport à la vente intégrale en frais.</p>
+
+                <h3><i class="fas fa-check-circle"></i> Points de contrôle final</h3>
+                <ul>
+                    <li>Les produits transformés sont conditionnés hermétiquement et étiquetés.</li>
+                    <li>Le stockage est sec, ventilé et protégé de la lumière.</li>
+                    <li>Les circuits de vente sont identifiés et les contacts établis avant la récolte.</li>
+                    <li>Les normes phytosanitaires et les délais de sécurité sont respectés pour les marchés exigeants.</li>
+                    <li>La traçabilité est assurée (registre de production, traitements, récolte).</li>
+                    <li>La stratégie de commercialisation diversifie les débouchés pour réduire les risques.</li>
+                </ul>
+            </div>
+            <div class="step-nav">
+                <a href="recolte-piemnt.html"><i class="fas fa-arrow-left"></i> Étape précédente</a>
+                <div class="nav-center"><span>Piment</span>Étape 13 / 13</div>
+                <a href="culture-piment.html" class="disabled">Retour à la fiche <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </main>
+    </div>
+    <footer class="site-footer"><p>© 2026 TERRA LOCALE - AFRIBIO BOOST - Tous droits réservés</p></footer>
+    <script>
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('date-jour').textContent = new Date().toLocaleDateString('fr-FR', options);
+    </script>
+</body>
+</html>

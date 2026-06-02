@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floraison et nouaison - Piment - AFRIBIO BOOST</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2D5016; --primary-light: #4A7C23; --secondary: #8B6914;
+            --accent: #D4A843; --light: #FCFCFA; --dark: #1A1A1A;
+            --text: #333333; --text-light: #666666; --border: #E0E0E0;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08); --shadow-hover: 0 8px 30px rgba(0,0,0,0.15);
+            --radius: 16px; --radius-sm: 8px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: var(--light); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+        .sidebar { width: 260px; height: 100vh; background: linear-gradient(180deg, #2d3436 0%, #1a1a2e 100%); position: fixed; left: 0; top: 0; z-index: 1000; display: flex; flex-direction: column; padding: 20px 0; overflow-y: auto; border-right: 1px solid rgba(255,255,255,0.1); }
+        .sidebar-logo { display: flex; align-items: center; gap: 12px; padding: 15px 20px 20px; margin: 0 12px 15px; background: rgba(255,255,255,0.25); border-radius: 12px; border: 1px solid rgba(255,255,255,0.35); }
+        .sidebar-logo img { width: 45px; height: 45px; border-radius: 10px; object-fit: cover; background: white; padding: 3px; }
+        .sidebar-logo .logo-text { color: white; font-weight: 700; font-size: 1.1rem; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+        .sidebar-logo .logo-text span { color: var(--accent); display: block; font-size: 0.75rem; font-weight: 400; opacity: 0.7; }
+        .btn-secondary { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 8px 15px; border-radius: 8px; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 8px; margin: 0 20px 15px; transition: var(--transition); font-family: 'Poppins', sans-serif; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.2); }
+        .sidebar-menu { flex: 1; display: flex; flex-direction: column; gap: 4px; padding: 0 12px; }
+        .menu-item { display: flex; align-items: center; gap: 12px; padding: 12px 15px; border-radius: 10px; color: rgba(255,255,255,0.95); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: var(--transition); position: relative; }
+        .menu-item:hover { background: rgba(255,255,255,0.08); color: white; }
+        .menu-item.active { background: #2D5A27; color: white; }
+        .menu-item.active .menu-icon { color: var(--accent); }
+        .menu-icon { width: 22px; text-align: center; font-size: 1rem; }
+        .menu-label { flex: 1; }
+        .menu-badge { background: #DC2626; color: white; font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; min-width: 20px; text-align: center; }
+        .sidebar-profile { display: flex; align-items: center; gap: 12px; padding: 15px 20px; margin: 15px 12px 0; background: rgba(255,255,255,0.05); border-radius: 12px; cursor: pointer; transition: var(--transition); }
+        .sidebar-profile:hover { background: rgba(255,255,255,0.1); }
+        .profile-avatar { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; border: 2px solid var(--accent); flex-shrink: 0; }
+        .profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .profile-info { flex: 1; min-width: 0; }
+        .profile-name { color: white; font-size: 0.85rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .profile-role { color: rgba(255,255,255,0.5); font-size: 0.75rem; }
+        .profile-chevron { color: rgba(255,255,255,0.4); font-size: 1.2rem; font-weight: 300; }
+        .main-wrapper { margin-left: 260px; min-height: 100vh; }
+        .hero { height: 280px; background: linear-gradient(rgba(45, 80, 22, 0.7), rgba(45, 80, 22, 0.85)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; color: white; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.5; }
+        .hero-content { position: relative; z-index: 1; }
+        .hero h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .hero p { font-size: 1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+        .breadcrumb { display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem; font-size: 0.85rem; opacity: 0.8; justify-content: center; flex-wrap: wrap; }
+        .breadcrumb a { color: var(--accent); text-decoration: none; transition: var(--transition); }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { color: rgba(255,255,255,0.6); }
+        .main-content { max-width: 900px; margin: 0 auto; padding: 3rem 2rem; background: var(--light); }
+        .article-header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 3px solid var(--primary); }
+        .article-header .step-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; padding: 0.5rem 1.2rem; border-radius: 30px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
+        .article-header h2 { font-size: 2rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+        .article-header .subtitle { color: var(--text-light); font-size: 1rem; }
+        .article-content { background: white; border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow); }
+        .article-content h3 { font-size: 1.3rem; font-weight: 600; color: var(--primary); margin: 2rem 0 1rem; display: flex; align-items: center; gap: 0.75rem; }
+        .article-content h3:first-child { margin-top: 0; }
+        .article-content h3 i { color: var(--accent); font-size: 1.1rem; }
+        .article-content p { color: var(--text); font-size: 1rem; line-height: 1.8; margin-bottom: 1rem; text-align: justify; }
+        .article-content ul { margin: 1rem 0 1.5rem 1.5rem; color: var(--text); }
+        .article-content ul li { margin-bottom: 0.6rem; line-height: 1.7; }
+        .article-content ul li::marker { color: var(--primary-light); }
+        .highlight-box { background: linear-gradient(135deg, rgba(45, 80, 22, 0.05) 0%, rgba(74, 124, 35, 0.05) 100%); border-left: 4px solid var(--primary); padding: 1.2rem 1.5rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+        .highlight-box p { margin: 0; font-size: 0.95rem; }
+        .highlight-box strong { color: var(--primary); }
+        .warning-box { background: linear-gradient(135deg, rgba(220, 38, 38, 0.05) 0%, rgba(220, 38, 38, 0.02) 100%); border-left: 4px solid #DC2626; padding: 1.2rem 1.5rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+        .warning-box p { margin: 0; font-size: 0.95rem; }
+        .warning-box strong { color: #DC2626; }
+        .tip-box { background: linear-gradient(135deg, rgba(212, 168, 67, 0.08) 0%, rgba(212, 168, 67, 0.03) 100%); border-left: 4px solid var(--accent); padding: 1.2rem 1.5rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+        .tip-box p { margin: 0; font-size: 0.95rem; }
+        .tip-box strong { color: var(--secondary); }
+        .step-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+        .step-nav a { display: flex; align-items: center; gap: 0.75rem; padding: 0.8rem 1.5rem; background: white; border: 2px solid var(--primary); color: var(--primary); border-radius: var(--radius-sm); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: var(--transition); }
+        .step-nav a:hover { background: var(--primary); color: white; }
+        .step-nav a.disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+        .step-nav .nav-center { text-align: center; color: var(--text-light); font-size: 0.85rem; }
+        .step-nav .nav-center span { display: block; font-weight: 600; color: var(--primary); font-size: 1rem; }
+        .site-footer { background: var(--primary); color: white; padding: 2rem; text-align: center; margin-top: 3rem; }
+        .site-footer p { opacity: 0.8; font-size: 0.9rem; }
+        @media (max-width: 1024px) { .sidebar { transform: translateX(-100%); transition: transform 0.3s ease; } .sidebar.open { transform: translateX(0); } .main-wrapper { margin-left: 0; } .menu-toggle { display: block !important; position: fixed; top: 20px; left: 20px; z-index: 1001; background: var(--primary); color: white; border: none; padding: 12px 15px; border-radius: 8px; cursor: pointer; font-size: 1.2rem; } }
+        @media (min-width: 1025px) { .menu-toggle { display: none !important; } }
+        @media (max-width: 768px) { .hero h1 { font-size: 1.8rem; } .article-content { padding: 1.5rem; } .main-content { padding: 2rem 1rem; } .step-nav { flex-direction: column; gap: 1rem; } .step-nav a { width: 100%; justify-content: center; } }
+    </style>
+<base target="_blank">
+<base target="_blank">
+</head>
+<body>
+    <aside class="sidebar" id="sidebar">
+        <button class="btn-secondary"><i class="fas fa-calendar"></i> <span id="date-jour"></span></button>
+        <div class="sidebar-logo">
+            <img src="assets/images/logosans.png" alt="Logo AFRIBIO BOOST">
+            <div class="logo-text">AFRIBIO BOOST<span>Agriculture intelligente</span></div>
+        </div>
+        <nav class="sidebar-menu">
+            <a href="index.html" class="menu-item"><i class="fas fa-home menu-icon"></i><span class="menu-label">Tableau de bord</span></a>
+            <a href="production.html" class="menu-item active"><i class="fas fa-seedling menu-icon"></i><span class="menu-label">Production végétale</span></a>
+            <a href="suivi.html" class="menu-item"><i class="fas fa-chart-line menu-icon"></i><span class="menu-label">Suivi personnalisé</span></a>
+            <a href="boutique.html" class="menu-item"><i class="fas fa-shopping-cart menu-icon"></i><span class="menu-label">Boutique</span></a>
+            <a href="formation.html" class="menu-item"><i class="fas fa-graduation-cap menu-icon"></i><span class="menu-label">Formation</span></a>
+            <a href="communaute.html" class="menu-item"><i class="fas fa-users menu-icon"></i><span class="menu-label">Communauté</span><span class="menu-badge">12</span></a>
+            <a href="notifications.html" class="menu-item"><i class="fas fa-bell menu-icon"></i><span class="menu-label">Notifications</span><span class="menu-badge">3</span></a>
+            <a href="impact.html" class="menu-item"><i class="fas fa-leaf menu-icon"></i><span class="menu-label">Impact écologique</span></a>
+        </nav>
+        <div class="sidebar-profile">
+            <div class="profile-avatar"><img src="assets/images/profil.png" alt="Photo de profil"></div>
+            <div class="profile-info"><div class="profile-name">GAFFAN Romaric</div><div class="profile-role">Agronome - Béninois</div></div>
+            <div class="profile-chevron">›</div>
+        </div>
+    </aside>
+    <button class="menu-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')"><i class="fas fa-bars"></i></button>
+    <div class="main-wrapper">
+        <section class="hero">
+            <div class="hero-content">
+                <h1><i class="fas fa-flower"></i> Floraison et nouaison</h1>
+                <p>Gestion de la floraison et prévention de la chute florale pour maximiser le rendement</p>
+                <div class="breadcrumb">
+                    <a href="index.html">Accueil</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                    <a href="production.html">Production</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                    <a href="culture-piment.html">Piment</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                    <span>Floraison et nouaison</span>
+                </div>
+            </div>
+        </section>
+        <main class="main-content">
+            <div class="article-header">
+                <div class="step-badge"><i class="fas fa-hashtag"></i> Étape 11 sur 13</div>
+                <h2>Floraison et nouaison du piment</h2>
+                <p class="subtitle">Optimiser la fécondation et la rétention des fruits en zone tropicale</p>
+            </div>
+            <div class="article-content">
+                <h3><i class="fas fa-flower"></i> Physiologie de la floraison du piment</h3>
+                <p>La floraison du piment débute généralement entre 35 et 50 jours après le repiquage, selon la variété et les conditions climatiques. Contrairement à la tomate qui produit des grappes de fleurs, le piment porte ses fleurs isolées ou en petites grappes de 2-3 à l'aisselle des feuilles. Chaque fleur viable peut potentiellement donner un fruit, mais en pratique, seulement 40 à 60% des fleurs se transforment en fruits mûrs. Le reste tombe naturellement ou est perdu par stress.</p>
+
+                <p>La fécondation du piment est principalement autogame (autopollinisation), mais les insectes butineurs (abeilles, syrphes) améliorent significativement le taux de nouaison en agitant les fleurs et en favorisant le transfert du pollen. En zone tropicale, la chaleur excessive (>35°C) et l'humidité relative >90% réduisent la viabilité du pollen et provoquent la chute florale. La température optimale pour la nouaison est de 22-28°C.</p>
+
+                <div class="highlight-box">
+                    <p><strong>À retenir :</strong> La chute florale est le principal facteur limitant du rendement du piment. En conditions tropicales, il est normal de perdre 30-40% des fleurs. Votre objectif est de maintenir ce taux sous 50% en évitant les stress hydriques, thermiques et nutritionnels.</p>
+                </div>
+
+                <h3><i class="fas fa-temperature-high"></i> Facteurs de stress et chute florale</h3>
+                <p>La chute florale du piment est provoquée par plusieurs facteurs de stress, souvent cumulatifs :</p>
+
+                <ul>
+                    <li><strong>Stress hydrique :</strong> un déficit d'eau pendant la floraison est la cause principale de chute. Le piment a besoin d'un sol constamment humide (pas saturé) pendant cette période. Une seule journée de sécheresse sévère peut provoquer la chute de 30-50% des fleurs ouvertes.</li>
+                    <li><strong>Chaleur excessive :</strong> au-delà de 32°C, le pollen devient stérile et les fleurs se détachent. En dessous de 15°C la nuit, la fécondation est inhibée. En zone tropicale, les pics de chaleur de mars-avril sont critiques.</li>
+                    <li><strong>Excès d'azote :</strong> un apport d'azote tardif ou excessif (>60 kg/ha après J+45) provoque une croissance végétative exubérante au détriment de la floraison. Les fleurs jaunissent et tombent avant l'ouverture complète.</li>
+                    <li><strong>Carence en bore :</strong> le bore est indispensable pour la formation du tube pollinique et la fécondation. En sols tropicaux sableux, la carence est fréquente et se traduit par la chute massive des fleurs et la déformation des fruits.</li>
+                    <li><strong>Attaques de thrips et pucerons :</strong> ces ravageurs piquent les fleurs et les jeunes fruits, provoquant leur chute. Ils sont vecteurs de virus qui perturbent la physiologie de la floraison.</li>
+                    <li><strong>Humidité excessive :</strong> une humidité >90% avec faible luminosité réduit la photosynthèse et provoque la chute des fleurs. Les pluies continues pendant la floraison sont très néfastes.</li>
+                </ul>
+
+                <h3><i class="fas fa-hand-holding-water"></i> Gestion de l'irrigation pendant la floraison</h3>
+                <p>L'irrigation est l'outil le plus efficace pour réduire la chute florale. Pendant la période de floraison (J+35 à J+90), maintenez un régime hydrique stable :</p>
+                <ul>
+                    <li>Arrosez tous les 2 jours avec 2 à 2,5 L par plant en l'absence de pluie.</li>
+                    <li>En cas de forte chaleur (>33°C), augmentez la fréquence à quotidien avec 1,5 L par plant le matin.</li>
+                    <li>Évitez les fluctuations brutales (sol sec puis détrempé). Le stress hydrique oscillant est plus dommageable qu'un déficit constant modéré.</li>
+                    <li>En saison des pluies, assurez le drainage pour éviter la saturation qui provoque aussi la chute florale par asphyxie racinaire.</li>
+                </ul>
+
+                <div class="tip-box">
+                    <p><strong>Astuce AFRIBIO :</strong> Pendant la floraison, ajoutez 2 g/L de nitrate de calcium + 1 g/L d'acide borique dans l'eau d'irrigation goutte-à-goutte ou d'arrosage au pied (1 L de solution par plant toutes les 2 semaines). Ce "cocktail de floraison" réduit la chute florale de 25-30% et améliore la qualité des fruits. Testé et validé sur Cayenne et Ata Rodo au Togo.</p>
+                </div>
+
+                <h3><i class="fas fa-sun"></i> Gestion thermique et luminosité</h3>
+                <p>En zone tropicale, la chaleur est souvent le facteur limitant majeur :</p>
+                <ul>
+                    <li><strong>Ombrage partiel temporaire :</strong> en cas de vague de chaleur (>35°C pendant 3 jours consécutifs), installez un voile d'ombrage à 30% au-dessus de la parcelle ou des paillages verticaux (feuilles de bananier) sur le côté soleil couchant. Cet ombrage réduit la température de 3-5°C et préserve la fertilité du pollen.</li>
+                    <li><strong>Arrosage frais :</strong> en cas de pic de chaleur, arrosez légèrement le sol (pas le feuillage) en milieu de journée avec de l'eau fraîche pour rafraîchir les racines. Cette technique d'"irrigation de rafraîchissement" est efficace si le drainage est bon.</li>
+                    <li><strong>Éviter la fertilisation azotée par forte chaleur :</strong> ne jamais apporter d'urée ou d'engrais azotés juste avant ou pendant une vague de chaleur. Cela amplifie le stress et la chute florale.</li>
+                </ul>
+
+                <h3><i class="fas fa-bug"></i> Protection des fleurs contre les ravageurs</h3>
+                <p>Les thrips et les pucerons sont les ennemis numéro 1 de la floraison du piment :</p>
+                <ul>
+                    <li><strong>Thrips :</strong> installez des pièges chromatiques bleus (10 par are) au niveau des fleurs. Pulvérisez de l'extrait de neem (5 mL/L) ou du savon insecticide (2 g/L) toutes les 7-10 jours, en ciblant les fleurs et les jeunes pousses.</li>
+                    <li><strong>Pucerons :</strong> pièges jaunes, lâchers de coccinelles, pulvérisations de solution savonneuse (10 g/L de savon noir dans l'eau). Traitez dès l'apparition des premières colonies.</li>
+                    <li><strong>Protection physique :</strong> des filets anti-insectes (maille 0,8 mm) peuvent être installés sur les parcelles de piment destinées à la production de semences ou aux marchés premium. Cette barrière physique bloque les vecteurs de virus.</li>
+                </ul>
+
+                <h3><i class="fas fa-seedling"></i> Stimulation de la nouaison</h3>
+                <p>Outre la gestion des stress, certaines pratiques améliorent directement le taux de nouaison :</p>
+                <ul>
+                    <li><strong>Vibration manuelle des plants :</strong> secouez légèrement les tiges principales avec une perche tous les 2-3 jours pendant la floraison (tôt le matin). Cette vibration simule l'activité des insectes pollinisateurs et améliore la dispersion du pollen. Technique simple et efficace, particulièrement utile en serre ou en parcelle isolée.</li>
+                    <li><strong>Fertilisation foliaire au bore :</strong> pulvérisez de l'acide borique (2 g/L) ou du borate de sodium (3 g/L) sur les fleurs toutes les 10 jours. Le bore améliore la germination du pollen et la formation du tube pollinique.</li>
+                    <li><strong>Calcium foliaire :</strong> pulvérisez du nitrate de calcium (4 g/L) sur les jeunes fruits en développement. Le calcium renforce les parois cellulaires et réduit la chute des jeunes fruits.</li>
+                    <li><strong>Évitement des pesticides toxiques pour les pollinisateurs :</strong> si vous utilisez des insecticides, appliquez-les en fin d'après-midi (après 17h) pour préserver les abeilles et les syrphes qui pollinisent le matin. Privilégiez les insecticides biologiques (spinosad, Bacillus thuringiensis) qui ne nuisent pas aux pollinisateurs.</li>
+                </ul>
+
+                <div class="warning-box">
+                    <p><strong>Attention :</strong> Ne pulvérisez jamais de fongicides systémiques ou d'insecticides sur les fleurs ouvertes pendant la journée. Cela tue les pollinisateurs et peut provoquer la stérilité du pollen. Si un traitement est indispensable, appliquez-le en fin de journée et préférez les produits de contact.</p>
+                </div>
+
+                <h3><i class="fas fa-check-circle"></i> Points de contrôle avant passage à l'étape suivante</h3>
+                <ul>
+                    <li>La floraison est abondante et régulière sur l'ensemble des plants.</li>
+                    <li>Le taux de chute florale est inférieur à 50% (observation visuelle).</li>
+                    <li>Les jeunes fruits se développent sans déformation ni chute massive.</li>
+                    <li>L'irrigation est stable et le sol est humide mais non détrempé.</li>
+                    <li>Les thrips et pucerons sont maintenus sous contrôle.</li>
+                    <li>Aucun stress thermique sévère n'est en cours (température < 35°C).</li>
+                </ul>
+            </div>
+            <div class="step-nav">
+                <a href="floraison-piment.html".html"><i class="fas fa-arrow-left"></i> Étape précédente</a>
+                <div class="nav-center"><span>Piment</span>Étape 11 / 13</div>
+                <a href="fe-piment.html".html">Étape suivante <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </main>
+    </div>
+    <footer class="site-footer"><p>© 2026 TERRA LOCALE - AFRIBIO BOOST - Tous droits réservés</p></footer>
+    <script>
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('date-jour').textContent = new Date().toLocaleDateString('fr-FR', options);
+    </script>
+</body>
+</html>

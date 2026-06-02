@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choix variétal - Piment - AFRIBIO BOOST</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2D5016; --primary-light: #4A7C23; --secondary: #8B6914;
+            --accent: #D4A843; --light: #FCFCFA; --dark: #1A1A1A;
+            --text: #333333; --text-light: #666666; --border: #E0E0E0;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08); --shadow-hover: 0 8px 30px rgba(0,0,0,0.15);
+            --radius: 16px; --radius-sm: 8px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: var(--light); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+        .sidebar { width: 260px; height: 100vh; background: linear-gradient(180deg, #2d3436 0%, #1a1a2e 100%); position: fixed; left: 0; top: 0; z-index: 1000; display: flex; flex-direction: column; padding: 20px 0; overflow-y: auto; border-right: 1px solid rgba(255,255,255,0.1); }
+        .sidebar-logo { display: flex; align-items: center; gap: 12px; padding: 15px 20px 20px; margin: 0 12px 15px; background: rgba(255,255,255,0.25); border-radius: 12px; border: 1px solid rgba(255,255,255,0.35); }
+        .sidebar-logo img { width: 45px; height: 45px; border-radius: 10px; object-fit: cover; background: white; padding: 3px; }
+        .sidebar-logo .logo-text { color: white; font-weight: 700; font-size: 1.1rem; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+        .sidebar-logo .logo-text span { color: var(--accent); display: block; font-size: 0.75rem; font-weight: 400; opacity: 0.7; }
+        .btn-secondary { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 8px 15px; border-radius: 8px; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 8px; margin: 0 20px 15px; transition: var(--transition); font-family: 'Poppins', sans-serif; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.2); }
+        .sidebar-menu { flex: 1; display: flex; flex-direction: column; gap: 4px; padding: 0 12px; }
+        .menu-item { display: flex; align-items: center; gap: 12px; padding: 12px 15px; border-radius: 10px; color: rgba(255,255,255,0.95); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: var(--transition); position: relative; }
+        .menu-item:hover { background: rgba(255,255,255,0.08); color: white; }
+        .menu-item.active { background: #2D5A27; color: white; }
+        .menu-item.active .menu-icon { color: var(--accent); }
+        .menu-icon { width: 22px; text-align: center; font-size: 1rem; }
+        .menu-label { flex: 1; }
+        .menu-badge { background: #DC2626; color: white; font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; min-width: 20px; text-align: center; }
+        .sidebar-profile { display: flex; align-items: center; gap: 12px; padding: 15px 20px; margin: 15px 12px 0; background: rgba(255,255,255,0.05); border-radius: 12px; cursor: pointer; transition: var(--transition); }
+        .sidebar-profile:hover { background: rgba(255,255,255,0.1); }
+        .profile-avatar { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; border: 2px solid var(--accent); flex-shrink: 0; }
+        .profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .profile-info { flex: 1; min-width: 0; }
+        .profile-name { color: white; font-size: 0.85rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .profile-role { color: rgba(255,255,255,0.5); font-size: 0.75rem; }
+        .profile-chevron { color: rgba(255,255,255,0.4); font-size: 1.2rem; font-weight: 300; }
+        .main-wrapper { margin-left: 260px; min-height: 100vh; }
+        .hero { height: 280px; background: linear-gradient(rgba(45, 80, 22, 0.7), rgba(45, 80, 22, 0.85)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; color: white; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.5; }
+        .hero-content { position: relative; z-index: 1; }
+        .hero h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .hero p { font-size: 1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+        .breadcrumb { display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem; font-size: 0.85rem; opacity: 0.8; justify-content: center; flex-wrap: wrap; }
+        .breadcrumb a { color: var(--accent); text-decoration: none; transition: var(--transition); }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { color: rgba(255,255,255,0.6); }
+        .main-content { max-width: 900px; margin: 0 auto; padding: 3rem 2rem; background: var(--light); }
+        .article-header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 3px solid var(--primary); }
+        .article-header .step-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; padding: 0.5rem 1.2rem; border-radius: 30px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
+        .article-header h2 { font-size: 2rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+        .article-header .subtitle { color: var(--text-light); font-size: 1rem; }
+        .article-content { background: white; border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow); }
+        .article-content h3 { font-size: 1.3rem; font-weight: 600; color: var(--primary); margin: 2rem 0 1rem; display: flex; align-items: center; gap: 0.75rem; }
+        .article-content h3:first-child { margin-top: 0; }
+        .article-content h3 i { color: var(--accent); font-size: 1.1rem; }
+        .article-content p { color: var(--text); font-size: 1rem; line-height: 1.8; margin-bottom: 1rem; text-align: justify; }
+        .article-content ul { margin: 1rem 0 1.5rem 1.5rem; color: var(--text); }
+        .article-content ul li { margin-bottom: 0.6rem; line-height: 1.7; }
+        .article-content ul li::marker { color: var(--primary-light); }
+        .highlight-box { background: linear-gradient(135deg, rgba(45, 80, 22, 0.05) 0%, rgba(74, 124, 35, 0.05) 100%); border-left: 4px solid var(--primary); padding: 1.2rem 1.5rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+        .highlight-box p { margin: 0; font-size: 0.95rem; }
+        .highlight-box strong { color: var(--primary); }
+        .warning-box { background: linear-gradient(135deg, rgba(220, 38, 38, 0.05) 0%, rgba(220, 38, 38, 0.02) 100%); border-left: 4px solid #DC2626; padding: 1.2rem 1.5rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+        .warning-box p { margin: 0; font-size: 0.95rem; }
+        .warning-box strong { color: #DC2626; }
+        .tip-box { background: linear-gradient(135deg, rgba(212, 168, 67, 0.08) 0%, rgba(212, 168, 67, 0.03) 100%); border-left: 4px solid var(--accent); padding: 1.2rem 1.5rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+        .tip-box p { margin: 0; font-size: 0.95rem; }
+        .tip-box strong { color: var(--secondary); }
+        .step-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+        .step-nav a { display: flex; align-items: center; gap: 0.75rem; padding: 0.8rem 1.5rem; background: white; border: 2px solid var(--primary); color: var(--primary); border-radius: var(--radius-sm); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: var(--transition); }
+        .step-nav a:hover { background: var(--primary); color: white; }
+        .step-nav a.disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+        .step-nav .nav-center { text-align: center; color: var(--text-light); font-size: 0.85rem; }
+        .step-nav .nav-center span { display: block; font-weight: 600; color: var(--primary); font-size: 1rem; }
+        .site-footer { background: var(--primary); color: white; padding: 2rem; text-align: center; margin-top: 3rem; }
+        .site-footer p { opacity: 0.8; font-size: 0.9rem; }
+        @media (max-width: 1024px) { .sidebar { transform: translateX(-100%); transition: transform 0.3s ease; } .sidebar.open { transform: translateX(0); } .main-wrapper { margin-left: 0; } .menu-toggle { display: block !important; position: fixed; top: 20px; left: 20px; z-index: 1001; background: var(--primary); color: white; border: none; padding: 12px 15px; border-radius: 8px; cursor: pointer; font-size: 1.2rem; } }
+        @media (min-width: 1025px) { .menu-toggle { display: none !important; } }
+        @media (max-width: 768px) { .hero h1 { font-size: 1.8rem; } .article-content { padding: 1.5rem; } .main-content { padding: 2rem 1rem; } .step-nav { flex-direction: column; gap: 1rem; } .step-nav a { width: 100%; justify-content: center; } }
+    </style>
+<base target="_blank">
+<base target="_blank">
+</head>
+<body>
+    <aside class="sidebar" id="sidebar">
+        <button class="btn-secondary"><i class="fas fa-calendar"></i> <span id="date-jour"></span></button>
+        <div class="sidebar-logo">
+            <img src="assets/images/logosans.png" alt="Logo AFRIBIO BOOST">
+            <div class="logo-text">AFRIBIO BOOST<span>Agriculture intelligente</span></div>
+        </div>
+        <nav class="sidebar-menu">
+            <a href="index.html" class="menu-item"><i class="fas fa-home menu-icon"></i><span class="menu-label">Tableau de bord</span></a>
+            <a href="production.html" class="menu-item active"><i class="fas fa-seedling menu-icon"></i><span class="menu-label">Production végétale</span></a>
+            <a href="suivi.html" class="menu-item"><i class="fas fa-chart-line menu-icon"></i><span class="menu-label">Suivi personnalisé</span></a>
+            <a href="boutique.html" class="menu-item"><i class="fas fa-shopping-cart menu-icon"></i><span class="menu-label">Boutique</span></a>
+            <a href="formation.html" class="menu-item"><i class="fas fa-graduation-cap menu-icon"></i><span class="menu-label">Formation</span></a>
+            <a href="communaute.html" class="menu-item"><i class="fas fa-users menu-icon"></i><span class="menu-label">Communauté</span><span class="menu-badge">12</span></a>
+            <a href="notifications.html" class="menu-item"><i class="fas fa-bell menu-icon"></i><span class="menu-label">Notifications</span><span class="menu-badge">3</span></a>
+            <a href="impact.html" class="menu-item"><i class="fas fa-leaf menu-icon"></i><span class="menu-label">Impact écologique</span></a>
+        </nav>
+        <div class="sidebar-profile">
+            <div class="profile-avatar"><img src="assets/images/profil.png" alt="Photo de profil"></div>
+            <div class="profile-info"><div class="profile-name">GAFFAN Romaric</div><div class="profile-role">Agronome - Béninois</div></div>
+            <div class="profile-chevron">›</div>
+        </div>
+    </aside>
+    <button class="menu-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')"><i class="fas fa-bars"></i></button>
+    <div class="main-wrapper">
+        <section class="hero">
+            <div class="hero-content">
+                <h1><i class="fas fa-dna"></i> Choix variétal</h1>
+                <p>Sélection des variétés adaptées au marché local, à la transformation et à l'export</p>
+                <div class="breadcrumb">
+                    <a href="index.html">Accueil</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                    <a href="production.html">Production</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                    <a href="culture-piment.html">Piment</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                    <span>Choix variétal</span>
+                </div>
+            </div>
+        </section>
+        <main class="main-content">
+            <div class="article-header">
+                <div class="step-badge"><i class="fas fa-hashtag"></i> Étape 3 sur 13</div>
+                <h2>Choix variétal pour la culture du piment</h2>
+                <p class="subtitle">Sélectionner la bonne variété est déterminant pour la rentabilité en zone tropicale</p>
+            </div>
+            <div class="article-content">
+                <h3><i class="fas fa-globe-africa"></i> Critères de sélection en zone tropicale africaine</h3>
+                <p>Le choix variétal du piment en Afrique de l'Ouest et Centrale doit répondre à des critères multiples : adaptation au climat tropical humide, résistance aux maladies dominantes (anthracnose, mildiou, virus), correspondance aux attentes du marché local, et facilité de transformation. Contrairement à la tomate, le piment offre une diversité gustative et morphologique beaucoup plus grande, avec des variétés allant du doux au très piquant, du petit fruit rond au long fruit allongé.</p>
+
+                <p>En zone tropicale, la résistance à l'anthracnose (Colletotrichum spp.) est le premier critère de sélection. Cette maladie fongique détruit les fruits mûrs et peut causer des pertes de 30 à 80% du rendement. Ensuite, la tolérance aux virus du potyvirus (PVY, CMV) et à la bactériose (Xanthomonas campestris) est essentielle compte tenu de la pression phytosanitaire élevée.</p>
+
+                <div class="highlight-box">
+                    <p><strong>À retenir :</strong> Une variété résistante à l'anthracnose vous fera économiser 40% sur les coûts de protection et doublera vos rendements commercialisables. Le choix variétal est la meilleure assurance contre les pertes post-récolte.</p>
+                </div>
+
+                <h3><i class="fas fa-list-check"></i> Variétés recommandées pour l'Afrique de l'Ouest et Centrale</h3>
+                <p>Les variétés suivantes ont été testées et validées par les programmes de recherche (INRAE, IITA, IRAD, ITA) et par les maraîchers sur le terrain :</p>
+
+                <ul>
+                    <li><strong>Ata Rodo (Nigeria / Bénin) :</strong> variété locale de type Capsicum frutescens, fruits ronds-coniques de 3-5 cm, très piquants, couleur rouge vif à maturité. Port buissonnant compact (60-80 cm). Très demandée sur les marchés locaux pour la cuisine traditionnelle. Cycle : 120-140 jours. Rendement : 8-12 tonnes/ha.</li>
+                    <li><strong>Tokoin (Togo / Ghana) :</strong> variété locale améliorée, fruits allongés de 8-12 cm, piquant modéré à élevé. Bonne résistance à l'anthracnose et bonne tenue au transport. Idéale pour la pâte de piment et le séchage. Cycle : 130-150 jours. Rendement : 10-15 tonnes/ha.</li>
+                    <li><strong>Cayenne Long Slim :</strong> variété améliorée à port dressé, fruits allongés et fins (12-15 cm), piquant modéré (30 000-50 000 SHU). Chair fine, excellente pour le séchage et la poudre. Résistante à la fusariose. Cycle : 110-130 jours. Rendement : 12-18 tonnes/ha.</li>
+                    <li><strong>Habanero Orange :</strong> hybride F1, fruits ronds-ovales de 3-4 cm, très piquants (100 000-300 000 SHU), couleur orange à maturité. Marché premium (restaurants, hôtels, export). Exigeante en entretien mais très rentable. Rendement : 6-10 tonnes/ha.</li>
+                    <li><strong>Bird Eye (Piment oiseau) :</strong> variété de type Capsicum frutescens, très petits fruits pointus (2-3 cm), extrêmement piquants (100 000-200 000 SHU). Production continue sur 6-8 mois. Très résistante à la sécheresse. Rendement : 5-8 tonnes/ha.</li>
+                    <li><strong>Jalapeño :</strong> variété à gros fruits (5-7 cm), piquant modéré (2 500-8 000 SHU), chair épaisse. Idéale pour la mise en conserve et la transformation industrielle. Cycle : 120-140 jours. Rendement : 15-20 tonnes/ha.</li>
+                    <li><strong>Piment doux (Poivron) :</strong> variétés California Wonder, Yolo Wonder. Fruits gros et charnus, sans piquant. Marché urbain en croissance (supermarchés, restauration). Rendement : 20-30 tonnes/ha mais exigeant en protection phytosanitaire.</li>
+                </ul>
+
+                <h3><i class="fas fa-shield-virus"></i> Résistances variétales aux maladies majeures</h3>
+                <p>En zone tropicale humide, l'anthracnose et les virus sont les fléaux du piment. Privilégiez impérativement les variétés ou les hybrides F1 portant les résistances suivantes :</p>
+
+                <ul>
+                    <li><strong>Anthracnose (Colletotrichum capsici, C. gloeosporioides) :</strong> rechercher les lignées résistantes ou tolérantes. Variétés : Tokoin amélioré, certaines lignées de Cayenne, hybrides F1 récents (Archimedes, Tiburon).</li>
+                    <li><strong>Virus du mosaic du piment (CMV, PVY, Pepper veinal mottle virus) :</strong> gènes de résistance L1-L4. Variétés : hybrides F1 modernes, variétés améliorées IITA.</li>
+                    <li><strong>Bactériose (Xanthomonas campestris pv. vesicatoria) :</strong> gènes Bs2, Bs3. Variétés : Cayenne, Jalapeño, certains hybrides F1.</li>
+                    <li><strong>Mildiou (Phytophthora capsici) :</strong> tolérance partielle chez Capsicum frutescens (Ata Rodo, Bird Eye).</li>
+                    <li><strong>Nématodes (Meloidogyne spp.) :</strong> gènes Me1, Me3. Variétés : porte-greffes spécifiques pour greffage en sols infestés.</li>
+                </ul>
+
+                <div class="warning-box">
+                    <p><strong>Attention :</strong> Méfiez-vous des semences de piment "sauvages" ou de seconde génération (F2) issues de récoltes précédentes. Le piment se croise facilement avec d'autres espèces de Capsicum présentes dans la région, ce qui entraîne une perte rapide des caractères variétaux et une baisse de la résistance aux maladies. Achetez toujours des semences certifiées F1 ou des variétés locales sélectionnées.</p>
+                </div>
+
+                <h3><i class="fas fa-store"></i> Adapter le choix au marché visé</h3>
+                <p>Le choix variétal doit répondre aux attentes de vos acheteurs et aux circuits de commercialisation :</p>
+
+                <ul>
+                    <li><strong>Marché local frais (souks, marchés ruraux) :</strong> variétés locales très piquantes, coloration rouge vive, calibre moyen. Ex : Ata Rodo, Tokoin, Bird Eye.</li>
+                    <li><strong>Supermarchés urbains :</strong> fruits standardisés, absence de taches, calibre homogène. Ex : Cayenne, Habanero, poivrons.</li>
+                    <li><strong>Transformation industrielle (pâte, poudre, sauce) :</strong> fruits à chair fine, forte teneur en capsaïcine, bonne tenue au séchage. Ex : Cayenne, Bird Eye, Tokoin.</li>
+                    <li><strong>Restauration / Hôtellerie :</strong> variétés premium, goût marqué, présentation attractive. Ex : Habanero, Jalapeño, variétés locales héritées.</li>
+                    <li><strong>Export sous-régional :</strong> conformité phytosanitaire, fruits secs ou frais conditionnés. Ex : Cayenne séché, Bird Eye.</li>
+                </ul>
+
+                <div class="tip-box">
+                    <p><strong>Astuce AFRIBIO :</strong> Testez toujours une nouvelle variété sur une parcelle pilote de 200 m² avant de l'adopter à grande échelle. Le piment est très sensible aux microclimats locaux. Notez la précocité, la résistance à l'anthracnose, le rendement et la réaction du marché avant de vous engager sur plusieurs hectares.</p>
+                </div>
+
+                <h3><i class="fas fa-temperature-high"></i> Tolérance à la chaleur et à la sécheresse</h3>
+                <p>Le piment tolère mieux la chaleur que la tomate, mais la nouaison devient irrégulière au-delà de 35°C. Les variétés de Capsicum frutescens (Ata Rodo, Bird Eye, Tokoin) supportent généralement mieux la chaleur et la sécheresse que les variétés de Capsicum annuum (Jalapeño, poivron). En zone sahélienne, privilégiez les variétés locales rustiques ou envisagez le greffage sur porte-greffe résistant (Capsicum annuum sauvage) pour améliorer la tolérance thermique et la résistance aux nématodes.</p>
+
+                <h3><i class="fas fa-seedling"></i> Semences hybrides F1 vs variétés locales</h3>
+                <p>Les hybrides F1 offrent une vigueur accrue, une résistance cumulée aux maladies et une uniformité de production. Cependant, leurs semences sont coûteuses (800 à 2 000 FCFA pour 1 000 graines) et ne peuvent pas être reproduites par l'agriculteur (perte de l'hétérosis et de la résistance en F2). Les variétés locales (Ata Rodo, Tokoin) permettent la conservation des semences et une autonomie paysanne, mais avec des rendements inférieurs de 25 à 40% et une sensibilité accrue à l'anthracnose.</p>
+
+                <p>Notre recommandation AFRIBIO : utilisez des hybrides F1 pour la production commerciale intensive destinée aux marchés urbains et à l'export. Conservez les variétés locales pour les marchés traditionnels, la sécurité alimentaire familiale et la préservation du patrimoine gustatif africain.</p>
+
+                <h3><i class="fas fa-check-circle"></i> Points de contrôle avant passage à l'étape suivante</h3>
+                <ul>
+                    <li>La variété choisie est adaptée à votre zone agro-écologique (pluviométrie, température, drainage).</li>
+                    <li>Elle possède la résistance à l'anthracnose et aux virus dominants localement.</li>
+                    <li>Le type de fruit (piquant, doux, calibre) correspond à votre marché cible.</li>
+                    <li>Les semences proviennent d'un distributeur certifié avec taux de germination >80%.</li>
+                    <li>La quantité de semences est calculée (4 000 à 5 000 plants/ha, +20% de marge de sécurité).</li>
+                    <li>La date de semis en pépinière est calée sur la date de repiquage souhaitée (30-40 jours avant).</li>
+                </ul>
+            </div>
+            <div class="step-nav">
+                <a href="fertilisation-fond-piment.html"><i class="fas fa-arrow-left"></i> Étape précédente</a>
+                <div class="nav-center"><span>Piment</span>Étape 3 / 13</div>
+                <a href="repiquage-piment.html">Étape suivante <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </main>
+    </div>
+    <footer class="site-footer"><p>© 2026 TERRA LOCALE - AFRIBIO BOOST - Tous droits réservés</p></footer>
+    <script>
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('date-jour').textContent = new Date().toLocaleDateString('fr-FR', options);
+    </script>
+</body>

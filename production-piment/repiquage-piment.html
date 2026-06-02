@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transplantation - Piment - AFRIBIO BOOST</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2D5016; --primary-light: #4A7C23; --secondary: #8B6914;
+            --accent: #D4A843; --light: #FCFCFA; --dark: #1A1A1A;
+            --text: #333333; --text-light: #666666; --border: #E0E0E0;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08); --shadow-hover: 0 8px 30px rgba(0,0,0,0.15);
+            --radius: 16px; --radius-sm: 8px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: var(--light); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+        .sidebar { width: 260px; height: 100vh; background: linear-gradient(180deg, #2d3436 0%, #1a1a2e 100%); position: fixed; left: 0; top: 0; z-index: 1000; display: flex; flex-direction: column; padding: 20px 0; overflow-y: auto; border-right: 1px solid rgba(255,255,255,0.1); }
+        .sidebar-logo { display: flex; align-items: center; gap: 12px; padding: 15px 20px 20px; margin: 0 12px 15px; background: rgba(255,255,255,0.25); border-radius: 12px; border: 1px solid rgba(255,255,255,0.35); }
+        .sidebar-logo img { width: 45px; height: 45px; border-radius: 10px; object-fit: cover; background: white; padding: 3px; }
+        .sidebar-logo .logo-text { color: white; font-weight: 700; font-size: 1.1rem; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+        .sidebar-logo .logo-text span { color: var(--accent); display: block; font-size: 0.75rem; font-weight: 400; opacity: 0.7; }
+        .btn-secondary { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 8px 15px; border-radius: 8px; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 8px; margin: 0 20px 15px; transition: var(--transition); font-family: 'Poppins', sans-serif; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.2); }
+        .sidebar-menu { flex: 1; display: flex; flex-direction: column; gap: 4px; padding: 0 12px; }
+        .menu-item { display: flex; align-items: center; gap: 12px; padding: 12px 15px; border-radius: 10px; color: rgba(255,255,255,0.95); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: var(--transition); position: relative; }
+        .menu-item:hover { background: rgba(255,255,255,0.08); color: white; }
+        .menu-item.active { background: #2D5A27; color: white; }
+        .menu-item.active .menu-icon { color: var(--accent); }
+        .menu-icon { width: 22px; text-align: center; font-size: 1rem; }
+        .menu-label { flex: 1; }
+        .menu-badge { background: #DC2626; color: white; font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; min-width: 20px; text-align: center; }
+        .sidebar-profile { display: flex; align-items: center; gap: 12px; padding: 15px 20px; margin: 15px 12px 0; background: rgba(255,255,255,0.05); border-radius: 12px; cursor: pointer; transition: var(--transition); }
+        .sidebar-profile:hover { background: rgba(255,255,255,0.1); }
+        .profile-avatar { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; border: 2px solid var(--accent); flex-shrink: 0; }
+        .profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .profile-info { flex: 1; min-width: 0; }
+        .profile-name { color: white; font-size: 0.85rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .profile-role { color: rgba(255,255,255,0.5); font-size: 0.75rem; }
+        .profile-chevron { color: rgba(255,255,255,0.4); font-size: 1.2rem; font-weight: 300; }
+        .main-wrapper { margin-left: 260px; min-height: 100vh; }
+        .hero { height: 280px; background: linear-gradient(rgba(45, 80, 22, 0.7), rgba(45, 80, 22, 0.85)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; color: white; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.5; }
+        .hero-content { position: relative; z-index: 1; }
+        .hero h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .hero p { font-size: 1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+        .breadcrumb { display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem; font-size: 0.85rem; opacity: 0.8; justify-content: center; flex-wrap: wrap; }
+        .breadcrumb a { color: var(--accent); text-decoration: none; transition: var(--transition); }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { color: rgba(255,255,255,0.6); }
+        .main-content { max-width: 900px; margin: 0 auto; padding: 3rem 2rem; background: var(--light); }
+        .article-header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 3px solid var(--primary); }
+        .article-header .step-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; padding: 0.5rem 1.2rem; border-radius: 30px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
+        .article-header h2 { font-size: 2rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+        .article-header .subtitle { color: var(--text-light); font-size: 1rem; }
+        .article-content { background: white; border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow); }
+        .article-content h3 { font-size: 1.3rem; font-weight: 600; color: var(--primary); margin: 2rem 0 1rem; display: flex; align-items: center; gap: 0.75rem; }
+        .article-content h3:first-child { margin-top: 0; }
+        .article-content h3 i { color: var(--accent); font-size: 1.1rem; }
+        .article-content p { color: var(--text); font-size: 1rem; line-height: 1.8; margin-bottom: 1rem; text-align: justify; }
+        .article-content ul { margin: 1rem 0 1.5rem 1.5rem; color: var(--text); }
+        .article-content ul li { margin-bottom: 0.6rem; line-height: 1.7; }
+        .article-content ul li::marker { color: var(--primary-light); }
+        .highlight-box { background: linear-gradient(135deg, rgba(45, 80, 22, 0.05) 0%, rgba(74, 124, 35, 0.05) 100%); border-left: 4px solid var(--primary); padding: 1.2rem 1.5rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+        .highlight-box p { margin: 0; font-size: 0.95rem; }
+        .highlight-box strong { color: var(--primary); }
+        .warning-box { background: linear-gradient(135deg, rgba(220, 38, 38, 0.05) 0%, rgba(220, 38, 38, 0.02) 100%); border-left: 4px solid #DC2626; padding: 1.2rem 1.5rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+        .warning-box p { margin: 0; font-size: 0.95rem; }
+        .warning-box strong { color: #DC2626; }
+        .tip-box { background: linear-gradient(135deg, rgba(212, 168, 67, 0.08) 0%, rgba(212, 168, 67, 0.03) 100%); border-left: 4px solid var(--accent); padding: 1.2rem 1.5rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+        .tip-box p { margin: 0; font-size: 0.95rem; }
+        .tip-box strong { color: var(--secondary); }
+        .step-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+        .step-nav a { display: flex; align-items: center; gap: 0.75rem; padding: 0.8rem 1.5rem; background: white; border: 2px solid var(--primary); color: var(--primary); border-radius: var(--radius-sm); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: var(--transition); }
+        .step-nav a:hover { background: var(--primary); color: white; }
+        .step-nav a.disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+        .step-nav .nav-center { text-align: center; color: var(--text-light); font-size: 0.85rem; }
+        .step-nav .nav-center span { display: block; font-weight: 600; color: var(--primary); font-size: 1rem; }
+        .site-footer { background: var(--primary); color: white; padding: 2rem; text-align: center; margin-top: 3rem; }
+        .site-footer p { opacity: 0.8; font-size: 0.9rem; }
+        @media (max-width: 1024px) { .sidebar { transform: translateX(-100%); transition: transform 0.3s ease; } .sidebar.open { transform: translateX(0); } .main-wrapper { margin-left: 0; } .menu-toggle { display: block !important; position: fixed; top: 20px; left: 20px; z-index: 1001; background: var(--primary); color: white; border: none; padding: 12px 15px; border-radius: 8px; cursor: pointer; font-size: 1.2rem; } }
+        @media (min-width: 1025px) { .menu-toggle { display: none !important; } }
+        @media (max-width: 768px) { .hero h1 { font-size: 1.8rem; } .article-content { padding: 1.5rem; } .main-content { padding: 2rem 1rem; } .step-nav { flex-direction: column; gap: 1rem; } .step-nav a { width: 100%; justify-content: center; } }
+    </style>
+<base target="_blank">
+<base target="_blank">
+</head>
+<body>
+    <aside class="sidebar" id="sidebar">
+        <button class="btn-secondary"><i class="fas fa-calendar"></i> <span id="date-jour"></span></button>
+        <div class="sidebar-logo">
+            <img src="assets/images/logosans.png" alt="Logo AFRIBIO BOOST">
+            <div class="logo-text">AFRIBIO BOOST<span>Agriculture intelligente</span></div>
+        </div>
+        <nav class="sidebar-menu">
+            <a href="index.html" class="menu-item"><i class="fas fa-home menu-icon"></i><span class="menu-label">Tableau de bord</span></a>
+            <a href="production.html" class="menu-item active"><i class="fas fa-seedling menu-icon"></i><span class="menu-label">Production végétale</span></a>
+            <a href="suivi.html" class="menu-item"><i class="fas fa-chart-line menu-icon"></i><span class="menu-label">Suivi personnalisé</span></a>
+            <a href="boutique.html" class="menu-item"><i class="fas fa-shopping-cart menu-icon"></i><span class="menu-label">Boutique</span></a>
+            <a href="formation.html" class="menu-item"><i class="fas fa-graduation-cap menu-icon"></i><span class="menu-label">Formation</span></a>
+            <a href="communaute.html" class="menu-item"><i class="fas fa-users menu-icon"></i><span class="menu-label">Communauté</span><span class="menu-badge">12</span></a>
+            <a href="notifications.html" class="menu-item"><i class="fas fa-bell menu-icon"></i><span class="menu-label">Notifications</span><span class="menu-badge">3</span></a>
+            <a href="impact.html" class="menu-item"><i class="fas fa-leaf menu-icon"></i><span class="menu-label">Impact écologique</span></a>
+        </nav>
+        <div class="sidebar-profile">
+            <div class="profile-avatar"><img src="assets/images/profil.png" alt="Photo de profil"></div>
+            <div class="profile-info"><div class="profile-name">GAFFAN Romaric</div><div class="profile-role">Agronome - Béninois</div></div>
+            <div class="profile-chevron">›</div>
+        </div>
+    </aside>
+    <button class="menu-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')"><i class="fas fa-bars"></i></button>
+    <div class="main-wrapper">
+        <section class="hero">
+            <div class="hero-content">
+                <h1><i class="fas fa-exchange-alt"></i> Transplantation</h1>
+                <p>Repiquage des plants sur buttes avec protection contre le choc de transplantation</p>
+                <div class="breadcrumb">
+                    <a href="index.html">Accueil</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                    <a href="production.html">Production</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                    <a href="culture-piment.html">Piment</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                    <span>Transplantation</span>
+                </div>
+            </div>
+        </section>
+        <main class="main-content">
+            <div class="article-header">
+                <div class="step-badge"><i class="fas fa-hashtag"></i> Étape 5 sur 13</div>
+                <h2>Transplantation du piment au champ</h2>
+                <p class="subtitle">Guide technique pour un repiquage réussi et un démarrage rapide de la culture</p>
+            </div>
+            <div class="article-content">
+                <h3><i class="fas fa-calendar-alt"></i> Choisir le bon moment</h3>
+                <p>Le repiquage du piment est une étape critique qui conditionne la majeure partie de la réussite de la culture. Contrairement à la tomate, le piment est plus sensible au choc de transplantation et met plus de temps à s'installer. Le moment idéal pour repiquer est en fin d'après-midi (16h-18h) ou par temps couvert, pour éviter le stress hydrique et l'ensoleillement direct sur les jeunes plants déracinés. En zone tropicale, évitez absolument les repiquages en plein jour, surtout lorsque la température dépasse 32°C.</p>
+
+                <p>Le piment doit être repiqué lorsque les plants ont 6 à 8 feuilles, une hauteur de 15-20 cm et un système racinaire bien développé mais non enchevêtré. L'âge optimal en pépinière est de 30 à 40 jours après le semis. Au-delà de 45 jours, les plants deviennent filandreux et subissent un choc de transplantation plus important, avec un arrêt de croissance pouvant atteindre 2 à 3 semaines.</p>
+
+                <div class="highlight-box">
+                    <p><strong>À retenir :</strong> Un repiquage réussi du piment se traduit par un démarrage en 7-10 jours. Un repiquage mal réalisé (chaleur, manque d'eau, racines abîmées) peut immobiliser la culture pendant 3 semaines et réduire le rendement final de 30%.</p>
+                </div>
+
+                <h3><i class="fas fa-ruler-combined"></i> Espacement et densité de plantation</h3>
+                <p>L'espacement du piment varie selon la variété, la vigueur du port et le système de conduite :</p>
+
+                <ul>
+                    <li><strong>Variétés buissonnantes compactes (Ata Rodo, Bird Eye) :</strong> 40 cm entre plants et 60 cm entre lignes. Densité : 40 000 à 45 000 plants/ha.</li>
+                    <li><strong>Variétés à port dressé ou semi-grimpant (Cayenne, Jalapeño, Habanero) :</strong> 50 cm entre plants et 70-80 cm entre lignes. Densité : 25 000 à 30 000 plants/ha.</li>
+                    <li><strong>Poivrons et variétés très vigoureuses :</strong> 60 cm entre plants et 80 cm entre lignes. Densité : 20 000 plants/ha.</li>
+                    <li><strong>Plantation sur buttes en double rangs :</strong> deux lignes par butte espacées de 40 cm, plants espacés de 40-50 cm sur la ligne, buttes espacées de 80 cm. Cette technique maximise la densité tout en assurant le drainage.</li>
+                </ul>
+
+                <p>Le piment se cultive généralement en double rangs sur buttes pour optimiser l'espace et faciliter l'irrigation. Sur chaque butte de 80 cm de large, tracez deux lignes de plantation espacées de 40 cm. Les plants sont espacés de 40 à 50 cm sur chaque ligne. Cette configuration permet une densité de 35 000 à 40 000 plants/ha pour les variétés compactes.</p>
+
+                <h3><i class="fas fa-hand-holding-medical"></i> Technique de repiquage</h3>
+                <p>Le repiquage du piment exige plus de délicatesse que celui de la tomate car ses racines sont plus fines et sensibles :</p>
+
+                <p><strong>Préparation des poquettes :</strong> ouvrez des trous de 10-12 cm de profondeur et 15 cm de diamètre à l'emplacement prévu sur la butte. Mélangez la terre extraite avec une poignée de compost bien mûr. Si vous avez utilisé de la fertilisation de fond localisée, assurez-vous que l'engrais est bien recouvert de 5 cm de terre pour éviter les brûlures.</p>
+
+                <p><strong>Extraction des plants :</strong> arrosez abondamment les godets 2 heures avant le repiquage pour humidifier complètement le substrat et faciliter l'extraction. Retournez délicatement le godet en pinçant le fond et soutenez le pain de terre avec votre main. Ne tirez jamais sur la tige. Le piment supporte très mal la rupture des racines fines.</p>
+
+                <p><strong>Plantation :</strong> placez le plant dans le trou à la même profondeur qu'il était en pépinière (ne jamais enterrer le collet, contrairement à la tomate). Le collet doit affleurer légèrement au-dessus du sol pour éviter la fonte du collet. Rebouchez avec le mélange terre-compost et tassez légèrement autour du plant pour éliminer les poches d'air.</p>
+
+                <p><strong>Arrosage de reprise :</strong> arrosez immédiatement chaque plant avec 0,5 à 1 L d'eau pour assurer le contact racines-sol et éliminer les poches d'air. Cet arrosage est vital pour le piment qui est plus sensible au dessèchement racinaire que la tomate. Répétez l'arrosage le lendemain matin.</p>
+
+                <div class="tip-box">
+                    <p><strong>Astuce AFRIBIO :</strong> Ajoutez une poignée de cendre de bois et une cuillère à café de bicarbonate de soude dans l'eau d'arrosage de reprise (5 g par litre). Cette solution légèrement alcaline prévient la fonte du collet et stimule la reprise racinaire. Technique éprouvée par les producteurs de piment du centre Bénin.</p>
+                </div>
+
+                <h3><i class="fas fa-umbrella"></i> Protection post-repiquage</h3>
+                <p>Le piment est particulièrement vulnérable pendant les 7 à 10 jours suivant le repiquage. Des mesures de protection sont indispensables :</p>
+
+                <ul>
+                    <li><strong>Ombrage temporaire :</strong> installez des voiles d'ombrage à 50% ou des paillages verticaux (feuilles de bananier, de palmier) du côté soleil couchant pendant 5 à 7 jours. Le piment supporte mal l'ensoleillement direct immédiat après le repiquage.</li>
+                    <li><strong>Paillage au sol :</strong> étalez immédiatement du paillage organique (paille, feuilles sèches) de 5 cm d'épaisseur autour de chaque plant pour maintenir l'humidité du sol et réduire l'évaporation. Le piment a besoin d'un sol constamment humide (mais pas détrempé) pour s'installer.</li>
+                    <li><strong>Protection contre les oiseaux :</strong> les jeunes plants de piment sont parfois attaqués par les oiseaux qui picorent les feuilles tendres. Installez des fils réfléchissants ou des épouvantails si nécessaire.</li>
+                    <li><strong>Arrosages fréquents :</strong> maintenez le sol humide (pas saturé) pendant les 10 premiers jours. Arrosez matin et soir avec de faibles volumes (0,3-0,5 L par plant) pour éviter le stress hydrique.</li>
+                </ul>
+
+                <h3><i class="fas fa-exclamation-triangle"></i> Erreurs à éviter</h3>
+                <ul>
+                    <li><strong>Repiquage en plein soleil ou forte chaleur :</strong> provoque le flétrissement, la nécrose des feuilles et la mort des plants. Repiquez impérativement en fin de journée.</li>
+                    <li><strong>Entrerrement du collet :</strong> contrairement à la tomate, le piment ne tolère pas l'enterrement du collet. Cela provoque la fonte du collet et la mort du plant en 3-5 jours.</li>
+                    <li><strong>Racines exposées à l'air :</strong> les racines du piment sont très sensibles au dessèchement. Ne laissez jamais les pains de terre exposés au soleil pendant le transport. Transportez à l'ombre et plantez dans l'heure suivant l'extraction.</li>
+                    <li><strong>Plants trop âgés ou racines enchevêtrées :</strong> un plant de plus de 45 jours avec racines tourneboulées mettra 3 semaines à s'installer et produira moins. Jetez les plants dépassés et utilisez des plants de 30-35 jours.</li>
+                    <li><strong>Manque d'eau après le repiquage :</strong> même une seule journée de sécheresse au sol dans les 5 jours suivant le repiquage peut tuer 20-30% des plants de piment.</li>
+                </ul>
+
+                <div class="warning-box">
+                    <p><strong>Attention :</strong> Le piment est très sensible aux herbicides résiduels, notamment ceux contenant du glyphosate ou des sulfonylurées. Si vous avez utilisé des désherbants chimiques sur la parcelle dans les 3 mois précédents, effectuez un test de germination sur une poignée de graines de piment dans un échantillon de sol avant de planter. Un taux de germination inférieur à 70% indique une phytotoxicité résiduelle.</p>
+                </div>
+
+                <h3><i class="fas fa-check-circle"></i> Points de contrôle avant passage à l'étape suivante</h3>
+                <ul>
+                    <li>Tous les plants sont repiqués à la même profondeur qu'en pépinière (collet à fleur de sol).</li>
+                    <li>L'arrosage de reprise a été effectué immédiatement pour chaque plant.</li>
+                    <li>Le paillage est en place autour des plants pour maintenir l'humidité.</li>
+                    <li>Un ombrage temporaire est installé si le repiquage a lieu par forte chaleur.</li>
+                    <li>La densité de plantation correspond à la variété (40-60 cm entre plants).</li>
+                    <li>Les plants reprennent (turgescence des feuilles) dans les 48 heures suivant le repiquage.</li>
+                </ul>
+            </div>
+            <div class="step-nav">
+                <a href="pepiniere-semis-piment.html"><i class="fas fa-arrow-left"></i> Étape précédente</a>
+                <div class="nav-center"><span>Piment</span>Étape 5 / 13</div>
+                <a href="irrigation-piment.html">Étape suivante <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </main>
+    </div>
+    <footer class="site-footer"><p>© 2026 TERRA LOCALE - AFRIBIO BOOST - Tous droits réservés</p></footer>
+    <script>
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('date-jour').textContent = new Date().toLocaleDateString('fr-FR', options);
+    </script>
+</body>
+</html>

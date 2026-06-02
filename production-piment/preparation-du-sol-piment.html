@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Préparation du sol - Piment - AFRIBIO BOOST</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2D5016; --primary-light: #4A7C23; --secondary: #8B6914;
+            --accent: #D4A843; --light: #FCFCFA; --dark: #1A1A1A;
+            --text: #333333; --text-light: #666666; --border: #E0E0E0;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08); --shadow-hover: 0 8px 30px rgba(0,0,0,0.15);
+            --radius: 16px; --radius-sm: 8px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: var(--light); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+        .sidebar { width: 260px; height: 100vh; background: linear-gradient(180deg, #2d3436 0%, #1a1a2e 100%); position: fixed; left: 0; top: 0; z-index: 1000; display: flex; flex-direction: column; padding: 20px 0; overflow-y: auto; border-right: 1px solid rgba(255,255,255,0.1); }
+        .sidebar-logo { display: flex; align-items: center; gap: 12px; padding: 15px 20px 20px; margin: 0 12px 15px; background: rgba(255,255,255,0.25); border-radius: 12px; border: 1px solid rgba(255,255,255,0.35); }
+        .sidebar-logo img { width: 45px; height: 45px; border-radius: 10px; object-fit: cover; background: white; padding: 3px; }
+        .sidebar-logo .logo-text { color: white; font-weight: 700; font-size: 1.1rem; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+        .sidebar-logo .logo-text span { color: var(--accent); display: block; font-size: 0.75rem; font-weight: 400; opacity: 0.7; }
+        .btn-secondary { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 8px 15px; border-radius: 8px; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 8px; margin: 0 20px 15px; transition: var(--transition); font-family: 'Poppins', sans-serif; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.2); }
+        .sidebar-menu { flex: 1; display: flex; flex-direction: column; gap: 4px; padding: 0 12px; }
+        .menu-item { display: flex; align-items: center; gap: 12px; padding: 12px 15px; border-radius: 10px; color: rgba(255,255,255,0.95); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: var(--transition); position: relative; }
+        .menu-item:hover { background: rgba(255,255,255,0.08); color: white; }
+        .menu-item.active { background: #2D5A27; color: white; }
+        .menu-item.active .menu-icon { color: var(--accent); }
+        .menu-icon { width: 22px; text-align: center; font-size: 1rem; }
+        .menu-label { flex: 1; }
+        .menu-badge { background: #DC2626; color: white; font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; min-width: 20px; text-align: center; }
+        .sidebar-profile { display: flex; align-items: center; gap: 12px; padding: 15px 20px; margin: 15px 12px 0; background: rgba(255,255,255,0.05); border-radius: 12px; cursor: pointer; transition: var(--transition); }
+        .sidebar-profile:hover { background: rgba(255,255,255,0.1); }
+        .profile-avatar { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; border: 2px solid var(--accent); flex-shrink: 0; }
+        .profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .profile-info { flex: 1; min-width: 0; }
+        .profile-name { color: white; font-size: 0.85rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .profile-role { color: rgba(255,255,255,0.5); font-size: 0.75rem; }
+        .profile-chevron { color: rgba(255,255,255,0.4); font-size: 1.2rem; font-weight: 300; }
+        .main-wrapper { margin-left: 260px; min-height: 100vh; }
+        .hero { height: 280px; background: linear-gradient(rgba(45, 80, 22, 0.7), rgba(45, 80, 22, 0.85)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; color: white; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.5; }
+        .hero-content { position: relative; z-index: 1; }
+        .hero h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .hero p { font-size: 1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+        .breadcrumb { display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem; font-size: 0.85rem; opacity: 0.8; justify-content: center; flex-wrap: wrap; }
+        .breadcrumb a { color: var(--accent); text-decoration: none; transition: var(--transition); }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { color: rgba(255,255,255,0.6); }
+        .main-content { max-width: 900px; margin: 0 auto; padding: 3rem 2rem; background: var(--light); }
+        .article-header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 3px solid var(--primary); }
+        .article-header .step-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; padding: 0.5rem 1.2rem; border-radius: 30px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
+        .article-header h2 { font-size: 2rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+        .article-header .subtitle { color: var(--text-light); font-size: 1rem; }
+        .article-content { background: white; border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow); }
+        .article-content h3 { font-size: 1.3rem; font-weight: 600; color: var(--primary); margin: 2rem 0 1rem; display: flex; align-items: center; gap: 0.75rem; }
+        .article-content h3:first-child { margin-top: 0; }
+        .article-content h3 i { color: var(--accent); font-size: 1.1rem; }
+        .article-content p { color: var(--text); font-size: 1rem; line-height: 1.8; margin-bottom: 1rem; text-align: justify; }
+        .article-content ul { margin: 1rem 0 1.5rem 1.5rem; color: var(--text); }
+        .article-content ul li { margin-bottom: 0.6rem; line-height: 1.7; }
+        .article-content ul li::marker { color: var(--primary-light); }
+        .highlight-box { background: linear-gradient(135deg, rgba(45, 80, 22, 0.05) 0%, rgba(74, 124, 35, 0.05) 100%); border-left: 4px solid var(--primary); padding: 1.2rem 1.5rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+        .highlight-box p { margin: 0; font-size: 0.95rem; }
+        .highlight-box strong { color: var(--primary); }
+        .warning-box { background: linear-gradient(135deg, rgba(220, 38, 38, 0.05) 0%, rgba(220, 38, 38, 0.02) 100%); border-left: 4px solid #DC2626; padding: 1.2rem 1.5rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+        .warning-box p { margin: 0; font-size: 0.95rem; }
+        .warning-box strong { color: #DC2626; }
+        .tip-box { background: linear-gradient(135deg, rgba(212, 168, 67, 0.08) 0%, rgba(212, 168, 67, 0.03) 100%); border-left: 4px solid var(--accent); padding: 1.2rem 1.5rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+        .tip-box p { margin: 0; font-size: 0.95rem; }
+        .tip-box strong { color: var(--secondary); }
+        .step-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+        .step-nav a { display: flex; align-items: center; gap: 0.75rem; padding: 0.8rem 1.5rem; background: white; border: 2px solid var(--primary); color: var(--primary); border-radius: var(--radius-sm); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: var(--transition); }
+        .step-nav a:hover { background: var(--primary); color: white; }
+        .step-nav a.disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+        .step-nav .nav-center { text-align: center; color: var(--text-light); font-size: 0.85rem; }
+        .step-nav .nav-center span { display: block; font-weight: 600; color: var(--primary); font-size: 1rem; }
+        .site-footer { background: var(--primary); color: white; padding: 2rem; text-align: center; margin-top: 3rem; }
+        .site-footer p { opacity: 0.8; font-size: 0.9rem; }
+        @media (max-width: 1024px) { .sidebar { transform: translateX(-100%); transition: transform 0.3s ease; } .sidebar.open { transform: translateX(0); } .main-wrapper { margin-left: 0; } .menu-toggle { display: block !important; position: fixed; top: 20px; left: 20px; z-index: 1001; background: var(--primary); color: white; border: none; padding: 12px 15px; border-radius: 8px; cursor: pointer; font-size: 1.2rem; } }
+        @media (min-width: 1025px) { .menu-toggle { display: none !important; } }
+        @media (max-width: 768px) { .hero h1 { font-size: 1.8rem; } .article-content { padding: 1.5rem; } .main-content { padding: 2rem 1rem; } .step-nav { flex-direction: column; gap: 1rem; } .step-nav a { width: 100%; justify-content: center; } }
+    </style>
+<base target="_blank">
+<base target="_blank">
+</head>
+<body>
+    <aside class="sidebar" id="sidebar">
+        <button class="btn-secondary"><i class="fas fa-calendar"></i> <span id="date-jour"></span></button>
+        <div class="sidebar-logo">
+            <img src="assets/images/logosans.png" alt="Logo AFRIBIO BOOST">
+            <div class="logo-text">AFRIBIO BOOST<span>Agriculture intelligente</span></div>
+        </div>
+        <nav class="sidebar-menu">
+            <a href="index.html" class="menu-item"><i class="fas fa-home menu-icon"></i><span class="menu-label">Tableau de bord</span></a>
+            <a href="production.html" class="menu-item active"><i class="fas fa-seedling menu-icon"></i><span class="menu-label">Production végétale</span></a>
+            <a href="suivi.html" class="menu-item"><i class="fas fa-chart-line menu-icon"></i><span class="menu-label">Suivi personnalisé</span></a>
+            <a href="boutique.html" class="menu-item"><i class="fas fa-shopping-cart menu-icon"></i><span class="menu-label">Boutique</span></a>
+            <a href="formation.html" class="menu-item"><i class="fas fa-graduation-cap menu-icon"></i><span class="menu-label">Formation</span></a>
+            <a href="communaute.html" class="menu-item"><i class="fas fa-users menu-icon"></i><span class="menu-label">Communauté</span><span class="menu-badge">12</span></a>
+            <a href="notifications.html" class="menu-item"><i class="fas fa-bell menu-icon"></i><span class="menu-label">Notifications</span><span class="menu-badge">3</span></a>
+            <a href="impact.html" class="menu-item"><i class="fas fa-leaf menu-icon"></i><span class="menu-label">Impact écologique</span></a>
+        </nav>
+        <div class="sidebar-profile">
+            <div class="profile-avatar"><img src="assets/images/profil.png" alt="Photo de profil"></div>
+            <div class="profile-info"><div class="profile-name">GAFFAN Romaric</div><div class="profile-role">Agronome - Béninois</div></div>
+            <div class="profile-chevron">›</div>
+        </div>
+    </aside>
+    <button class="menu-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')"><i class="fas fa-bars"></i></button>
+    <div class="main-wrapper">
+        <section class="hero">
+            <div class="hero-content">
+                <h1><i class="fas fa-tractor"></i> Préparation du sol</h1>
+                <p>Drainage et structure optimaux pour une culture du piment réussie</p>
+                <div class="breadcrumb">
+                    <a href="index.html">Accueil</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                    <a href="production.html">Production</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                    <a href="culture-piment.html">Piment</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                    <span>Préparation du sol</span>
+                </div>
+            </div>
+        </section>
+        <main class="main-content">
+            <div class="article-header">
+                <div class="step-badge"><i class="fas fa-hashtag"></i> Étape 1 sur 13</div>
+                <h2>Préparation du sol pour la culture du piment</h2>
+                <p class="subtitle">Guide technique pour préparer un sol drainé et fertile en conditions tropicales africaines</p>
+            </div>
+            <div class="article-content">
+                <h3><i class="fas fa-search"></i> Analyse préliminaire et exigences du piment</h3>
+                <p>Le piment (Capsicum spp.) est particulièrement exigeant en matière de drainage. Contrairement à la tomate qui tolère une certaine humidité, le piment souffre rapidement de l'asphyxie racinaire en cas de stagnation d'eau. En zone tropicale africaine, les sols ferrallitiques et latéritiques sont souvent compacts et peu drainants. Une analyse préalable du type de sol et de sa structure est donc indispensable. Le pH optimal se situe entre 5,5 et 6,5, légèrement plus acide que pour la tomate. Au-delà de 7,0, la carence en fer et en molybdène apparaît, provoquant le jaunissement des feuilles.</p>
+
+                <p>Privilégiez des terrains en légère pente (2 à 5%) pour faciliter l'écoulement des eaux. En terrain plat, le travail du sol doit impérativement intégrer un système de drainage (fossés, canaux) et la création de buttes surélevées. Le piment développe un système racinaire superficiel mais dense ; il a besoin d'un sol meuble sur 25 à 30 cm sans couches compactées.</p>
+
+                <div class="highlight-box">
+                    <p><strong>À retenir :</strong> Le drainage est la clé de la réussite avec le piment. Un sol mal drainé est responsable de 60% des pertes par pourriture racinaire et chute soudaine des plants. Investissez dans les buttes et le drainage avant toute chose.</p>
+                </div>
+
+                <h3><i class="fas fa-tractor"></i> Labour, décompactage et création des buttes</h3>
+                <p>Le labour doit atteindre 25 à 30 cm de profondeur pour briser les horizons compacts. En zone tropicale, effectuez le labour en saison sèche lorsque le sol est à sa friabilité optimale. Utilisez une charrue à disques ou une motoculteur selon la taille de la parcelle. Après le labour, décompactez avec une herse rotative ou une herse rigide pour affiner la terre et éliminer les mottes.</p>
+
+                <p>La création des buttes est spécifique au piment et constitue une étape cruciale :</p>
+                <ul>
+                    <li><strong>Hauteur des buttes :</strong> 20 à 30 cm de hauteur, 60 à 80 cm de largeur au sommet.</li>
+                    <li><strong>Espacement entre buttes :</strong> 60 à 80 cm (selon la variété et le matériel).</li>
+                    <li><strong>Orientation :</strong> perpendiculaire à la pente principale pour limiter l'érosion.</li>
+                    <li><strong>Forme :</strong> bombée au centre avec légère déclivité latérale pour évacuer l'eau.</li>
+                </ul>
+
+                <p>Sur les sols argileux lourds, incorporez du sable grossier (2 à 3 m³ par are) ou de la pouzzolane au moment du labour pour améliorer la structure. Sur les sols sableux, augmentez la quantité de matière organique pour améliorer la rétention d'eau et les échanges ioniques.</p>
+
+                <h3><i class="fas fa-recycle"></i> Amendements organiques et minéraux</h3>
+                <p>Le piment répond particulièrement bien aux apports de matière organique bien décomposée. Intégrez au sol 8 à 12 tonnes par hectare de fumier composté ou de compost de ferme. Le compost améliore la structure, la rétention d'eau et fournit des nutriments à libération lente. En zone africaine, le compost de fumier de bovins, de volailles ou de résidus de culture (paille de maïs, tiges de légumineuses) est une ressource abondante.</p>
+
+                <ul>
+                    <li><strong>Fumier de bovins composté :</strong> 10 tonnes/ha — apport équilibré en NPK et matière organique.</li>
+                    <li><strong>Fiente de volaille compostée :</strong> 3 tonnes/ha — très riche en azote et phosphore, à utiliser avec parcimonie pour éviter la verse.</li>
+                    <li><strong>Compost de résidus végétaux :</strong> 5 tonnes/ha — idéal pour la structure du sol, à préparer 3 mois à l'avance.</li>
+                    <li><strong>Chaux agricole :</strong> si pH < 5,5, apportez 300 à 500 kg/ha 3 semaines avant le semis pour corriger l'acidité.</li>
+                    <li><strong>Biochar :</strong> 500 kg/ha — améliore la rétention en eau et nutriments sur le long terme, particulièrement efficace sur sols sableux.</li>
+                </ul>
+
+                <div class="tip-box">
+                    <p><strong>Astuce AFRIBIO :</strong> Mélangez votre compost avec 5% de cendre de bois et 2% de poudre d'os. Cette combinaison, testée avec succès au Ghana et au Bénin, fournit du potassium, du calcium et du phosphore naturels, éléments clés pour la floraison et la résistance aux maladies du piment.</p>
+                </div>
+
+                <h3><i class="fas fa-ruler-combined"></i> Préparation des planches et installation du paillage</h3>
+                <p>Sur chaque butte, préparez deux lignes de plantation espacées de 40 cm (plantation en double rangs). Les poquettes sont espacées de 40 à 50 cm sur la ligne selon la vigueur de la variété. Pour les variétés buissonnantes compactes (Ata Rodo, bird eye), un espacement de 40 cm suffit. Pour les variétés vigoureuses (Habanero, Cayenne), prévoyez 50 cm.</p>
+
+                <p>Le paillage est fortement recommandé pour le piment :</p>
+                <ul>
+                    <li>Réduit l'évaporation et maintient l'humidité du sol (le piment est gourmand en eau).</li>
+                    <li>Empêche la projection de terre sur les fruits lors des pluies (réduit l'anthracnose).</li>
+                    <li>Modère la température du sol et limite la concurrence des adventices.</li>
+                    <li>Utilisez de la paille de maïs, des feuilles de bananier séchées ou du paillage plastique noir biodégradable.</li>
+                </ul>
+
+                <h3><i class="fas fa-clock"></i> Calendrier et délais</h3>
+                <p>La préparation du sol pour le piment doit débuter 4 à 5 semaines avant le semis en pépinière :</p>
+                <ul>
+                    <li><strong>J-35 :</strong> Analyse du sol et labour profond.</li>
+                    <li><strong>J-28 :</strong> Incorporation des amendements organiques et chaux si nécessaire.</li>
+                    <li><strong>J-21 :</strong> Décompactage, hersage et formation des buttes.</li>
+                    <li><strong>J-14 :</strong> Préparation des lignes de plantation et poquettes.</li>
+                    <li><strong>J-7 :</strong> Installation du système d'irrigation (goutte-à-goutte ou gravitaire) et du paillage.</li>
+                    <li><strong>J-3 :</strong> Arrosage de mise en condition et vérification du drainage.</li>
+                </ul>
+
+                <div class="warning-box">
+                    <p><strong>Attention :</strong> Ne travaillez jamais le sol lorsqu'il est détrempé. Le piment est très sensible au tassement qui crée des poches d'asphyxie. Attendez que le sol soit à la friabilité optimale : la motte doit se briser facilement sans s'écraser.</p>
+                </div>
+
+                <h3><i class="fas fa-check-circle"></i> Points de contrôle avant passage à l'étape suivante</h3>
+                <ul>
+                    <li>Le sol est meuble sur au moins 25 cm sans couches compactées.</li>
+                    <li>Le pH est compris entre 5,5 et 6,5 (ajusté si nécessaire).</li>
+                    <li>Les buttes sont bien formées, hautes de 20-30 cm, avec drainage fonctionnel.</li>
+                    <li>Aucune stagnation d'eau n'est observable après un arrosage test de 30 minutes.</li>
+                    <li>Le paillage ou le film plastique est installé sur au moins 70% de la surface.</li>
+                    <li>Le sol est légèrement humide et aéré avant toute fertilisation minérale.</li>
+                </ul>
+            </div>
+            <div class="step-nav">
+                <a href="culture-piment.html" class="prev"><i class="fas fa-arrow-left"></i> Retour à la fiche</a>
+                <div class="nav-center"><span>Piment</span>Étape 1 / 13</div>
+                <a href="fertilisation-fond-piment.html" class="next">Étape suivante <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </main>
+    </div>
+    <footer class="site-footer"><p>© 2026 TERRA LOCALE - AFRIBIO BOOST - Tous droits réservés</p></footer>
+    <script>
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('date-jour').textContent = new Date().toLocaleDateString('fr-FR', options);
+    </script>
+</body>
+</html>

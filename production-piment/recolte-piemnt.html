@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Récolte - Piment - AFRIBIO BOOST</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2D5016; --primary-light: #4A7C23; --secondary: #8B6914;
+            --accent: #D4A843; --light: #FCFCFA; --dark: #1A1A1A;
+            --text: #333333; --text-light: #666666; --border: #E0E0E0;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08); --shadow-hover: 0 8px 30px rgba(0,0,0,0.15);
+            --radius: 16px; --radius-sm: 8px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: var(--light); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+        .sidebar { width: 260px; height: 100vh; background: linear-gradient(180deg, #2d3436 0%, #1a1a2e 100%); position: fixed; left: 0; top: 0; z-index: 1000; display: flex; flex-direction: column; padding: 20px 0; overflow-y: auto; border-right: 1px solid rgba(255,255,255,0.1); }
+        .sidebar-logo { display: flex; align-items: center; gap: 12px; padding: 15px 20px 20px; margin: 0 12px 15px; background: rgba(255,255,255,0.25); border-radius: 12px; border: 1px solid rgba(255,255,255,0.35); }
+        .sidebar-logo img { width: 45px; height: 45px; border-radius: 10px; object-fit: cover; background: white; padding: 3px; }
+        .sidebar-logo .logo-text { color: white; font-weight: 700; font-size: 1.1rem; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+        .sidebar-logo .logo-text span { color: var(--accent); display: block; font-size: 0.75rem; font-weight: 400; opacity: 0.7; }
+        .btn-secondary { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 8px 15px; border-radius: 8px; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 8px; margin: 0 20px 15px; transition: var(--transition); font-family: 'Poppins', sans-serif; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.2); }
+        .sidebar-menu { flex: 1; display: flex; flex-direction: column; gap: 4px; padding: 0 12px; }
+        .menu-item { display: flex; align-items: center; gap: 12px; padding: 12px 15px; border-radius: 10px; color: rgba(255,255,255,0.95); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: var(--transition); position: relative; }
+        .menu-item:hover { background: rgba(255,255,255,0.08); color: white; }
+        .menu-item.active { background: #2D5A27; color: white; }
+        .menu-item.active .menu-icon { color: var(--accent); }
+        .menu-icon { width: 22px; text-align: center; font-size: 1rem; }
+        .menu-label { flex: 1; }
+        .menu-badge { background: #DC2626; color: white; font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; min-width: 20px; text-align: center; }
+        .sidebar-profile { display: flex; align-items: center; gap: 12px; padding: 15px 20px; margin: 15px 12px 0; background: rgba(255,255,255,0.05); border-radius: 12px; cursor: pointer; transition: var(--transition); }
+        .sidebar-profile:hover { background: rgba(255,255,255,0.1); }
+        .profile-avatar { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; border: 2px solid var(--accent); flex-shrink: 0; }
+        .profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .profile-info { flex: 1; min-width: 0; }
+        .profile-name { color: white; font-size: 0.85rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .profile-role { color: rgba(255,255,255,0.5); font-size: 0.75rem; }
+        .profile-chevron { color: rgba(255,255,255,0.4); font-size: 1.2rem; font-weight: 300; }
+        .main-wrapper { margin-left: 260px; min-height: 100vh; }
+        .hero { height: 280px; background: linear-gradient(rgba(45, 80, 22, 0.7), rgba(45, 80, 22, 0.85)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; color: white; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.5; }
+        .hero-content { position: relative; z-index: 1; }
+        .hero h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .hero p { font-size: 1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+        .breadcrumb { display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem; font-size: 0.85rem; opacity: 0.8; justify-content: center; flex-wrap: wrap; }
+        .breadcrumb a { color: var(--accent); text-decoration: none; transition: var(--transition); }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { color: rgba(255,255,255,0.6); }
+        .main-content { max-width: 900px; margin: 0 auto; padding: 3rem 2rem; background: var(--light); }
+        .article-header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 3px solid var(--primary); }
+        .article-header .step-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; padding: 0.5rem 1.2rem; border-radius: 30px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
+        .article-header h2 { font-size: 2rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+        .article-header .subtitle { color: var(--text-light); font-size: 1rem; }
+        .article-content { background: white; border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow); }
+        .article-content h3 { font-size: 1.3rem; font-weight: 600; color: var(--primary); margin: 2rem 0 1rem; display: flex; align-items: center; gap: 0.75rem; }
+        .article-content h3:first-child { margin-top: 0; }
+        .article-content h3 i { color: var(--accent); font-size: 1.1rem; }
+        .article-content p { color: var(--text); font-size: 1rem; line-height: 1.8; margin-bottom: 1rem; text-align: justify; }
+        .article-content ul { margin: 1rem 0 1.5rem 1.5rem; color: var(--text); }
+        .article-content ul li { margin-bottom: 0.6rem; line-height: 1.7; }
+        .article-content ul li::marker { color: var(--primary-light); }
+        .highlight-box { background: linear-gradient(135deg, rgba(45, 80, 22, 0.05) 0%, rgba(74, 124, 35, 0.05) 100%); border-left: 4px solid var(--primary); padding: 1.2rem 1.5rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+        .highlight-box p { margin: 0; font-size: 0.95rem; }
+        .highlight-box strong { color: var(--primary); }
+        .warning-box { background: linear-gradient(135deg, rgba(220, 38, 38, 0.05) 0%, rgba(220, 38, 38, 0.02) 100%); border-left: 4px solid #DC2626; padding: 1.2rem 1.5rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+        .warning-box p { margin: 0; font-size: 0.95rem; }
+        .warning-box strong { color: #DC2626; }
+        .tip-box { background: linear-gradient(135deg, rgba(212, 168, 67, 0.08) 0%, rgba(212, 168, 67, 0.03) 100%); border-left: 4px solid var(--accent); padding: 1.2rem 1.5rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+        .tip-box p { margin: 0; font-size: 0.95rem; }
+        .tip-box strong { color: var(--secondary); }
+        .step-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+        .step-nav a { display: flex; align-items: center; gap: 0.75rem; padding: 0.8rem 1.5rem; background: white; border: 2px solid var(--primary); color: var(--primary); border-radius: var(--radius-sm); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: var(--transition); }
+        .step-nav a:hover { background: var(--primary); color: white; }
+        .step-nav a.disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+        .step-nav .nav-center { text-align: center; color: var(--text-light); font-size: 0.85rem; }
+        .step-nav .nav-center span { display: block; font-weight: 600; color: var(--primary); font-size: 1rem; }
+        .site-footer { background: var(--primary); color: white; padding: 2rem; text-align: center; margin-top: 3rem; }
+        .site-footer p { opacity: 0.8; font-size: 0.9rem; }
+        @media (max-width: 1024px) { .sidebar { transform: translateX(-100%); transition: transform 0.3s ease; } .sidebar.open { transform: translateX(0); } .main-wrapper { margin-left: 0; } .menu-toggle { display: block !important; position: fixed; top: 20px; left: 20px; z-index: 1001; background: var(--primary); color: white; border: none; padding: 12px 15px; border-radius: 8px; cursor: pointer; font-size: 1.2rem; } }
+        @media (min-width: 1025px) { .menu-toggle { display: none !important; } }
+        @media (max-width: 768px) { .hero h1 { font-size: 1.8rem; } .article-content { padding: 1.5rem; } .main-content { padding: 2rem 1rem; } .step-nav { flex-direction: column; gap: 1rem; } .step-nav a { width: 100%; justify-content: center; } }
+    </style>
+<base target="_blank">
+<base target="_blank">
+</head>
+<body>
+    <aside class="sidebar" id="sidebar">
+        <button class="btn-secondary"><i class="fas fa-calendar"></i> <span id="date-jour"></span></button>
+        <div class="sidebar-logo">
+            <img src="assets/images/logosans.png" alt="Logo AFRIBIO BOOST">
+            <div class="logo-text">AFRIBIO BOOST<span>Agriculture intelligente</span></div>
+        </div>
+        <nav class="sidebar-menu">
+            <a href="index.html" class="menu-item"><i class="fas fa-home menu-icon"></i><span class="menu-label">Tableau de bord</span></a>
+            <a href="production.html" class="menu-item active"><i class="fas fa-seedling menu-icon"></i><span class="menu-label">Production végétale</span></a>
+            <a href="suivi.html" class="menu-item"><i class="fas fa-chart-line menu-icon"></i><span class="menu-label">Suivi personnalisé</span></a>
+            <a href="boutique.html" class="menu-item"><i class="fas fa-shopping-cart menu-icon"></i><span class="menu-label">Boutique</span></a>
+            <a href="formation.html" class="menu-item"><i class="fas fa-graduation-cap menu-icon"></i><span class="menu-label">Formation</span></a>
+            <a href="communaute.html" class="menu-item"><i class="fas fa-users menu-icon"></i><span class="menu-label">Communauté</span><span class="menu-badge">12</span></a>
+            <a href="notifications.html" class="menu-item"><i class="fas fa-bell menu-icon"></i><span class="menu-label">Notifications</span><span class="menu-badge">3</span></a>
+            <a href="impact.html" class="menu-item"><i class="fas fa-leaf menu-icon"></i><span class="menu-label">Impact écologique</span></a>
+        </nav>
+        <div class="sidebar-profile">
+            <div class="profile-avatar"><img src="assets/images/profil.png" alt="Photo de profil"></div>
+            <div class="profile-info"><div class="profile-name">GAFFAN Romaric</div><div class="profile-role">Agronome - Béninois</div></div>
+            <div class="profile-chevron">›</div>
+        </div>
+    </aside>
+    <button class="menu-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')"><i class="fas fa-bars"></i></button>
+    <div class="main-wrapper">
+        <section class="hero">
+            <div class="hero-content">
+                <h1><i class="fas fa-hand-holding"></i> Récolte</h1>
+                <p>Cueillette sélective selon le stade de maturité et le marché visé</p>
+                <div class="breadcrumb">
+                    <a href="index.html">Accueil</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                    <a href="production.html">Production</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                    <a href="culture-piment.html">Piment</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                    <span>Récolte</span>
+                </div>
+            </div>
+        </section>
+        <main class="main-content">
+            <div class="article-header">
+                <div class="step-badge"><i class="fas fa-hashtag"></i> Étape 12 sur 13</div>
+                <h2>Récolte du piment</h2>
+                <p class="subtitle">Techniques de cueillette pour préserver la qualité et maximiser la valeur commerciale</p>
+            </div>
+            <div class="article-content">
+                <h3><i class="fas fa-clock"></i> Déterminer le bon moment de récolte</h3>
+                <p>Contrairement à la tomate qui est généralement récoltée à un stade de maturité précis, le piment offre plusieurs fenêtres de récolte selon le marché visé. Le stade de maturité détermine la couleur, le piquant, la conservation et le prix de vente :</p>
+
+                <ul>
+                    <li><strong>Vert immature (J+70-90) :</strong> fruits pleine taille mais encore verts, chair ferme. Piquant modéré, très bonne conservation (7-10 jours). Marché : consommation fraîche locale, cuisine traditionnelle (souks, marchés ruraux). Prix généralement inférieur mais volume de récolte plus rapide.</li>
+                    <li><strong>Vert mûr (J+90-110) :</strong> fruits verts foncés, début de changement de couleur à l'apex. Piquant élevé, conservation moyenne (5-7 jours). Marché : supermarchés urbains, transformation en pâte fraîche.</li>
+                    <li><strong>Rouge/orange à maturité (J+110-140) :</strong> coloration complète, chair plus souple, piquant maximal. Conservation faible (3-5 jours) mais prix premium. Marché : restaurants, hôtels, transformation en poudre, sauce, séchage. Pour les variétés à fruits rouges (Ata Rodo, Cayenne).</li>
+                    <li><strong>Sec sur pied (J+150+) :</strong> fruits laissés sécher sur le plant, peau ridée, graines matures. Conservation excellente (6-12 mois). Marché : poudre de piment, épices, export. Technique : récolte après séchage complet, égrappage des graines.</li>
+                </ul>
+
+                <p>La décision du stade de récolte dépend de votre contrat de vente, de la distance au marché et de vos capacités de stockage. En règle générale, récoltez vert pour le marché frais local et rouge pour la transformation ou les marchés premium.</p>
+
+                <div class="highlight-box">
+                    <p><strong>À retenir :</strong> Le piment rouge se vend 2 à 3 fois plus cher que le vert sur les marchés urbains et les circuits de transformation. Cependant, il se conserve 2 fois moins longtemps. Planifiez votre récolte en fonction de vos capacités logistiques et de la proximité du marché.</p>
+                </div>
+
+                <h3><i class="fas fa-hand-holding"></i> Technique de cueillette</h3>
+                <p>La cueillette du piment exige plus de délicatesse que celle de la tomate car la paroi du fruit est plus fine et le pédoncule se détache difficilement :</p>
+
+                <p><strong>Méthode manuelle :</strong> saisissez le fruit délicatement entre le pouce et l'index, soutenez la branche avec l'autre main pour éviter la cassure, et tirez vers le haut avec un léger mouvement de torsion. Le pédoncule doit se détacher proprement au niveau du calice. Ne tirez jamais brutalement car cela arrache la branche ou déchire le fruit, ouvrant une porte d'entrée à l'anthracnose.</p>
+
+                <p><strong>Sécateur :</strong> pour les variétés à pédoncule très résistant (Habanero, poivrons) ou lorsque la branche est fragile, utilisez un sécateur propre et désinfecté. Coupez le pédoncule en laissant 0,5-1 cm sur le fruit. Cette méthode préserve le fruit et la plante mais est plus lente.</p>
+
+                <p><strong>Fréquence de récolte :</strong> en zone tropicale, récoltez tous les 3-4 jours pour les fruits verts et tous les 5-7 jours pour les fruits rouges. Une récolte trop espacée entraîne la surmaturité, la pourriture sur le plant et la baisse de la production globale (les plants arrêtent de produire si les fruits mûrs ne sont pas retirés).</p>
+
+                <p><strong>Récolte matinale :</strong> cueillez toujours tôt le matin (avant 9h) ou en fin d'après-midi (après 16h) lorsque la température est fraîche. Les fruits récoltés sous chaleur perdent rapidement leur turgescence, se flétissent et se conservent mal. La rosée matinale doit être évaporée avant la récolte pour limiter la propagation de l'anthracnose.</p>
+
+                <div class="tip-box">
+                    <p><strong>Astuce AFRIBIO :</strong> Portez des gants de coton épais lors de la récolte des variétés très piquantes (Habanero, Bird Eye, Ata Rodo). Le capsaïcine contenue dans le placenta et les graines provoque des brûlures cutanées persistantes. Évitez de toucher votre visage ou vos yeux. Lavez-vous les mains avec de l'huile végétale puis du savon, car l'eau seule ne dissout pas le capsaïcine.</p>
+                </div>
+
+                <h3><i class="fas fa-boxes"></i> Tri et conditionnement immédiat</h3>
+                <p>Le tri immédiat après la récolte est crucial pour le piment car les fruits abîmés ou malades contaminent rapidement les autres par l'anthracnose :</p>
+
+                <ul>
+                    <li><strong>Tri sur le terrain :</strong> éliminez immédiatement les fruits présentant des taches d'anthracnose, des déformations, des perforations d'insectes ou des signes de pourriture. Jetez-les loin de la parcelle (brûlez-les ou enterrez-les profondément). Ne les laissez pas dans les sillons.</li>
+                    <li><strong>Calibrage :</strong> séparez les fruits par calibre et par couleur. Les marchés locaux acceptent les calibres variés, mais les supermarchés et les transformateurs exigent une homogénéité. Utilisez des cagettes ou des sacs séparés pour chaque catégorie.</li>
+                    <li><strong>Conditionnement :</strong> utilisez des cagettes en plastique perforées (5-10 kg max) ou des sacs en toile de jute. Évitez les sacs en polyéthylène non perforés qui provoquent la condensation et la pourriture. Pour les fruits rouges très mûrs, utilisez des emballages individuels en papier ou des barquettes pour éviter l'écrasement.</li>
+                    <li><strong>Transport immédiat à l'ombre :</strong> ne laissez jamais les cagettes de piment au soleil, même 30 minutes. La chaleur provoque le flétrissement, la dégradation de la couleur et la baisse du piquant. Transportez immédiatement à l'ombre ou dans un lieu frais.</li>
+                </ul>
+
+                <h3><i class="fas fa-thermometer-half"></i> Pré-refroidissement et stockage temporaire</h3>
+                <p>Le piment bénéficie grandement d'un pré-refroidissement rapide après la récolte, surtout en zone tropicale :</p>
+                <ul>
+                    <li><strong>Hydro-refroidissement :</strong> trempez les fruits dans de l'eau fraîche (15-18°C) pendant 10-15 minutes juste après la récolte. Cette technique restaure la turgescence, rafraîchit les fruits et retarde la dégradation. Ajoutez du chlore (50 ppm) ou du bicarbonate de soude (1 g/L) à l'eau pour désinfecter la surface des fruits.</li>
+                    <li><strong>Stockage temporaire :</strong> entreposez les cagettes dans un local ventilé, ombragé, à l'abri des courants d'air chaud. Température idéale : 18-20°C pour les verts, 12-15°C pour les rouges. Humidité relative : 85-90%. En l'absence de chambre froide, un local souterrain ou une pièce en terre cuite constitue une alternative.</li>
+                    <li><strong>Durée de conservation :</strong> piment vert : 7-10 jours à 18°C. Piment rouge : 3-5 jours à 15°C. Piment sec : 6-12 mois dans un sac hermétique à l'abri de l'humidité.</li>
+                </ul>
+
+                <div class="warning-box">
+                    <p><strong>Attention :</strong> Ne récoltez jamais de fruits mouillés par la pluie ou la rosée. L'humidité surfaceique active les spores de l'anthracnose et provoque la pourriture en 24-48 heures. Attendez que les fruits soient secs ou essuyez-les délicatement avec un chiffon propre avant le conditionnement.</p>
+                </div>
+
+                <h3><i class="fas fa-chart-line"></i> Rendements attendus</h3>
+                <p>Les rendements du piment varient considérablement selon la variété, la conduite et le marché :</p>
+                <ul>
+                    <li><strong>Ata Rodo (local) :</strong> 8-12 tonnes/ha en culture paysanne, 15-20 tonnes/ha en culture intensive avec irrigation et protection.</li>
+                    <li><strong>Cayenne :</strong> 12-18 tonnes/ha, peut atteindre 25 tonnes/ha en conditions optimales.</li>
+                    <li><strong>Habanero :</strong> 6-10 tonnes/ha, mais valeur commerciale très élevée (premium).</li>
+                    <li><strong>Jalapeño :</strong> 15-25 tonnes/ha, très productif.</li>
+                    <li><strong>Poivron :</strong> 20-35 tonnes/ha, mais exigeant en protection phytosanitaire.</li>
+                </ul>
+
+                <h3><i class="fas fa-check-circle"></i> Points de contrôle avant passage à l'étape suivante</h3>
+                <ul>
+                    <li>La récolte est effectuée au stade de maturité adapté au marché visé (vert, rouge ou sec).</li>
+                    <li>Les fruits sont cueillis avec soin, sans arracher les branches ni déchirer le calice.</li>
+                    <li>Le tri est immédiat : les fruits malades ou abîmés sont éliminés.</li>
+                    <li>Les fruits sont protégés du soleil et transportés rapidement à l'ombre.</li>
+                    <li>Le conditionnement est adapté (cagettes perforées, pas de sacs plastiques hermétiques).</li>
+                    <li>Les délais de sécurité post-pesticides (PHI) sont respectés avant la récolte.</li>
+                </ul>
+            </div>
+            <div class="step-nav">
+                <a href="fe-piment.html"><i class="fas fa-arrow-left"></i> Étape précédente</a>
+                <div class="nav-center"><span>Piment</span>Étape 12 / 13</div>
+                <a href="post-recolte-piment.html">Étape suivante <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </main>
+    </div>
+    <footer class="site-footer"><p>© 2026 TERRA LOCALE - AFRIBIO BOOST - Tous droits réservés</p></footer>
+    <script>
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('date-jour').textContent = new Date().toLocaleDateString('fr-FR', options);
+    </script>
+</body>
+</html>

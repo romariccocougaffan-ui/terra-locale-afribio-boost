@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fertilisation d'entretien - Piment - AFRIBIO BOOST</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2D5016; --primary-light: #4A7C23; --secondary: #8B6914;
+            --accent: #D4A843; --light: #FCFCFA; --dark: #1A1A1A;
+            --text: #333333; --text-light: #666666; --border: #E0E0E0;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08); --shadow-hover: 0 8px 30px rgba(0,0,0,0.15);
+            --radius: 16px; --radius-sm: 8px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: var(--light); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+        .sidebar { width: 260px; height: 100vh; background: linear-gradient(180deg, #2d3436 0%, #1a1a2e 100%); position: fixed; left: 0; top: 0; z-index: 1000; display: flex; flex-direction: column; padding: 20px 0; overflow-y: auto; border-right: 1px solid rgba(255,255,255,0.1); }
+        .sidebar-logo { display: flex; align-items: center; gap: 12px; padding: 15px 20px 20px; margin: 0 12px 15px; background: rgba(255,255,255,0.25); border-radius: 12px; border: 1px solid rgba(255,255,255,0.35); }
+        .sidebar-logo img { width: 45px; height: 45px; border-radius: 10px; object-fit: cover; background: white; padding: 3px; }
+        .sidebar-logo .logo-text { color: white; font-weight: 700; font-size: 1.1rem; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+        .sidebar-logo .logo-text span { color: var(--accent); display: block; font-size: 0.75rem; font-weight: 400; opacity: 0.7; }
+        .btn-secondary { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 8px 15px; border-radius: 8px; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 8px; margin: 0 20px 15px; transition: var(--transition); font-family: 'Poppins', sans-serif; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.2); }
+        .sidebar-menu { flex: 1; display: flex; flex-direction: column; gap: 4px; padding: 0 12px; }
+        .menu-item { display: flex; align-items: center; gap: 12px; padding: 12px 15px; border-radius: 10px; color: rgba(255,255,255,0.95); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: var(--transition); position: relative; }
+        .menu-item:hover { background: rgba(255,255,255,0.08); color: white; }
+        .menu-item.active { background: #2D5A27; color: white; }
+        .menu-item.active .menu-icon { color: var(--accent); }
+        .menu-icon { width: 22px; text-align: center; font-size: 1rem; }
+        .menu-label { flex: 1; }
+        .menu-badge { background: #DC2626; color: white; font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; min-width: 20px; text-align: center; }
+        .sidebar-profile { display: flex; align-items: center; gap: 12px; padding: 15px 20px; margin: 15px 12px 0; background: rgba(255,255,255,0.05); border-radius: 12px; cursor: pointer; transition: var(--transition); }
+        .sidebar-profile:hover { background: rgba(255,255,255,0.1); }
+        .profile-avatar { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; border: 2px solid var(--accent); flex-shrink: 0; }
+        .profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .profile-info { flex: 1; min-width: 0; }
+        .profile-name { color: white; font-size: 0.85rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .profile-role { color: rgba(255,255,255,0.5); font-size: 0.75rem; }
+        .profile-chevron { color: rgba(255,255,255,0.4); font-size: 1.2rem; font-weight: 300; }
+        .main-wrapper { margin-left: 260px; min-height: 100vh; }
+        .hero { height: 280px; background: linear-gradient(rgba(45, 80, 22, 0.7), rgba(45, 80, 22, 0.85)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; color: white; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.5; }
+        .hero-content { position: relative; z-index: 1; }
+        .hero h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .hero p { font-size: 1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+        .breadcrumb { display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem; font-size: 0.85rem; opacity: 0.8; justify-content: center; flex-wrap: wrap; }
+        .breadcrumb a { color: var(--accent); text-decoration: none; transition: var(--transition); }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { color: rgba(255,255,255,0.6); }
+        .main-content { max-width: 900px; margin: 0 auto; padding: 3rem 2rem; background: var(--light); }
+        .article-header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 3px solid var(--primary); }
+        .article-header .step-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; padding: 0.5rem 1.2rem; border-radius: 30px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
+        .article-header h2 { font-size: 2rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+        .article-header .subtitle { color: var(--text-light); font-size: 1rem; }
+        .article-content { background: white; border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow); }
+        .article-content h3 { font-size: 1.3rem; font-weight: 600; color: var(--primary); margin: 2rem 0 1rem; display: flex; align-items: center; gap: 0.75rem; }
+        .article-content h3:first-child { margin-top: 0; }
+        .article-content h3 i { color: var(--accent); font-size: 1.1rem; }
+        .article-content p { color: var(--text); font-size: 1rem; line-height: 1.8; margin-bottom: 1rem; text-align: justify; }
+        .article-content ul { margin: 1rem 0 1.5rem 1.5rem; color: var(--text); }
+        .article-content ul li { margin-bottom: 0.6rem; line-height: 1.7; }
+        .article-content ul li::marker { color: var(--primary-light); }
+        .highlight-box { background: linear-gradient(135deg, rgba(45, 80, 22, 0.05) 0%, rgba(74, 124, 35, 0.05) 100%); border-left: 4px solid var(--primary); padding: 1.2rem 1.5rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+        .highlight-box p { margin: 0; font-size: 0.95rem; }
+        .highlight-box strong { color: var(--primary); }
+        .warning-box { background: linear-gradient(135deg, rgba(220, 38, 38, 0.05) 0%, rgba(220, 38, 38, 0.02) 100%); border-left: 4px solid #DC2626; padding: 1.2rem 1.5rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+        .warning-box p { margin: 0; font-size: 0.95rem; }
+        .warning-box strong { color: #DC2626; }
+        .tip-box { background: linear-gradient(135deg, rgba(212, 168, 67, 0.08) 0%, rgba(212, 168, 67, 0.03) 100%); border-left: 4px solid var(--accent); padding: 1.2rem 1.5rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; }
+        .tip-box p { margin: 0; font-size: 0.95rem; }
+        .tip-box strong { color: var(--secondary); }
+        .step-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+        .step-nav a { display: flex; align-items: center; gap: 0.75rem; padding: 0.8rem 1.5rem; background: white; border: 2px solid var(--primary); color: var(--primary); border-radius: var(--radius-sm); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: var(--transition); }
+        .step-nav a:hover { background: var(--primary); color: white; }
+        .step-nav a.disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+        .step-nav .nav-center { text-align: center; color: var(--text-light); font-size: 0.85rem; }
+        .step-nav .nav-center span { display: block; font-weight: 600; color: var(--primary); font-size: 1rem; }
+        .site-footer { background: var(--primary); color: white; padding: 2rem; text-align: center; margin-top: 3rem; }
+        .site-footer p { opacity: 0.8; font-size: 0.9rem; }
+        @media (max-width: 1024px) { .sidebar { transform: translateX(-100%); transition: transform 0.3s ease; } .sidebar.open { transform: translateX(0); } .main-wrapper { margin-left: 0; } .menu-toggle { display: block !important; position: fixed; top: 20px; left: 20px; z-index: 1001; background: var(--primary); color: white; border: none; padding: 12px 15px; border-radius: 8px; cursor: pointer; font-size: 1.2rem; } }
+        @media (min-width: 1025px) { .menu-toggle { display: none !important; } }
+        @media (max-width: 768px) { .hero h1 { font-size: 1.8rem; } .article-content { padding: 1.5rem; } .main-content { padding: 2rem 1rem; } .step-nav { flex-direction: column; gap: 1rem; } .step-nav a { width: 100%; justify-content: center; } }
+    </style>
+<base target="_blank">
+<base target="_blank">
+</head>
+<body>
+    <aside class="sidebar" id="sidebar">
+        <button class="btn-secondary"><i class="fas fa-calendar"></i> <span id="date-jour"></span></button>
+        <div class="sidebar-logo">
+            <img src="assets/images/logosans.png" alt="Logo AFRIBIO BOOST">
+            <div class="logo-text">AFRIBIO BOOST<span>Agriculture intelligente</span></div>
+        </div>
+        <nav class="sidebar-menu">
+            <a href="index.html" class="menu-item"><i class="fas fa-home menu-icon"></i><span class="menu-label">Tableau de bord</span></a>
+            <a href="production.html" class="menu-item active"><i class="fas fa-seedling menu-icon"></i><span class="menu-label">Production végétale</span></a>
+            <a href="suivi.html" class="menu-item"><i class="fas fa-chart-line menu-icon"></i><span class="menu-label">Suivi personnalisé</span></a>
+            <a href="boutique.html" class="menu-item"><i class="fas fa-shopping-cart menu-icon"></i><span class="menu-label">Boutique</span></a>
+            <a href="formation.html" class="menu-item"><i class="fas fa-graduation-cap menu-icon"></i><span class="menu-label">Formation</span></a>
+            <a href="communaute.html" class="menu-item"><i class="fas fa-users menu-icon"></i><span class="menu-label">Communauté</span><span class="menu-badge">12</span></a>
+            <a href="notifications.html" class="menu-item"><i class="fas fa-bell menu-icon"></i><span class="menu-label">Notifications</span><span class="menu-badge">3</span></a>
+            <a href="impact.html" class="menu-item"><i class="fas fa-leaf menu-icon"></i><span class="menu-label">Impact écologique</span></a>
+        </nav>
+        <div class="sidebar-profile">
+            <div class="profile-avatar"><img src="assets/images/profil.png" alt="Photo de profil"></div>
+            <div class="profile-info"><div class="profile-name">GAFFAN Romaric</div><div class="profile-role">Agronome - Béninois</div></div>
+            <div class="profile-chevron">›</div>
+        </div>
+    </aside>
+    <button class="menu-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')"><i class="fas fa-bars"></i></button>
+    <div class="main-wrapper">
+        <section class="hero">
+            <div class="hero-content">
+                <h1><i class="fas fa-leaf"></i> Fertilisation d'entretien</h1>
+                <p>Apports fractionnés pour stimuler la floraison et la qualité des fruits</p>
+                <div class="breadcrumb">
+                    <a href="index.html">Accueil</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                    <a href="production.html">Production</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                    <a href="culture-piment.html">Piment</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                    <span>Fertilisation d'entretien</span>
+                </div>
+            </div>
+        </section>
+        <main class="main-content">
+            <div class="article-header">
+                <div class="step-badge"><i class="fas fa-hashtag"></i> Étape 7 sur 13</div>
+                <h2>Fertilisation d'entretien du piment</h2>
+                <p class="subtitle">Apports complémentaires ciblés pour maximiser la floraison et le rendement</p>
+            </div>
+            <div class="article-content">
+                <h3><i class="fas fa-balance-scale"></i> Stratégie nutritionnelle du piment</h3>
+                <p>La fertilisation d'entretien du piment diffère fondamentalement de celle de la tomate. Alors que la tomate tolère des apports équilibrés en NPK sur tout le cycle, le piment exige une modulation stricte : azote modéré en début de cycle pour éviter la verse, phosphore abondant au démarrage de la floraison, et potassium massif pendant la production de fruits. Un excès d'azote en phase de floraison est la principale cause de chute florale et de sensibilité à l'anthracnose chez le piment.</p>
+
+                <p>Le piment est également très gourmand en oligo-éléments, notamment le bore (B) pour la fertilité du pollen, le calcium (Ca) pour la qualité des parois cellulaires des fruits, et le magnésium (Mg) pour la photosynthèse et la couleur. En sols tropicaux appauvris, ces éléments sont souvent déficitaires et doivent être apportés via des fertilisations foliaires ciblées.</p>
+
+                <div class="highlight-box">
+                    <p><strong>À retenir :</strong> La fertilisation d'entretien du piment doit suivre le principe du "N modéré, P précoce, K massif, oligo-éléments ciblés". Un apport mal calé peut faire chuter la production de 30 à 50%.</p>
+                </div>
+
+                <h3><i class="fas fa-clipboard-list"></i> Programme de fertilisation par hectare</h3>
+                <p>Voici le programme type adapté aux sols tropicaux de fertilité moyenne, à fractionner en 4 à 6 apports :</p>
+
+                <ul>
+                    <li><strong>J+15 (reprise végétative) :</strong> Urée (46% N) : 50 kg/ha ou ammonitrate : 80 kg/ha, apporté en bandes au pied des plants. Cet apport léger stimule la reprise sans provoquer la verse.</li>
+                    <li><strong>J+30 (croissance végétative) :</strong> NPK 15-15-21 : 100 kg/ha. Ce premier apport équilibré prépare la plante à la floraison.</li>
+                    <li><strong>J+45 (début floraison) :</strong> NPK 10-20-30 + micro : 150 kg/ha. Le potassium devient dominant pour stimuler la nouaison. Ajoutez 1 kg/ha de borate de sodium dissous dans l'eau d'irrigation.</li>
+                    <li><strong>J+60 (floraison intense) :</strong> Sulfate de potassium (K₂SO₄) : 100 kg/ha + urée : 30 kg/ha. Le K soutient la nouaison, le N modéré évite la chute florale.</li>
+                    <li><strong>J+75 (production de fruits) :</strong> NPK 12-12-36 : 150 kg/ha. Le K est maximal pour le gonflement des fruits et la synthèse des capsaïcinoïdes.</li>
+                    <li><strong>J+90 (fruits en charge) :</strong> Sulfate de potassium : 100 kg/ha. Dernier apport minéral avant la maturité. Arrêtez tout azote pour favoriser la concentration des arômes.</li>
+                </ul>
+
+                <h3><i class="fas fa-spray-can"></i> Fertilisation foliaire et oligo-éléments</h3>
+                <p>La fertilisation foliaire est particulièrement efficace chez le piment car elle permet de corriger rapidement les carences sans perturber l'équilibre du sol. Elle doit compléter et non remplacer la fertilisation au sol.</p>
+
+                <p><strong>Programme foliaire :</strong></p>
+                <ul>
+                    <li><strong>J+30 :</strong> Solution de bore (acide borique 2 g/L) + zinc (sulfate de zinc 1,5 g/L). Pulvérisation sur le feuillage. Améliore la fertilité du pollen et prévient la chute florale.</li>
+                    <li><strong>J+45 :</strong> Solution de calcium (chlorure de calcium 3 g/L ou nitrate de calcium 4 g/L). Pulvérisation sur les fruits en développement. Prévient la pourriture apicale et améliore la fermeté.</li>
+                    <li><strong>J+60 :</strong> NPK foliaire 10-52-10 (2 g/L) + magnésium (sulfate de magnésium 2 g/L). Stimule la floraison et la coloration des fruits.</li>
+                    <li><strong>J+75 :</strong> Solution de potassium (sulfate de potassium 3 g/L) + calcium. Améliore le gonflement des fruits et la teneur en capsaïcine.</li>
+                    <li><strong>J+90 :</strong> Extrait d'algues (3 mL/L) ou purin de compost dilué (5%). Stimulant naturel pour la fin de cycle et la qualité gustative.</li>
+                </ul>
+
+                <div class="tip-box">
+                    <p><strong>Astuce AFRIBIO :</strong> Préparez une "solution AFRIBIO" pour pulvérisation foliaire : 2 L de purin de compost filtré + 1 cuillère à soupe de cendre de bois + 1 cuillère à café de bicarbonate de soude, dilués dans 10 L d'eau. Pulvérisez toutes les 15 jours à partir de J+30. Cette solution biologique améliore la résistance à l'anthracnose et la vigueur générale, validée par les producteurs de piment du Bénin et du Togo.</p>
+                </div>
+
+                <h3><i class="fas fa-exclamation-triangle"></i> Erreurs à éviter</h3>
+                <ul>
+                    <li><strong>Excès d'azote en floraison :</strong> au-delà de 40 kg N/ha entre J+45 et J+90, le piment devient hypersensible à l'anthracnose, la chute florale atteint 50% et les fruits sont aqueux. Réduisez l'azote dès l'apparition des premières fleurs.</li>
+                    <li><strong>Apport tardif de potassium :</strong> le K doit être majoritairement apporté avant J+90. Un apport tardif n'améliore pas la qualité des fruits déjà formés.</li>
+                    <li><strong>Oubli du bore :</strong> la carence en bore est la cause principale de la chute florale et de la déformation des fruits (fruits bosselés, parois irrégulières). Apportez du bore dès le début de la floraison.</li>
+                    <li><strong>Fertilisations foliaires en plein soleil :</strong> provoquent des brûlures foliaires par effet de loupe. Pulvérisez tôt le matin (avant 8h) ou en fin d'après-midi (après 17h).</li>
+                    <li><strong>Engrais chlorés :</strong> le chlore dégrade la qualité des fruits, réduit le piquant et favorise la sensibilité à l'anthracnose. Utilisez exclusivement du sulfate de potassium et du nitrate de potassium.</li>
+                </ul>
+
+                <div class="warning-box">
+                    <p><strong>Attention :</strong> Le piment est très sensible à la salinité du sol. La somme des apports d'engrais solubles (NPK + K) ne doit pas dépasser 800 kg/ha sur le cycle pour éviter le stress osmotique. En cas d'irrigation goutte-à-goutte avec fertigation, ne dépassez jamais 2 g/L de concentration totale dans l'eau.</p>
+                </div>
+
+                <h3><i class="fas fa-leaf"></i> Fertilisation biologique alternative</h3>
+                <p>Pour les exploitations en agriculture biologique :</p>
+                <ul>
+                    <li><strong>Purin de compost :</strong> 800 L/ha dilué à 5%, apporté au sol toutes les 3 semaines à partir de J+15. Riche en nutriments et micro-organismes.</li>
+                    <li><strong>Thé de compost (compost tea) :</strong> 500 L/ha en pulvérisation foliaire toutes les 2 semaines. Stimule la résistance aux maladies et fournit des oligo-éléments.</li>
+                    <li><strong>Farine d'os :</strong> 100 kg/ha au sol à J+30 et J+60. Apport naturel de phosphore et calcium.</li>
+                    <li><strong>Biofertilisants azotés (Azotobacter, Rhizobium) :</strong> inoculation au sol à J+15 pour fixer l'azote atmosphérique et réduire les besoins en urée.</li>
+                    <li><strong>Algues marines liquides :</strong> 3 L/ha en pulvérisation foliaire à J+45, J+60, J+75. Stimulateur naturel de la floraison et de la nouaison.</li>
+                </ul>
+
+                <h3><i class="fas fa-check-circle"></i> Points de contrôle avant passage à l'étape suivante</h3>
+                <ul>
+                    <li>Les apports d'azote sont réduits dès le début de la floraison (J+45).</li>
+                    <li>Le potassium représente plus de 50% des apports entre J+45 et J+90.</li>
+                    <li>Le bore et le calcium sont apportés en fertilisation foliaire dès la floraison.</li>
+                    <li>Aucun engrais chloré n'a été utilisé pendant le cycle.</li>
+                    <li>Les plants présentent une coloration verte franc sans jaunissement ni brunissement.</li>
+                    <li>La floraison est abondante et la nouaison régulière.</li>
+                </ul>
+            </div>
+            <div class="step-nav">
+                <a href="floraison-piment.html"><i class="fas fa-arrow-left"></i> Étape précédente</a>
+                <div class="nav-center"><span>Piment</span>Étape 7 / 13</div>
+                <a href="recolte-piemnt.html">Étape suivante <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </main>
+    </div>
+    <footer class="site-footer"><p>© 2026 TERRA LOCALE - AFRIBIO BOOST - Tous droits réservés</p></footer>
+    <script>
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('date-jour').textContent = new Date().toLocaleDateString('fr-FR', options);
+    </script>
+</body>
+</html>

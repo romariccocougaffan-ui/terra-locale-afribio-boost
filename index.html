@@ -672,7 +672,58 @@ body {
   .modules-grid { grid-template-columns: 1fr; }
   .bref-grid { grid-template-columns: 1fr; }
 }
-  </style>
+  
+/* ===== BACKGROUND IMAGE ===== */
+body {
+  background-image: url('assets/images/mais.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: -1;
+}
+.main-wrapper {
+  background: transparent !important;
+}
+/* Cartes plus lisibles sur fond */
+.stat-card, .volet-card, .module-card, .bref-card {
+  background: rgba(255, 255, 255, 0.92) !important;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+.stat-card:hover, .volet-card:hover, .module-card:hover, .bref-card:hover {
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+}
+/* Sidebar légèrement transparente */
+.sidebar {
+  background: rgba(247, 248, 245, 0.95) !important;
+  backdrop-filter: blur(10px);
+}
+/* Header dashboard plus contrasté */
+.dashboard-header {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+/* Section titles en blanc pour contraster */
+.volets-section-title, .modules-section h2, .boutique-bref-header h2 {
+  color: #ffffff !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+.boutique-bref-header p {
+  color: rgba(255,255,255,0.85) !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+.bref-footer a {
+  color: #ffffff !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+</style>
+<base target="_blank">
 <base target="_blank">
 </head>
 <body>
